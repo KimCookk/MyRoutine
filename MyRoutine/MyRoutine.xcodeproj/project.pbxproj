@@ -11,6 +11,8 @@
 		20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79742BFB83D6001BCBB7 /* ContentView.swift */; };
 		20DE79772BFB83D8001BCBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DE79762BFB83D8001BCBB7 /* Assets.xcassets */; };
 		20DE797A2BFB83D8001BCBB7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DE79792BFB83D8001BCBB7 /* Preview Assets.xcassets */; };
+		20DE79822BFB897A001BCBB7 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79812BFB897A001BCBB7 /* TabBar.swift */; };
+		20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		20DE79742BFB83D6001BCBB7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		20DE79762BFB83D8001BCBB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20DE79792BFB83D8001BCBB7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		20DE79812BFB897A001BCBB7 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		20DE79712BFB83D5001BCBB7 /* MyRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				20DE79852BFB8CF4001BCBB7 /* Extension */,
+				20DE79802BFB8944001BCBB7 /* Views */,
 				20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */,
 				20DE79742BFB83D6001BCBB7 /* ContentView.swift */,
 				20DE79762BFB83D8001BCBB7 /* Assets.xcassets */,
@@ -65,6 +71,22 @@
 				20DE79792BFB83D8001BCBB7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		20DE79802BFB8944001BCBB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				20DE79812BFB897A001BCBB7 /* TabBar.swift */,
+				20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		20DE79852BFB8CF4001BCBB7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */,
+				20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */,
+				20DE79822BFB897A001BCBB7 /* TabBar.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
