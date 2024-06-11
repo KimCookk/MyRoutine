@@ -17,6 +17,7 @@ struct TabBarButton: View {
                     .frame(width: 20, height: 20)
                     .padding(.all, 5)
                     .cornerRadius(5)
+                    .foregroundColor(.gray700)
                     .overlay (RoundedRectangle(cornerRadius: 6)
                         .stroke(.gray700, lineWidth: 2)
                     )

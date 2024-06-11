@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct RoutineView: View {
+    
+    @State var items: [DummyRoutine];
+    @State private var draggedItem: DummyRoutine?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(showsIndicators: false, content: {
+            VStack(spacing: 10, content: {
+                Spacer()
+                
+                ForEach(items, id: \.self) { item in
+                    RoutineUnitCellView(routine: item)
+                        .padding(.horizontal, 10)
+                        .onDrag({
+                            self.draggedItem = item
+                            //item.activateDrag()
+                            return NSItemProvider()
+                        })
+                        .onDrop(of: [.text],
+                                delegate: DropViewDelegate(destinationItem: item, items: self.$items, draggedItem: self.$draggedItem)
+                        )
+                        
+                }
+                
+                Spacer()
+            })
+        })
     }
 }
 
 #Preview {
-    RoutineView()
+    RoutineView(items: dummyRoutines)
 }
