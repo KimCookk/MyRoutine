@@ -9,34 +9,68 @@ import SwiftUI
 
 struct RoutineView: View {
     
-    @State var items: [DummyRoutine];
-    @State private var draggedItem: DummyRoutine?
-    
     var body: some View {
-        ScrollView(showsIndicators: false, content: {
-            VStack(spacing: 10, content: {
-                Spacer()
-                
-                ForEach(items, id: \.self) { item in
-                    RoutineUnitCellView(routine: item)
-                        .padding(.horizontal, 10)
-                        .onDrag({
-                            self.draggedItem = item
-                            //item.activateDrag()
-                            return NSItemProvider()
-                        })
-                        .onDrop(of: [.text],
-                                delegate: DropViewDelegate(destinationItem: item, items: self.$items, draggedItem: self.$draggedItem)
-                        )
-                        
-                }
-                
-                Spacer()
-            })
-        })
+        VStack {
+            
+            RoutineInfoView()
+                .padding(.horizontal, 16)
+                .padding(.vertical, 32)
+            
+            Spacer()
+        }
     }
 }
 
 #Preview {
-    RoutineView(items: dummyRoutines)
+    RoutineView()
+}
+
+private struct RoutineInfoView: View {
+    var body: some View {
+        VStack(spacing: 25) {
+            HStack {
+                Text("Title")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "ellipsis")
+                        .foregroundColor(Color.gray001)
+                })
+            }
+            
+            TimerCardView()
+            
+            Spacer()
+        }
+    }
+}
+
+private struct TimerCardView: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .fill(Color.black001)
+            .overlay(
+                HStack {
+                    Text("00:32:10")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                    
+                    HStack(spacing: 30) {
+                        Image(systemName: "play")
+                        
+                        Image(systemName: "pause")
+                    }
+                }
+                .foregroundColor(Color.white)
+                .padding(.vertical, 26)
+                .padding(.horizontal, 16)
+            )
+            .frame(height: 80)
+    }
 }
