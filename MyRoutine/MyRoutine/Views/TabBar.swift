@@ -17,7 +17,7 @@ struct TabBar: View {
                 
                 Rectangle()
                     .frame(width: geo.size.width, height: 1)
-                    .background(.gray900)
+                    //.background(.gray900)
                 
                 HStack(spacing: 58) {
                     
