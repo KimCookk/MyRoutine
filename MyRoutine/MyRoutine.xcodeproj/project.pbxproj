@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20C018702C1887B500E8BA20 /* RoutineUnitCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C0186F2C1887B500E8BA20 /* RoutineUnitCellView.swift */; };
+		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
+		20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */; };
 		20C018732C188C1500E8BA20 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018722C188C1500E8BA20 /* DummyData.swift */; };
 		20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018742C188D6700E8BA20 /* DropViewDelegate.swift */; };
 		20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */; };
@@ -21,7 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		20C0186F2C1887B500E8BA20 /* RoutineUnitCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCellView.swift; sourceTree = "<group>"; };
+		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
+		20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoView.swift; sourceTree = "<group>"; };
 		20C018722C188C1500E8BA20 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		20C018742C188D6700E8BA20 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
 		20DE796F2BFB83D5001BCBB7 /* MyRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */,
-				20C0186F2C1887B500E8BA20 /* RoutineUnitCellView.swift */,
+				20121C282C22CB20001DD38E /* RoutineSummaryView.swift */,
+				20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */,
 			);
 			path = RoutineView;
 			sourceTree = "<group>";
@@ -201,12 +204,13 @@
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
 				20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */,
 				20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */,
+				20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */,
 				20DE79822BFB897A001BCBB7 /* TabBar.swift in Sources */,
 				20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */,
 				20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */,
-				20C018702C1887B500E8BA20 /* RoutineUnitCellView.swift in Sources */,
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
+				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
