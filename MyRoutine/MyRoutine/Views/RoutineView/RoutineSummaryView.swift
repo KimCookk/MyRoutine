@@ -22,6 +22,24 @@ struct RoutineSummaryView: View {
     }
 }
 
+struct RoutineSummaryHeaderView: View {
+    var body: some View {
+        HStack {
+            Text("Title")
+                .font(NotoSansKRFont(fontStyle: .bold, size: 24).font())
+            
+            Spacer()
+            
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "ellipsis")
+                    .foregroundColor(Color.gray001)
+            })
+        }
+    }
+}
+
 private struct TimerCardView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
@@ -29,8 +47,7 @@ private struct TimerCardView: View {
             .overlay{
                 HStack {
                     Text("00:32:10")
-                        .font(.system(size: 32,
-                                      weight: .medium))
+                        .font(NotoSansKRFont(fontStyle: .medium, size: 32).font())
                     Spacer()
                     
                     HStack(spacing: 30) {
@@ -47,22 +64,3 @@ private struct TimerCardView: View {
     }
 }
 
-
-struct RoutineSummaryHeaderView: View {
-    var body: some View {
-        HStack {
-            Text("Title")
-                .font(.system(size: 24,
-                              weight: .bold))
-            
-            Spacer()
-            
-            Button(action: {
-                
-            }, label: {
-                Image(systemName: "ellipsis")
-                    .foregroundColor(Color.gray001)
-            })
-        }
-    }
-}

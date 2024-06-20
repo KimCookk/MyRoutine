@@ -14,8 +14,7 @@ struct RoutineInfoView: View {
         VStack {
             HStack {
                 Text("Routine")
-                    .font(.system(size: 20,
-                                  weight: .medium))
+                    .font(NotoSansKRFont(fontStyle: .medium, size: 20).font())
                 
                 Spacer()
             }
@@ -43,6 +42,18 @@ private struct RoutineCardListView: View {
     }
 }
 
+private struct RoutineTagCardListView:View {
+    var body: some View {
+        HStack(spacing: 8) {
+            RoutineTagCardView(tag: "Personal", styleColor: Color.gray)
+            
+            RoutineTagCardView(tag: "Workout", styleColor: Color.orange)
+            
+            Spacer()
+        }
+    }
+}
+
 private struct RoutineCardView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
@@ -54,18 +65,15 @@ private struct RoutineCardView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Routine Unit Title")
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.system(size: 14,
-                                          weight: .medium))
+                            .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
                         
-                        HStack {
-                            // TODO: Tag View
-                        }
+                        RoutineTagCardListView()
                         .frame(height: 24)
                     }
                     
                     
                     
-                    RoutineCardOption()
+                    RoutineCardOptionView()
                 }
                 .padding(16)
             }
@@ -75,12 +83,11 @@ private struct RoutineCardView: View {
     }
 }
 
-private struct RoutineCardOption: View {
+private struct RoutineCardOptionView: View {
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
             Text("00:42:21")
-                .font(.system(size: 12,
-                              weight: .regular))
+                .font(NotoSansKRFont(fontStyle: .regular, size: 12).font())
                 .lineLimit(1)
             
             Image("play")
