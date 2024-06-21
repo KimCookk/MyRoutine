@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
 		20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */; };
+		20121C3A2C245CA0001DD38E /* NotoSansKR-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */; };
+		20121C3D2C245CA0001DD38E /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C342C245C9F001DD38E /* NotoSansKR-Regular.ttf */; };
+		20121C3E2C245CA0001DD38E /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C352C245C9F001DD38E /* NotoSansKR-Bold.ttf */; };
+		20121C3F2C245CA0001DD38E /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C362C245C9F001DD38E /* NotoSansKR-Medium.ttf */; };
+		20121CD32C245E56001DD38E /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD22C245E56001DD38E /* FontManager.swift */; };
+		20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */; };
+		20121CD72C246456001DD38E /* RoutineTagCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD62C246456001DD38E /* RoutineTagCardView.swift */; };
 		20C018732C188C1500E8BA20 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018722C188C1500E8BA20 /* DummyData.swift */; };
 		20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018742C188D6700E8BA20 /* DropViewDelegate.swift */; };
 		20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */; };
@@ -19,11 +26,21 @@
 		20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */; };
 		20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79872BFCDD97001BCBB7 /* MainView.swift */; };
 		20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */; };
+		20F1D7B82C25B01600B64D70 /* ToggleIconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */; };
+		20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
 		20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoView.swift; sourceTree = "<group>"; };
+		20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.ttf"; sourceTree = "<group>"; };
+		20121C342C245C9F001DD38E /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
+		20121C352C245C9F001DD38E /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		20121C362C245C9F001DD38E /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
+		20121CD02C245CFC001DD38E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		20121CD22C245E56001DD38E /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoSansKRFont.swift; sourceTree = "<group>"; };
+		20121CD62C246456001DD38E /* RoutineTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTagCardView.swift; sourceTree = "<group>"; };
 		20C018722C188C1500E8BA20 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		20C018742C188D6700E8BA20 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
 		20DE796F2BFB83D5001BCBB7 /* MyRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +52,8 @@
 		20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		20DE79872BFCDD97001BCBB7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIconImage.swift; sourceTree = "<group>"; };
+		20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +67,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20121C2C2C245C00001DD38E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				20121C2D2C245C15001DD38E /* Font */,
+				20DE79762BFB83D8001BCBB7 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		20121C2D2C245C15001DD38E /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */,
+				20121C352C245C9F001DD38E /* NotoSansKR-Bold.ttf */,
+				20121C362C245C9F001DD38E /* NotoSansKR-Medium.ttf */,
+				20121C342C245C9F001DD38E /* NotoSansKR-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		20121CD12C245E47001DD38E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				20121CD22C245E56001DD38E /* FontManager.swift */,
+				20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */,
+				20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		20C018712C188C0100E8BA20 /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,12 +124,13 @@
 		20DE79712BFB83D5001BCBB7 /* MyRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				20121CD02C245CFC001DD38E /* Info.plist */,
 				20C018712C188C0100E8BA20 /* Test */,
 				20DE79852BFB8CF4001BCBB7 /* Extension */,
 				20DE79802BFB8944001BCBB7 /* Views */,
 				20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */,
 				20DE79742BFB83D6001BCBB7 /* ContentView.swift */,
-				20DE79762BFB83D8001BCBB7 /* Assets.xcassets */,
+				20121C2C2C245C00001DD38E /* Resource */,
 				20DE79782BFB83D8001BCBB7 /* Preview Content */,
 			);
 			path = MyRoutine;
@@ -97,6 +147,7 @@
 		20DE79802BFB8944001BCBB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20F1D7B92C25B06400B64D70 /* Common */,
 				20DE79892BFCDDAC001BCBB7 /* RoutineView */,
 				20DE79862BFCDD79001BCBB7 /* MainView */,
 				20DE79812BFB897A001BCBB7 /* TabBar.swift */,
@@ -108,6 +159,7 @@
 		20DE79852BFB8CF4001BCBB7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				20121CD12C245E47001DD38E /* Common */,
 				20C018742C188D6700E8BA20 /* DropViewDelegate.swift */,
 			);
 			path = Extension;
@@ -127,8 +179,17 @@
 				20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */,
 				20121C282C22CB20001DD38E /* RoutineSummaryView.swift */,
 				20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */,
+				20121CD62C246456001DD38E /* RoutineTagCardView.swift */,
 			);
 			path = RoutineView;
+			sourceTree = "<group>";
+		};
+		20F1D7B92C25B06400B64D70 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,8 +250,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20121C3D2C245CA0001DD38E /* NotoSansKR-Regular.ttf in Resources */,
 				20DE797A2BFB83D8001BCBB7 /* Preview Assets.xcassets in Resources */,
+				20121C3F2C245CA0001DD38E /* NotoSansKR-Medium.ttf in Resources */,
+				20121C3A2C245CA0001DD38E /* NotoSansKR-Black.ttf in Resources */,
 				20DE79772BFB83D8001BCBB7 /* Assets.xcassets in Resources */,
+				20121C3E2C245CA0001DD38E /* NotoSansKR-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,12 +268,17 @@
 			files = (
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
 				20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */,
+				20F1D7B82C25B01600B64D70 /* ToggleIconImage.swift in Sources */,
 				20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */,
 				20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */,
 				20DE79822BFB897A001BCBB7 /* TabBar.swift in Sources */,
 				20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */,
+				20121CD32C245E56001DD38E /* FontManager.swift in Sources */,
 				20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */,
+				20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */,
+				20121CD72C246456001DD38E /* RoutineTagCardView.swift in Sources */,
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
+				20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
 				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,
 			);
@@ -347,6 +417,7 @@
 				DEVELOPMENT_TEAM = RM7YATZJKT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyRoutine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -377,6 +448,7 @@
 				DEVELOPMENT_TEAM = RM7YATZJKT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyRoutine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
