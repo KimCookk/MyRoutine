@@ -55,6 +55,7 @@ private struct RoutineTagCardListView:View {
 }
 
 private struct RoutineCardView: View {
+    // View에서 편집 누르면 select 버튼 있어야함
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Color.white)
@@ -84,6 +85,25 @@ private struct RoutineCardView: View {
 }
 
 private struct RoutineCardOptionView: View {
+    enum RoutineType {
+        // 사용자의 체크를 통해 완료 처리
+        // 체크 박스 필요
+        case todo
+        // 사용자의 체크를 통해 완료 처리
+        // 체크 박스 및 인포박스 필요
+        // 인포 박스 : 누르면 팁 팝업
+        case tip
+        // 사용자의 체크를 통해 완료 처리
+        // 체크 박스 및 start 버튼 pause 버튼
+        case timer
+        // 사용자의 체크를 통해 완료 처리 및 지정 된 시간
+        // 체크 박스 및 start 버튼 pause 버튼 stop 버튼 timer
+        case stopWatch
+        // 사용자의 체크를 통해 완료 처리 및 지정 된 카운터
+        // 체크 박스 및 + - 버튼, 현황
+        case counter
+    }
+    
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
             Text("00:42:21")
