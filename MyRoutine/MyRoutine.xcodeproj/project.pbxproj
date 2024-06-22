@@ -15,7 +15,7 @@
 		20121C3F2C245CA0001DD38E /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C362C245C9F001DD38E /* NotoSansKR-Medium.ttf */; };
 		20121CD32C245E56001DD38E /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD22C245E56001DD38E /* FontManager.swift */; };
 		20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */; };
-		20121CD72C246456001DD38E /* RoutineTagCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD62C246456001DD38E /* RoutineTagCardView.swift */; };
+		20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */; };
 		20C018732C188C1500E8BA20 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018722C188C1500E8BA20 /* DummyData.swift */; };
 		20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018742C188D6700E8BA20 /* DropViewDelegate.swift */; };
 		20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */; };
@@ -28,6 +28,10 @@
 		20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */; };
 		20F1D7B82C25B01600B64D70 /* ToggleIconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */; };
 		20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */; };
+		20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */; };
+		20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */; };
+		20F1D7C32C26A59300B64D70 /* RoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */; };
+		20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C52C26A9A500B64D70 /* RoutineUnitCardOptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +44,7 @@
 		20121CD02C245CFC001DD38E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		20121CD22C245E56001DD38E /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoSansKRFont.swift; sourceTree = "<group>"; };
-		20121CD62C246456001DD38E /* RoutineTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTagCardView.swift; sourceTree = "<group>"; };
+		20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTagCardView.swift; sourceTree = "<group>"; };
 		20C018722C188C1500E8BA20 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		20C018742C188D6700E8BA20 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
 		20DE796F2BFB83D5001BCBB7 /* MyRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +58,10 @@
 		20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
 		20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIconImage.swift; sourceTree = "<group>"; };
 		20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIconView.swift; sourceTree = "<group>"; };
+		20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTag.swift; sourceTree = "<group>"; };
+		20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitType.swift; sourceTree = "<group>"; };
+		20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardView.swift; sourceTree = "<group>"; };
+		20F1D7C52C26A9A500B64D70 /* RoutineUnitCardOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardOptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 		20DE79712BFB83D5001BCBB7 /* MyRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				20F1D7BC2C26A2AB00B64D70 /* Model */,
 				20121CD02C245CFC001DD38E /* Info.plist */,
 				20C018712C188C0100E8BA20 /* Test */,
 				20DE79852BFB8CF4001BCBB7 /* Extension */,
@@ -176,10 +185,11 @@
 		20DE79892BFCDDAC001BCBB7 /* RoutineView */ = {
 			isa = PBXGroup;
 			children = (
+				20F1D7C42C26A96500B64D70 /* RoutineUnitCardView */,
 				20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */,
 				20121C282C22CB20001DD38E /* RoutineSummaryView.swift */,
 				20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */,
-				20121CD62C246456001DD38E /* RoutineTagCardView.swift */,
+				20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */,
 			);
 			path = RoutineView;
 			sourceTree = "<group>";
@@ -190,6 +200,32 @@
 				20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		20F1D7BC2C26A2AB00B64D70 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				20F1D7C12C26A3EE00B64D70 /* RoutineUnit */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		20F1D7C12C26A3EE00B64D70 /* RoutineUnit */ = {
+			isa = PBXGroup;
+			children = (
+				20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */,
+				20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */,
+			);
+			path = RoutineUnit;
+			sourceTree = "<group>";
+		};
+		20F1D7C42C26A96500B64D70 /* RoutineUnitCardView */ = {
+			isa = PBXGroup;
+			children = (
+				20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */,
+				20F1D7C52C26A9A500B64D70 /* RoutineUnitCardOptionView.swift */,
+			);
+			path = RoutineUnitCardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */,
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
 				20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */,
+				20F1D7C32C26A59300B64D70 /* RoutineUnitCardView.swift in Sources */,
 				20F1D7B82C25B01600B64D70 /* ToggleIconImage.swift in Sources */,
 				20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */,
 				20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */,
@@ -276,8 +314,10 @@
 				20121CD32C245E56001DD38E /* FontManager.swift in Sources */,
 				20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */,
 				20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */,
-				20121CD72C246456001DD38E /* RoutineTagCardView.swift in Sources */,
+				20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */,
+				20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */,
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
+				20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */,
 				20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
 				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,

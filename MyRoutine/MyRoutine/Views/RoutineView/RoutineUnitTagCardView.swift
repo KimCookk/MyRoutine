@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RoutineTagCardView: View {
+struct RoutineUnitTagCardView: View {
     
     let tag:String
     let styleColor:Color
@@ -30,5 +30,5 @@ struct RoutineTagCardView: View {
 }
 
 #Preview {
-    RoutineTagCardView(tag: "Test", styleColor: Color.red)
+    RoutineUnitTagCardView(tag: "Test", styleColor: Color.red)
 }
