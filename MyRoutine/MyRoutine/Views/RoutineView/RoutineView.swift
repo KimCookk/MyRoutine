@@ -15,10 +15,10 @@ struct RoutineView: View {
                 .frame(height: 68)
             
             RoutineSummaryView()
-                .padding(16)
+                .padding(10)
                 
             RoutineInfoView()
-                .padding(16)
+                .padding(10)
             
             Spacer()
         }

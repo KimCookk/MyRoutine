@@ -22,7 +22,7 @@ struct RoutineSummaryView: View {
     }
 }
 
-struct RoutineSummaryHeaderView: View {
+private struct RoutineSummaryHeaderView: View {
     var body: some View {
         HStack {
             Text("Title")
@@ -30,11 +30,62 @@ struct RoutineSummaryHeaderView: View {
             
             Spacer()
             
-            Button(action: {
+            EditModeView()
+           
+        }
+    }
+}
+
+private struct EditModeView: View {
+    @State var isEdited: Bool = false
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            
+            Spacer()
+            
+            if(isEdited) {
+                Button(action: {
+                    
+                }, label: {
+                    Image("icon.arrow.up")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                })
                 
+                Button(action: {
+                    
+                }, label: {
+                    Image("icon.arrow.down")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                })
+                
+                Button(action: {
+                    
+                }, label: {
+                    Image("icon.pencil")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                })
+                
+                Button(action: {
+                    
+                }, label: {
+                    Image("icon.trash")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                })
+            }
+            
+            Button(action: {
+                withAnimation(.spring) {
+                    isEdited.toggle()
+                }
             }, label: {
-                Image(systemName: "ellipsis")
-                    .foregroundColor(Color.gray001)
+                Image("icon.menu.dots")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             })
         }
     }
@@ -51,9 +102,17 @@ private struct TimerCardView: View {
                     Spacer()
                     
                     HStack(spacing: 30) {
-                        Image(systemName: "play")
+                        Image("icon.active.play")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                         
-                        Image(systemName: "pause")
+                        Image("icon.active.pause")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
+                        Image("icon.active.stop")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                     }
                 }
                 .foregroundColor(Color.black)
