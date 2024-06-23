@@ -19,26 +19,64 @@ import SwiftUI
 struct RoutineUnitCardView: View {
     // View에서 편집 누르면 select 버튼 있어야함
     @State var type: RoutineUnitType
+    var isSelected: Bool = true;
+    var isEdited: Bool = true;
+    var isCompleted: Bool = true;
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Color.white)
             .overlay {
-                HStack(spacing: 16) {
-                    RoutineUnitTypeIconView(type: type)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Routine Unit Title")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
-                        
-                        RoutineUnitTagCardListView()
-                        .frame(height: 24)
+                ZStack {
+                   if(isEdited) {
+                        ZStack {
+                            GeometryReader { geo in
+                                Circle()
+                                    .frame(width: 14, height: 14)
+                                    .foregroundColor(Color.purple001)
+                                    .padding(.leading, 6)
+                                    .padding(.top, 6)
+                                    
+                            }
+                            
+                            if(isSelected) {
+                                GeometryReader { geo in
+                                    Circle()
+                                        .frame(width: 9, height: 9)
+                                        .foregroundColor(Color.gray003)
+                                        .padding(.leading, 8.5)
+                                        .padding(.top, 8.5)
+                                        
+                                }
+                            }
+                        }
                     }
+                   
+                    HStack(spacing: 16) {
+                        RoutineUnitTypeIconView(type: type)
+                        
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Routine Unit Title")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
+                            
+                            RoutineUnitTagCardListView()
+                            .frame(height: 24)
+                        }
+                        
+                        RoutineUnitCardOptionView(type: type)
+                    }
+                    .padding(16)
                     
-                    RoutineUnitCardOptionView(type: type)
+                    if(isCompleted) {
+                        GeometryReader { geo in
+                            Color.black001.opacity(0.4)
+                        }
+                        .cornerRadius(10)
+                        .allowsHitTesting(false)
+                    }
+
                 }
-                .padding(16)
             }
             .frame(height: 84)
         
