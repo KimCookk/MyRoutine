@@ -7,44 +7,41 @@
 
 import SwiftUI
 
-#Preview {
-    RoutineSummaryView()
-}
+//#Preview {
+//    RoutineSummaryView()
+//}
 
 struct RoutineSummaryView: View {
+    @ObservedObject var viewModel: RoutineViewModel
+    
     var body: some View {
         VStack(spacing: 25) {
-            RoutineSummaryHeaderView()
+            routineSummaryHeaderView()
             
             TimerCardView()
 
         }
     }
-}
-
-private struct RoutineSummaryHeaderView: View {
-    var body: some View {
+    
+    @ViewBuilder
+    private func routineSummaryHeaderView() -> some View {
         HStack {
             Text("Title")
                 .font(NotoSansKRFont(fontStyle: .bold, size: 24).font())
             
             Spacer()
             
-            EditModeView()
-           
+            editModeView()
         }
     }
-}
-
-private struct EditModeView: View {
-    @State var isEdited: Bool = false
     
-    var body: some View {
+    @ViewBuilder
+    private func editModeView() -> some View {
         HStack(spacing: 12) {
             
             Spacer()
             
-            if(isEdited) {
+            if(viewModel.editModeActivate) {
                 Button(action: {
                     
                 }, label: {
@@ -80,7 +77,7 @@ private struct EditModeView: View {
             
             Button(action: {
                 withAnimation(.spring) {
-                    isEdited.toggle()
+                    viewModel.editeModeButtonClick()
                 }
             }, label: {
                 Image("icon.menu.dots")
@@ -88,38 +85,40 @@ private struct EditModeView: View {
                     .frame(width: 15, height: 15)
             })
         }
-    }
-}
 
-private struct TimerCardView: View {
-    var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .fill(Color.white)
-            .overlay{
-                HStack {
-                    Text("00:32:10")
-                        .font(NotoSansKRFont(fontStyle: .medium, size: 32).font())
-                    Spacer()
-                    
-                    HStack(spacing: 30) {
-                        Image("icon.active.play")
-                            .resizable()
-                            .frame(width: 20, height: 20)
+    }
+
+    private struct TimerCardView: View {
+        var body: some View {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .overlay{
+                    HStack {
+                        Text("00:32:10")
+                            .font(NotoSansKRFont(fontStyle: .medium, size: 32).font())
+                        Spacer()
                         
-                        Image("icon.active.pause")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        
-                        Image("icon.active.stop")
-                            .resizable()
-                            .frame(width: 20, height: 20)
+                        HStack(spacing: 30) {
+                            Image("icon.active.play")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                            
+                            Image("icon.active.pause")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                            
+                            Image("icon.active.stop")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
                     }
+                    .foregroundColor(Color.black)
+                    .padding(.vertical, 26)
+                    .padding(.horizontal, 16)
                 }
-                .foregroundColor(Color.black)
-                .padding(.vertical, 26)
-                .padding(.horizontal, 16)
-            }
-            .frame(height: 80)
+                .frame(height: 80)
+        }
     }
-}
 
+
+}

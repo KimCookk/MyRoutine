@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-// TODO: Empty Vieweh 생각해야함
+// TODO: Empty View 생각해야함
 struct RoutineInfoView: View {
-    
+    @ObservedObject var viewModel: RoutineViewModel
+
     var body: some View {
-        
         VStack {
             HStack {
                 Text("Routine")
@@ -20,30 +20,26 @@ struct RoutineInfoView: View {
                 Spacer()
             }
             
-            RoutineUnitCardListView()
+            RoutineUnitCardListView(viewModel: viewModel)
             
             Spacer()
         }
     }
 }
 
-#Preview {
-    RoutineInfoView()
-}
+//#Preview {
+//    RoutineInfoView()
+//}
 
 private struct RoutineUnitCardListView: View {
+    @ObservedObject var viewModel: RoutineViewModel
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                RoutineUnitCardView(type: .todo)
-                
-                RoutineUnitCardView(type: .counter)
-                
-                RoutineUnitCardView(type: .tip)
-                
-                RoutineUnitCardView(type: .stopWatch)
-                
-                RoutineUnitCardView(type: .timer)
+                ForEach(viewModel.routineUnitList) { routineUnit in
+                    RoutineUnitCardView(routineUnit: routineUnit, isEdited: $viewModel.editModeActivate)
+                }
             }
         }
     }

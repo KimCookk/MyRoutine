@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct RoutineView: View {
+    @StateObject private var viewModel = RoutineViewModel()
     
     var body: some View {
         VStack {
             Spacer()
                 .frame(height: 68)
             
-            RoutineSummaryView()
+            RoutineSummaryView(viewModel: viewModel)
                 .padding(10)
                 
-            RoutineInfoView()
+            RoutineInfoView(viewModel: viewModel)
                 .padding(10)
             
             Spacer()

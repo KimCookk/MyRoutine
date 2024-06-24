@@ -32,6 +32,8 @@
 		20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */; };
 		20F1D7C32C26A59300B64D70 /* RoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */; };
 		20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C52C26A9A500B64D70 /* RoutineUnitCardOptionView.swift */; };
+		20F1D7C82C29A43E00B64D70 /* RoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C72C29A43E00B64D70 /* RoutineViewModel.swift */; };
+		20F1D7CA2C29A93D00B64D70 /* RoutineUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C92C29A93D00B64D70 /* RoutineUnit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +43,7 @@
 		20121C342C245C9F001DD38E /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
 		20121C352C245C9F001DD38E /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		20121C362C245C9F001DD38E /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
-		20121CD02C245CFC001DD38E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		20121CD02C245CFC001DD38E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20121CD22C245E56001DD38E /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoSansKRFont.swift; sourceTree = "<group>"; };
 		20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTagCardView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,8 @@
 		20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitType.swift; sourceTree = "<group>"; };
 		20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardView.swift; sourceTree = "<group>"; };
 		20F1D7C52C26A9A500B64D70 /* RoutineUnitCardOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardOptionView.swift; sourceTree = "<group>"; };
+		20F1D7C72C29A43E00B64D70 /* RoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewModel.swift; sourceTree = "<group>"; };
+		20F1D7C92C29A93D00B64D70 /* RoutineUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		20121C2C2C245C00001DD38E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				20121CD02C245CFC001DD38E /* Info.plist */,
 				20121C2D2C245C15001DD38E /* Font */,
 				20DE79762BFB83D8001BCBB7 /* Assets.xcassets */,
 			);
@@ -133,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				20F1D7BC2C26A2AB00B64D70 /* Model */,
-				20121CD02C245CFC001DD38E /* Info.plist */,
 				20C018712C188C0100E8BA20 /* Test */,
 				20DE79852BFB8CF4001BCBB7 /* Extension */,
 				20DE79802BFB8944001BCBB7 /* Views */,
@@ -190,6 +194,7 @@
 				20121C282C22CB20001DD38E /* RoutineSummaryView.swift */,
 				20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */,
 				20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */,
+				20F1D7C72C29A43E00B64D70 /* RoutineViewModel.swift */,
 			);
 			path = RoutineView;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			children = (
 				20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */,
 				20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */,
+				20F1D7C92C29A93D00B64D70 /* RoutineUnit.swift */,
 			);
 			path = RoutineUnit;
 			sourceTree = "<group>";
@@ -316,7 +322,9 @@
 				20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */,
 				20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */,
 				20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */,
+				20F1D7CA2C29A93D00B64D70 /* RoutineUnit.swift in Sources */,
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
+				20F1D7C82C29A43E00B64D70 /* RoutineViewModel.swift in Sources */,
 				20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */,
 				20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
@@ -457,7 +465,7 @@
 				DEVELOPMENT_TEAM = RM7YATZJKT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyRoutine/Info.plist;
+				INFOPLIST_FILE = MyRoutine/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -488,7 +496,7 @@
 				DEVELOPMENT_TEAM = RM7YATZJKT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyRoutine/Info.plist;
+				INFOPLIST_FILE = MyRoutine/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
