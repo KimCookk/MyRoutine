@@ -7,21 +7,22 @@
 
 import SwiftUI
 
-#Preview {
-    RoutineUnitCardView(type: .todo)
-    
-}
-
-#Preview {
-    RoutineUnitCardView(type: .counter)
-}
+//#Preview {
+//    RoutineUnitCardView(type: .todo)
+//    
+//}
+//
+//#Preview {
+//    RoutineUnitCardView(type: .counter)
+//}
 
 struct RoutineUnitCardView: View {
     // View에서 편집 누르면 select 버튼 있어야함
-    @State var type: RoutineUnitType
-    var isSelected: Bool = true;
-    var isEdited: Bool = true;
-    var isCompleted: Bool = true;
+    let routineUnit: RoutineUnit
+    @Binding var isEdited: Bool
+//    @State var type: RoutineUnitType
+//    var isSelected: Bool = false;
+//    var isCompleted: Bool = false;
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
@@ -39,7 +40,7 @@ struct RoutineUnitCardView: View {
                                     
                             }
                             
-                            if(isSelected) {
+                            if(routineUnit.isSelected) {
                                 GeometryReader { geo in
                                     Circle()
                                         .frame(width: 9, height: 9)
@@ -53,7 +54,7 @@ struct RoutineUnitCardView: View {
                     }
                    
                     HStack(spacing: 16) {
-                        RoutineUnitTypeIconView(type: type)
+                        RoutineUnitTypeIconView(type: routineUnit.type)
                         
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Routine Unit Title")
@@ -64,11 +65,11 @@ struct RoutineUnitCardView: View {
                             .frame(height: 24)
                         }
                         
-                        RoutineUnitCardOptionView(type: type)
+                        RoutineUnitCardOptionView(type: routineUnit.type)
                     }
                     .padding(16)
                     
-                    if(isCompleted) {
+                    if(routineUnit.isCompleted) {
                         GeometryReader { geo in
                             Color.black001.opacity(0.4)
                         }
@@ -79,8 +80,12 @@ struct RoutineUnitCardView: View {
                 }
             }
             .frame(height: 84)
-        
-        
+    }
+    
+    func setIsEdited(isEdited: Bool) {
+        withAnimation(.spring) {
+            self.isEdited = isEdited
+        }
     }
 }
 
