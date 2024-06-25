@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-#Preview {
-    RoutineUnitCardOptionView(type: .timer)
-}
+//#Preview {
+//    RoutineUnitCardOptionView(type: .timer)
+//}
 
 struct RoutineUnitCardOptionView: View {
-    let type: RoutineUnitType
+    @ObservedObject var viewModel: RoutineViewModel
     
+    let routineUnit: RoutineUnit
+
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            switch type {
+            switch routineUnit.type {
             case .todo:
                 todoTypeOptionView()
             case .tip:
@@ -41,7 +43,13 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            ToggleIconView(activeIconName: "icon.active.check", inactiveIconName: "icon.inactive.check")
+            ToggleIconView(activeIconName: "icon.active.check",
+                           inactiveIconName: "icon.inactive.check",
+            onTapped: {
+                withAnimation(.spring) {
+                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
+                }
+            })
         }
        
     }
@@ -59,7 +67,12 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            ToggleIconView(activeIconName: "icon.active.check", inactiveIconName: "icon.inactive.check")
+            ToggleIconView(activeIconName: "icon.active.check",
+                           inactiveIconName: "icon.inactive.check",
+            onTapped: {
+                withAnimation(.spring) {
+                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
+                }            })
         }
     }
     
@@ -80,7 +93,12 @@ struct RoutineUnitCardOptionView: View {
             ToggleIconView(activeIconName: "icon.active.play", inactiveIconName: "icon.inactive.play")
             ToggleIconView(activeIconName: "icon.active.pause", inactiveIconName: "icon.inactive.pause")
             ToggleIconView(activeIconName: "icon.active.stop", inactiveIconName: "icon.inactive.stop")
-            ToggleIconView(activeIconName: "icon.active.check", inactiveIconName: "icon.inactive.check")
+            ToggleIconView(activeIconName: "icon.active.check",
+                           inactiveIconName: "icon.inactive.check",
+            onTapped: {
+                withAnimation(.spring) {
+                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
+                }            })
             // stop 클릭시 반드시 초기화 여부를 묻는다
             
         }
@@ -98,7 +116,12 @@ struct RoutineUnitCardOptionView: View {
             ToggleIconView(activeIconName: "icon.active.play", inactiveIconName: "icon.inactive.play")
             ToggleIconView(activeIconName: "icon.active.pause", inactiveIconName: "icon.inactive.pause")
             ToggleIconView(activeIconName: "icon.active.stop", inactiveIconName: "icon.inactive.stop")
-            ToggleIconView(activeIconName: "icon.active.check", inactiveIconName: "icon.inactive.check")
+            ToggleIconView(activeIconName: "icon.active.check",
+                           inactiveIconName: "icon.inactive.check",
+            onTapped: {
+                withAnimation(.spring) {
+                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
+                }            })
             // stop 클릭시 반드시 초기화 여부를 묻는다
         }
     }
@@ -118,7 +141,12 @@ struct RoutineUnitCardOptionView: View {
             
             ToggleIconView(activeIconName: "icon.active.plus", useToggle: false)
             ToggleIconView(activeIconName: "icon.active.minus", useToggle: false)
-            ToggleIconView(activeIconName: "icon.active.check", inactiveIconName: "icon.inactive.check")
+            ToggleIconView(activeIconName: "icon.active.check",
+                           inactiveIconName: "icon.inactive.check",
+            onTapped: {
+                withAnimation(.spring) {
+                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
+                }            })
             
         }
     }

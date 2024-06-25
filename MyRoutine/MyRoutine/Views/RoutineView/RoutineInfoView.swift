@@ -38,7 +38,9 @@ private struct RoutineUnitCardListView: View {
         ScrollView {
             VStack(spacing: 16) {
                 ForEach(viewModel.routineUnitList) { routineUnit in
-                    RoutineUnitCardView(routineUnit: routineUnit, isEdited: $viewModel.editModeActivate)
+                    RoutineUnitCardView(viewModel: viewModel,
+                                        isEdited: $viewModel.editModeActivate,
+                                        routineUnit: routineUnit)
                 }
             }
         }

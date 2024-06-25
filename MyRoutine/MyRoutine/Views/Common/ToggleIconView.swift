@@ -11,19 +11,22 @@ struct ToggleIconView: View {
     let activeIconName: String
     let inactiveIconName: String
     var useToggle: Bool = true
+    var onTapped: (()->())?
     
     @State private var isActivate: Bool
     
-    init(activeIconName: String, inactiveIconName: String) {
+    init(activeIconName: String, inactiveIconName: String, onTapped: (()->())? = nil) {
         self.activeIconName = activeIconName
         self.inactiveIconName = inactiveIconName
+        self.onTapped = onTapped
         isActivate = false
     }
     
-    init(activeIconName: String, useToggle: Bool) {
+    init(activeIconName: String, useToggle: Bool, onTapped: (()->())? = nil) {
         self.activeIconName = activeIconName
         self.inactiveIconName = ""
         self.useToggle = useToggle
+        self.onTapped = onTapped
         
         if(useToggle == false) {
             isActivate = true
@@ -40,6 +43,10 @@ struct ToggleIconView: View {
             .onTapGesture {
                 if(useToggle) {
                     isActivate.toggle()
+                }
+                
+                if let onTapped = onTapped {
+                    onTapped()
                 }
             }
     }
