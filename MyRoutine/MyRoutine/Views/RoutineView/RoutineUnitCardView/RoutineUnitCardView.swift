@@ -9,7 +9,7 @@ import SwiftUI
 
 //#Preview {
 //    RoutineUnitCardView(type: .todo)
-//    
+//
 //}
 //
 //#Preview {
@@ -17,19 +17,22 @@ import SwiftUI
 //}
 
 struct RoutineUnitCardView: View {
+    
+    @ObservedObject var viewModel: RoutineViewModel
+    @Binding var isEdited: Bool
     // View에서 편집 누르면 select 버튼 있어야함
     let routineUnit: RoutineUnit
-    @Binding var isEdited: Bool
-//    @State var type: RoutineUnitType
-//    var isSelected: Bool = false;
-//    var isCompleted: Bool = false;
+    
+    //    @State var type: RoutineUnitType
+    //    var isSelected: Bool = false;
+    //    var isCompleted: Bool = false;
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Color.white)
             .overlay {
                 ZStack {
-                   if(isEdited) {
+                    if(isEdited) {
                         ZStack {
                             GeometryReader { geo in
                                 Circle()
@@ -37,7 +40,7 @@ struct RoutineUnitCardView: View {
                                     .foregroundColor(Color.purple001)
                                     .padding(.leading, 6)
                                     .padding(.top, 6)
-                                    
+                                
                             }
                             
                             if(routineUnit.isSelected) {
@@ -47,12 +50,12 @@ struct RoutineUnitCardView: View {
                                         .foregroundColor(Color.gray003)
                                         .padding(.leading, 8.5)
                                         .padding(.top, 8.5)
-                                        
+                                    
                                 }
                             }
                         }
                     }
-                   
+                    
                     HStack(spacing: 16) {
                         RoutineUnitTypeIconView(type: routineUnit.type)
                         
@@ -62,10 +65,11 @@ struct RoutineUnitCardView: View {
                                 .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
                             
                             RoutineUnitTagCardListView()
-                            .frame(height: 24)
+                                .frame(height: 24)
                         }
                         
-                        RoutineUnitCardOptionView(type: routineUnit.type)
+                        RoutineUnitCardOptionView(viewModel: viewModel,
+                                                  routineUnit: routineUnit)
                     }
                     .padding(16)
                     
@@ -76,16 +80,15 @@ struct RoutineUnitCardView: View {
                         .cornerRadius(10)
                         .allowsHitTesting(false)
                     }
-
+                    
                 }
             }
             .frame(height: 84)
-    }
-    
-    func setIsEdited(isEdited: Bool) {
-        withAnimation(.spring) {
-            self.isEdited = isEdited
-        }
+            .onTapGesture {
+                withAnimation(.spring) {
+                    viewModel.toggleRoutineUnitSelected(for: routineUnit)
+                }
+            }
     }
 }
 

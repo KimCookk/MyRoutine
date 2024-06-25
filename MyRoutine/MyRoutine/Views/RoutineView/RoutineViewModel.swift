@@ -17,7 +17,27 @@ class RoutineViewModel: ObservableObject {
         RoutineUnit(type: .timer, title: "Timer Routine", isSelected: false, isCompleted: false)
     ]
     
-    func editeModeButtonClick() {
+    func editModeButtonClick() {
         editModeActivate.toggle()
     }
+    
+    func toggleRoutineUnitCompleted(for routine: RoutineUnit) {
+        if let index = routineUnitList.firstIndex(where: { $0.id == routine.id }) {
+            routineUnitList[index].isCompleted.toggle()
+        }
+    }
+    
+    func toggleRoutineUnitSelected(for routine: RoutineUnit) {
+        if(editModeActivate) {
+            if let index = routineUnitList.firstIndex(where: { $0.id == routine.id }) {
+                routineUnitList[index].isSelected.toggle()
+            }
+        }
+    }
+    
+    func deleteRoutineUnitSelected() {
+        routineUnitList = routineUnitList.filter { $0.isSelected == false }
+    }
+    
+    
 }

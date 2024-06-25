@@ -59,7 +59,7 @@ struct RoutineSummaryView: View {
                 })
                 
                 Button(action: {
-                    
+                    // selected가 하나인지 확인 필요
                 }, label: {
                     Image("icon.pencil")
                         .resizable()
@@ -67,7 +67,10 @@ struct RoutineSummaryView: View {
                 })
                 
                 Button(action: {
-                    
+                    // Alert 필요 제거 확인
+                    withAnimation(.spring) {
+                        viewModel.deleteRoutineUnitSelected()
+                    }
                 }, label: {
                     Image("icon.trash")
                         .resizable()
@@ -77,7 +80,7 @@ struct RoutineSummaryView: View {
             
             Button(action: {
                 withAnimation(.spring) {
-                    viewModel.editeModeButtonClick()
+                    viewModel.editModeButtonClick()
                 }
             }, label: {
                 Image("icon.menu.dots")
