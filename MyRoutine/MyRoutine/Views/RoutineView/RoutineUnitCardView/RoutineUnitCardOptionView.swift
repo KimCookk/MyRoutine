@@ -15,7 +15,7 @@ struct RoutineUnitCardOptionView: View {
     @ObservedObject var viewModel: RoutineViewModel
     
     let routineUnit: RoutineUnit
-
+    
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
             switch routineUnit.type {
@@ -45,13 +45,13 @@ struct RoutineUnitCardOptionView: View {
             
             ToggleIconView(activeIconName: "icon.active.check",
                            inactiveIconName: "icon.inactive.check",
-            onTapped: {
+                           onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
                 }
             })
         }
-       
+        
     }
     
     @ViewBuilder
@@ -69,10 +69,11 @@ struct RoutineUnitCardOptionView: View {
             
             ToggleIconView(activeIconName: "icon.active.check",
                            inactiveIconName: "icon.inactive.check",
-            onTapped: {
+                           onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }            })
+                }
+            })
         }
     }
     
@@ -95,7 +96,7 @@ struct RoutineUnitCardOptionView: View {
             ToggleIconView(activeIconName: "icon.active.stop", inactiveIconName: "icon.inactive.stop")
             ToggleIconView(activeIconName: "icon.active.check",
                            inactiveIconName: "icon.inactive.check",
-            onTapped: {
+                           onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
                 }            })
@@ -118,7 +119,7 @@ struct RoutineUnitCardOptionView: View {
             ToggleIconView(activeIconName: "icon.active.stop", inactiveIconName: "icon.inactive.stop")
             ToggleIconView(activeIconName: "icon.active.check",
                            inactiveIconName: "icon.inactive.check",
-            onTapped: {
+                           onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
                 }            })
@@ -143,7 +144,7 @@ struct RoutineUnitCardOptionView: View {
             ToggleIconView(activeIconName: "icon.active.minus", useToggle: false)
             ToggleIconView(activeIconName: "icon.active.check",
                            inactiveIconName: "icon.inactive.check",
-            onTapped: {
+                           onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
                 }            })

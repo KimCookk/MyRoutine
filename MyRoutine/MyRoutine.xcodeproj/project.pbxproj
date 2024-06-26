@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */; };
 		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
 		20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */; };
 		20121C3A2C245CA0001DD38E /* NotoSansKR-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRoutineUnitCardView.swift; sourceTree = "<group>"; };
 		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
 		20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoView.swift; sourceTree = "<group>"; };
 		20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.ttf"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */,
 				20F1D7C52C26A9A500B64D70 /* RoutineUnitCardOptionView.swift */,
+				200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */,
 			);
 			path = RoutineUnitCardView;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */,
 				20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */,
 				20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */,
+				200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */,
 				20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */,
 				20F1D7CA2C29A93D00B64D70 /* RoutineUnit.swift in Sources */,
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,

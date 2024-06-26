@@ -19,7 +19,8 @@ import SwiftUI
 struct RoutineUnitCardView: View {
     
     @ObservedObject var viewModel: RoutineViewModel
-    @Binding var isEdited: Bool
+    //@Binding var isEdited: Bool
+    //@Binding var isEmpty: Bool
     // View에서 편집 누르면 select 버튼 있어야함
     let routineUnit: RoutineUnit
     
@@ -32,7 +33,7 @@ struct RoutineUnitCardView: View {
             .fill(Color.white)
             .overlay {
                 ZStack {
-                    if(isEdited) {
+                    if(viewModel.editModeActivate) {
                         ZStack {
                             GeometryReader { geo in
                                 Circle()
@@ -80,7 +81,6 @@ struct RoutineUnitCardView: View {
                         .cornerRadius(10)
                         .allowsHitTesting(false)
                     }
-                    
                 }
             }
             .frame(height: 84)
