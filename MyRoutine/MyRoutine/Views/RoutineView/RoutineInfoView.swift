@@ -37,14 +37,32 @@ private struct RoutineUnitCardListView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                ForEach(viewModel.routineUnitList) { routineUnit in
-                    RoutineUnitCardView(viewModel: viewModel,
-                                        isEdited: $viewModel.editModeActivate,
-                                        routineUnit: routineUnit)
+                if(viewModel.routineUnitList.isEmpty) {
+                    emptyCardListView()
+                } else {
+                    routineUnitCardListView()
                 }
             }
         }
     }
+    
+    @ViewBuilder
+    private func routineUnitCardListView() -> some View {
+        ForEach(viewModel.routineUnitList) { routineUnit in
+            RoutineUnitCardView(viewModel: viewModel,
+                                routineUnit: routineUnit)
+                                //isEdited: $viewModel.editModeActivate,
+                                
+        }
+    }
+    
+    @ViewBuilder
+    private func emptyCardListView() -> some View {
+        EmptyRoutineUnitCardView(viewModel: viewModel)
+//RoutineUnitCardView(viewModel: viewModel,
+//                            routineUnit: nil)
+    }
+    
 }
 
 

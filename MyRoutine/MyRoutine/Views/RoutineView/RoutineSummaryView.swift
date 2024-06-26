@@ -43,7 +43,9 @@ struct RoutineSummaryView: View {
             
             if(viewModel.editModeActivate) {
                 Button(action: {
-                    
+                    withAnimation(.spring) {
+                        viewModel.upOrderRoutineUnitSelected()
+                    }
                 }, label: {
                     Image("icon.arrow.up")
                         .resizable()
@@ -51,7 +53,9 @@ struct RoutineSummaryView: View {
                 })
                 
                 Button(action: {
-                    
+                    withAnimation(.spring) {
+                        viewModel.downOrderRoutineUnitSelected()
+                    }
                 }, label: {
                     Image("icon.arrow.down")
                         .resizable()
@@ -80,7 +84,7 @@ struct RoutineSummaryView: View {
             
             Button(action: {
                 withAnimation(.spring) {
-                    viewModel.editModeButtonClick()
+                    viewModel.toggleEditModeActivate()
                 }
             }, label: {
                 Image("icon.menu.dots")
