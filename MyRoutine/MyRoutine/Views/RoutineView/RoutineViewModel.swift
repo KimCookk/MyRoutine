@@ -10,11 +10,11 @@ import Foundation
 class RoutineViewModel: ObservableObject {
     @Published var editModeActivate: Bool = false
     @Published var routineUnitList: [RoutineUnit] = [
-//        RoutineUnit(type: .todo, title: "Todo Routine", isSelected: false, isCompleted: false),
-//        RoutineUnit(type: .counter, title: "Counter Routine", isSelected: false, isCompleted: false),
-//        RoutineUnit(type: .tip, title: "Tip Routine", isSelected: false, isCompleted: false),
-//        RoutineUnit(type: .stopWatch, title: "Stop Watch Routine", isSelected: false, isCompleted: false),
-//        RoutineUnit(type: .timer, title: "Timer Routine", isSelected: false, isCompleted: false)
+        RoutineUnit(type: .todo, title: "Todo Routine", isSelected: false, targetTask: TodoTask()),
+        RoutineUnit(type: .counter, title: "Counter Routine", isSelected: false, targetTask: CounterTask()),
+        RoutineUnit(type: .tip, title: "Tip Routine", isSelected: false, targetTask: TipTask()),
+        RoutineUnit(type: .stopWatch, title: "Stop Watch Routine", isSelected: false, targetTask: StopWatchTask()),
+        RoutineUnit(type: .timer, title: "Timer Routine", isSelected: false, targetTask: TimerTask())
     ]
     
     func toggleEditModeActivate() {
@@ -31,7 +31,7 @@ class RoutineViewModel: ObservableObject {
     
     func toggleRoutineUnitCompleted(for routine: RoutineUnit) {
         if let index = routineUnitList.firstIndex(where: { $0.id == routine.id }) {
-            routineUnitList[index].isCompleted.toggle()
+            routineUnitList[index].targetTask.isCompleted.toggle()
         }
     }
     
