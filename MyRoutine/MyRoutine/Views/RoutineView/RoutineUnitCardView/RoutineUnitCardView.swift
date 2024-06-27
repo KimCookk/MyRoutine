@@ -74,7 +74,7 @@ struct RoutineUnitCardView: View {
                     }
                     .padding(16)
                     
-                    if(routineUnit.isCompleted) {
+                    if(routineUnit.targetTask.isCompleted) {
                         GeometryReader { geo in
                             Color.black001.opacity(0.4)
                         }
