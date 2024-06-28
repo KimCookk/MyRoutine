@@ -9,46 +9,44 @@ import Foundation
 
 struct RoutineUnit: Identifiable {
     let id: String
-    let type: RoutineUnitType
     var title: String
     var isSelected: Bool
     var targetTask: RoutineUnitTask
+    var tip: RoutineUnitTip?
     
-    init(id: String = UUID().uuidString, type: RoutineUnitType, title: String, isSelected: Bool, targetTask: RoutineUnitTask) {
+    init(id: String = UUID().uuidString, title: String, isSelected: Bool, targetTask: RoutineUnitTask, tip: RoutineUnitTip? = nil) {
         self.id = id
-        self.type = type
         self.title = title
         self.isSelected = isSelected
         self.targetTask = targetTask
+        self.tip = tip
     }
 }
 
 protocol RoutineUnitTask {
     var isCompleted: Bool { get set }
-    init()
+    var type: RoutineUnitType { get }
     
+    init()
 }
 
 struct TodoTask: RoutineUnitTask {
     var isCompleted: Bool
-    
-    init() {
-        isCompleted = false
+    var type: RoutineUnitType {
+        return .todo
     }
-}
-
-struct TipTask: RoutineUnitTask {
-    var isCompleted: Bool
-    var tip: String?
     
     init() {
         isCompleted = false
-        tip = nil
     }
 }
 
 struct TimerTask: RoutineUnitTask {
     var isCompleted: Bool
+    var type: RoutineUnitType {
+        return .timer
+    }
+    
     var targetTime: TimeInterval?
     var elapsedTime: TimeInterval?
 
@@ -61,6 +59,10 @@ struct TimerTask: RoutineUnitTask {
 
 struct StopWatchTask: RoutineUnitTask {
     var isCompleted: Bool
+    var type: RoutineUnitType {
+        return .stopWatch
+    }
+    
     var targetTime: TimeInterval?
     var remainingTime: TimeInterval?
     
@@ -73,6 +75,10 @@ struct StopWatchTask: RoutineUnitTask {
 
 struct CounterTask: RoutineUnitTask {
     var isCompleted: Bool
+    var type: RoutineUnitType {
+        return .counter
+    }
+    
     var targetCount: Int
     var currentCount: Int
    
@@ -98,4 +104,7 @@ struct CounterTask: RoutineUnitTask {
     }
 }
 
+struct RoutineUnitTip {
+    var tipComment: String
+}
 

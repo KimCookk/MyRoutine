@@ -27,7 +27,6 @@
 		20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */; };
 		20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79872BFCDD97001BCBB7 /* MainView.swift */; };
 		20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */; };
-		20F1D7B82C25B01600B64D70 /* ToggleIconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */; };
 		20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */; };
 		20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */; };
 		20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */; };
@@ -60,7 +59,6 @@
 		20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		20DE79872BFCDD97001BCBB7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
-		20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIconImage.swift; sourceTree = "<group>"; };
 		20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIconView.swift; sourceTree = "<group>"; };
 		20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTag.swift; sourceTree = "<group>"; };
 		20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitType.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 			children = (
 				20121CD22C245E56001DD38E /* FontManager.swift */,
 				20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */,
-				20F1D7B72C25B01600B64D70 /* ToggleIconImage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -315,7 +312,6 @@
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
 				20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */,
 				20F1D7C32C26A59300B64D70 /* RoutineUnitCardView.swift in Sources */,
-				20F1D7B82C25B01600B64D70 /* ToggleIconImage.swift in Sources */,
 				20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */,
 				20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */,
 				20DE79822BFB897A001BCBB7 /* TabBar.swift in Sources */,

@@ -18,7 +18,7 @@ struct RoutineUnitTagCardView: View {
     
     var body: some View {
         Text(tag)
-            .font(NotoSansKRFont(fontStyle: .regular
+            .font(RubikFont(fontStyle: .regular
                                  , size: 12).font())
             .foregroundColor(styleColor)
             .padding(5)

@@ -12,9 +12,9 @@ import SwiftUI
 //
 //}
 //
-//#Preview {
-//    RoutineUnitCardView(type: .counter)
-//}
+#Preview {
+    RoutineUnitCardView(viewModel: RoutineViewModel(), routineUnit: RoutineUnit(title: "Title 이다", isSelected: false, targetTask: TodoTask()))
+}
 
 struct RoutineUnitCardView: View {
     
@@ -58,10 +58,10 @@ struct RoutineUnitCardView: View {
                     }
                     
                     HStack(spacing: 16) {
-                        RoutineUnitTypeIconView(type: routineUnit.type)
+                        RoutineUnitTypeIconView(type: routineUnit.targetTask.type)
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Routine Unit Title")
+                            Text(routineUnit.title)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
                             
