@@ -10,11 +10,11 @@ import Foundation
 class RoutineViewModel: ObservableObject {
     @Published var editModeActivate: Bool = false
     @Published var routineUnitList: [RoutineUnit] = [
-        RoutineUnit(type: .todo, title: "Todo Routine", isSelected: false, targetTask: TodoTask()),
-        RoutineUnit(type: .counter, title: "Counter Routine", isSelected: false, targetTask: CounterTask()),
-        RoutineUnit(type: .tip, title: "Tip Routine", isSelected: false, targetTask: TipTask()),
-        RoutineUnit(type: .stopWatch, title: "Stop Watch Routine", isSelected: false, targetTask: StopWatchTask()),
-        RoutineUnit(type: .timer, title: "Timer Routine", isSelected: false, targetTask: TimerTask())
+        RoutineUnit(title: "Todo Routine", isSelected: false, targetTask: TodoTask(), tip: RoutineUnitTip(tipComment: "tip")),
+        RoutineUnit(title: "Counter Routine", isSelected: false, targetTask: CounterTask(), tip: RoutineUnitTip(tipComment: "tip")),
+        RoutineUnit(title: "Tip Routine", isSelected: false, targetTask: TodoTask(), tip: RoutineUnitTip(tipComment: "tip")),
+        RoutineUnit(title: "Stop Watch Routine", isSelected: false, targetTask: StopWatchTask(), tip: RoutineUnitTip(tipComment: "tip")),
+        RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(), tip: RoutineUnitTip(tipComment: "tip"))
     ]
     
     func toggleEditModeActivate() {

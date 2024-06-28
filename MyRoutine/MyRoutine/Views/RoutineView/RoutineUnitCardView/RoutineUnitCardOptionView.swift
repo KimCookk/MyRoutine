@@ -18,11 +18,9 @@ struct RoutineUnitCardOptionView: View {
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            switch routineUnit.type {
+            switch routineUnit.targetTask.type {
             case .todo:
                 todoTypeOptionView()
-            case .tip:
-                tipTypeOptionView()
             case .timer:
                 timerTypeOptionView()
             case .stopWatch:
@@ -37,8 +35,13 @@ struct RoutineUnitCardOptionView: View {
     @ViewBuilder
     private func todoTypeOptionView() -> some View {
         
-        Spacer()
-            .frame(height: 10)
+        HStack(spacing: 10) {
+            Spacer()
+            
+            if routineUnit.tip != nil   {
+                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+            }
+        }
         
         HStack(spacing: 10) {
             Spacer()
@@ -54,28 +57,28 @@ struct RoutineUnitCardOptionView: View {
         
     }
     
-    @ViewBuilder
-    private func tipTypeOptionView() -> some View {
-        
-        HStack(spacing: 10) {
-            Spacer()
-            
-            ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
-            
-        }
-        
-        HStack(spacing: 10) {
-            Spacer()
-            
-            ToggleIconView(activeIconName: "icon.active.check",
-                           inactiveIconName: "icon.inactive.check",
-                           onTapped: {
-                withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }
-            })
-        }
-    }
+//    @ViewBuilder
+//    private func tipTypeOptionView() -> some View {
+//        
+//        HStack(spacing: 10) {
+//            Spacer()
+//            
+//            ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+//            
+//        }
+//        
+//        HStack(spacing: 10) {
+//            Spacer()
+//            
+//            ToggleIconView(activeIconName: "icon.active.check",
+//                           inactiveIconName: "icon.inactive.check",
+//                           onTapped: {
+//                withAnimation(.spring) {
+//                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
+//                }
+//            })
+//        }
+//    }
     
     @ViewBuilder
     private func timerTypeOptionView() -> some View {
@@ -84,8 +87,12 @@ struct RoutineUnitCardOptionView: View {
             Spacer()
             
             Text("00:00:21")
-                .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
+                .font(RubikFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
+            
+            if routineUnit.tip != nil   {
+                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+            }
         }
         
         HStack(spacing: 10) {
@@ -107,9 +114,17 @@ struct RoutineUnitCardOptionView: View {
     
     @ViewBuilder
     private func stopWatchTypeOptionView() -> some View {
-        Text("00:42:21")
-            .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
-            .lineLimit(1)
+        HStack(spacing: 10) {
+            Spacer()
+            
+            Text("00:42:21")
+                .font(RubikFont(fontStyle: .bold, size: 12).font())
+                .lineLimit(1)
+            
+            if routineUnit.tip != nil   {
+                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+            }
+        }
         
         HStack(spacing: 10) {
             Spacer()
@@ -133,8 +148,12 @@ struct RoutineUnitCardOptionView: View {
             Spacer()
             
             Text("0 / 10")
-                .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
+                .font(RubikFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
+            
+            if routineUnit.tip != nil   {
+                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+            }
         }
         
         HStack(spacing: 10) {

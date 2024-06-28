@@ -27,7 +27,7 @@ struct RoutineSummaryView: View {
     private func routineSummaryHeaderView() -> some View {
         HStack {
             Text("Title")
-                .font(NotoSansKRFont(fontStyle: .bold, size: 24).font())
+                .font(RubikFont(fontStyle: .bold, size: 24).font())
             
             Spacer()
             
@@ -102,7 +102,7 @@ struct RoutineSummaryView: View {
                 .overlay{
                     HStack {
                         Text("00:32:10")
-                            .font(NotoSansKRFont(fontStyle: .medium, size: 32).font())
+                            .font(RubikFont(fontStyle: .medium, size: 32).font())
                         Spacer()
                         
                         HStack(spacing: 30) {
