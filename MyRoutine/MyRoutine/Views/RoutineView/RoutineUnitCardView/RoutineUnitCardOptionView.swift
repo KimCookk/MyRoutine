@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-//#Preview {
-//    RoutineUnitCardOptionView(type: .timer)
-//}
+#Preview {
+    RoutineUnitCardOptionView(viewModel: RoutineViewModel(),
+                              routineUnit: RoutineUnit(title: "테스트", isSelected: false, targetTask: CounterTask()))
+}
 
 struct RoutineUnitCardOptionView: View {
     @ObservedObject var viewModel: RoutineViewModel
@@ -39,16 +40,19 @@ struct RoutineUnitCardOptionView: View {
             Spacer()
             
             if routineUnit.tip != nil   {
-                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+                IconButton(activeIconName: "icon.active.tip") {
+                    
+                }
             }
         }
         
         HStack(spacing: 10) {
             Spacer()
             
-            ToggleIconView(activeIconName: "icon.active.check",
-                           inactiveIconName: "icon.inactive.check",
-                           onTapped: {
+            IconButton(activeIconName: "icon.active.check",
+                       inactiveIconName: "icon.inactive.check",
+                       isActivate: false,
+                       onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
                 }
@@ -57,28 +61,28 @@ struct RoutineUnitCardOptionView: View {
         
     }
     
-//    @ViewBuilder
-//    private func tipTypeOptionView() -> some View {
-//        
-//        HStack(spacing: 10) {
-//            Spacer()
-//            
-//            ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
-//            
-//        }
-//        
-//        HStack(spacing: 10) {
-//            Spacer()
-//            
-//            ToggleIconView(activeIconName: "icon.active.check",
-//                           inactiveIconName: "icon.inactive.check",
-//                           onTapped: {
-//                withAnimation(.spring) {
-//                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-//                }
-//            })
-//        }
-//    }
+    //    @ViewBuilder
+    //    private func tipTypeOptionView() -> some View {
+    //
+    //        HStack(spacing: 10) {
+    //            Spacer()
+    //
+    //            ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+    //
+    //        }
+    //
+    //        HStack(spacing: 10) {
+    //            Spacer()
+    //
+    //            ToggleIconView(activeIconName: "icon.active.check",
+    //                           inactiveIconName: "icon.inactive.check",
+    //                           onTapped: {
+    //                withAnimation(.spring) {
+    //                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
+    //                }
+    //            })
+    //        }
+    //    }
     
     @ViewBuilder
     private func timerTypeOptionView() -> some View {
@@ -87,28 +91,55 @@ struct RoutineUnitCardOptionView: View {
             Spacer()
             
             Text("00:00:21")
-                .font(RubikFont(fontStyle: .bold, size: 12).font())
+                .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
             if routineUnit.tip != nil   {
-                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+                IconButton(activeIconName: "icon.active.tip") {
+                    
+                }
             }
         }
         
         HStack(spacing: 10) {
             Spacer()
             
-            ToggleIconView(activeIconName: "icon.active.play", inactiveIconName: "icon.inactive.play")
-            ToggleIconView(activeIconName: "icon.active.pause", inactiveIconName: "icon.inactive.pause")
-            ToggleIconView(activeIconName: "icon.active.stop", inactiveIconName: "icon.inactive.stop")
-            ToggleIconView(activeIconName: "icon.active.check",
-                           inactiveIconName: "icon.inactive.check",
-                           onTapped: {
+            
+            IconButton(activeIconName: "icon.active.play",
+                       inactiveIconName: "icon.inactive.play",
+                       isActivate: false,
+                       onTapped: {
+                withAnimation(.spring) {
+                    
+                }
+            })
+            
+            IconButton(activeIconName: "icon.active.pause",
+                       inactiveIconName: "icon.inactive.pause",
+                       isActivate: false,
+                       onTapped: {
+                withAnimation(.spring) {
+                   
+                }
+            })
+            
+            IconButton(activeIconName: "icon.active.stop",
+                       inactiveIconName: "icon.inactive.stop",
+                       isActivate: false,
+                       onTapped: {
+                withAnimation(.spring) {
+                    // stop 클릭시 반드시 초기화 여부를 묻는다
+                }
+            })
+            
+            IconButton(activeIconName: "icon.active.check",
+                       inactiveIconName: "icon.inactive.check",
+                       isActivate: false,
+                       onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }            })
-            // stop 클릭시 반드시 초기화 여부를 묻는다
-            
+                }
+            })
         }
     }
     
@@ -118,27 +149,54 @@ struct RoutineUnitCardOptionView: View {
             Spacer()
             
             Text("00:42:21")
-                .font(RubikFont(fontStyle: .bold, size: 12).font())
+                .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
             if routineUnit.tip != nil   {
-                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+                IconButton(activeIconName: "icon.active.tip") {
+                    
+                }
             }
         }
         
         HStack(spacing: 10) {
             Spacer()
             
-            ToggleIconView(activeIconName: "icon.active.play", inactiveIconName: "icon.inactive.play")
-            ToggleIconView(activeIconName: "icon.active.pause", inactiveIconName: "icon.inactive.pause")
-            ToggleIconView(activeIconName: "icon.active.stop", inactiveIconName: "icon.inactive.stop")
-            ToggleIconView(activeIconName: "icon.active.check",
-                           inactiveIconName: "icon.inactive.check",
-                           onTapped: {
+            IconButton(activeIconName: "icon.active.play",
+                       inactiveIconName: "icon.inactive.play",
+                       isActivate: false,
+                       onTapped: {
+                withAnimation(.spring) {
+                    
+                }
+            })
+            
+            IconButton(activeIconName: "icon.active.pause",
+                       inactiveIconName: "icon.inactive.pause",
+                       isActivate: false,
+                       onTapped: {
+                withAnimation(.spring) {
+                   
+                }
+            })
+            
+            IconButton(activeIconName: "icon.active.stop",
+                       inactiveIconName: "icon.inactive.stop",
+                       isActivate: false,
+                       onTapped: {
+                withAnimation(.spring) {
+                    // stop 클릭시 반드시 초기화 여부를 묻는다
+                }
+            })
+            
+            IconButton(activeIconName: "icon.active.check",
+                       inactiveIconName: "icon.inactive.check",
+                       isActivate: false,
+                       onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }            })
-            // stop 클릭시 반드시 초기화 여부를 묻는다
+                }
+            })
         }
     }
     
@@ -148,26 +206,35 @@ struct RoutineUnitCardOptionView: View {
             Spacer()
             
             Text("0 / 10")
-                .font(RubikFont(fontStyle: .bold, size: 12).font())
+                .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
             if routineUnit.tip != nil   {
-                ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
+                IconButton(activeIconName: "icon.active.tip") {
+                    
+                }
             }
         }
         
         HStack(spacing: 10) {
             Spacer()
             
-            ToggleIconView(activeIconName: "icon.active.plus", useToggle: false)
-            ToggleIconView(activeIconName: "icon.active.minus", useToggle: false)
-            ToggleIconView(activeIconName: "icon.active.check",
-                           inactiveIconName: "icon.inactive.check",
-                           onTapped: {
+            IconButton(activeIconName: "icon.active.plus") {
+                
+            }
+            
+            IconButton(activeIconName: "icon.active.minus") {
+                
+            }
+            
+            IconButton(activeIconName: "icon.active.check",
+                       inactiveIconName: "icon.inactive.check",
+                       isActivate: false,
+                       onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }            })
-            
+                }
+            })
         }
     }
 }

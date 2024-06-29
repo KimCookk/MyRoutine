@@ -15,7 +15,7 @@ struct RoutineInfoView: View {
         VStack {
             HStack {
                 Text("Routine")
-                    .font(RubikFont(fontStyle: .medium, size: 20).font())
+                    .font(NotoSansKRFont(fontStyle: .medium, size: 20).font())
                 
                 Spacer()
             }
