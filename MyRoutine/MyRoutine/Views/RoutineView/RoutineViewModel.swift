@@ -11,7 +11,7 @@ class RoutineViewModel: ObservableObject {
     @Published var editModeActivate: Bool = false
     @Published var routineUnitList: [RoutineUnit] = [
         RoutineUnit(title: "Todo Routine", isSelected: false, targetTask: TodoTask(), tip: RoutineUnitTip(tipComment: "tip")),
-        RoutineUnit(title: "Counter Routine", isSelected: false, targetTask: CounterTask(), tip: RoutineUnitTip(tipComment: "tip")),
+        RoutineUnit(title: "Counter Routine", isSelected: false, targetTask: CounterTask(targetCount: 1), tip: RoutineUnitTip(tipComment: "tip")),
         RoutineUnit(title: "Tip Routine", isSelected: false, targetTask: TodoTask(), tip: RoutineUnitTip(tipComment: "tip")),
         RoutineUnit(title: "Stop Watch Routine", isSelected: false, targetTask: StopWatchTask(), tip: RoutineUnitTip(tipComment: "tip")),
         RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(), tip: RoutineUnitTip(tipComment: "tip"))
@@ -81,6 +81,29 @@ class RoutineViewModel: ObservableObject {
     
     func addRoutineUnit() {
         print("RoutineViewModel addRoutineUnit")
+    }
+    
+    func increaseCountTask(for routineUnit: RoutineUnit) {
+        
+        if let index = routineUnitList.firstIndex(where: { $0.id == routineUnit.id }) {
+            let search = routineUnitList[index]
+            
+            if var counterTask = search.targetTask as? CounterTask {
+                counterTask.increase()
+                routineUnitList[index].targetTask = counterTask
+            }
+        }
+    }
+    
+    func decreaseCountTask(for routineUnit: RoutineUnit) {
+        if let index = routineUnitList.firstIndex(where: { $0.id == routineUnit.id }) {
+            let search = routineUnitList[index]
+            
+            if var counterTask = search.targetTask as? CounterTask {
+                counterTask.decrease()
+                routineUnitList[index].targetTask = counterTask
+            }
+        }
     }
     
 }

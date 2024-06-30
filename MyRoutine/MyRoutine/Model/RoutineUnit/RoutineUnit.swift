@@ -8,6 +8,7 @@
 import Foundation
 
 struct RoutineUnit: Identifiable {
+    
     let id: String
     var title: String
     var isSelected: Bool
@@ -25,15 +26,19 @@ struct RoutineUnit: Identifiable {
 
 protocol RoutineUnitTask {
     var isCompleted: Bool { get set }
-    var type: RoutineUnitType { get }
     
-    init()
+    var type: RoutineUnitType { get }
+    var taskContent: String { get }
 }
 
 struct TodoTask: RoutineUnitTask {
     var isCompleted: Bool
     var type: RoutineUnitType {
         return .todo
+    }
+    
+    var taskContent: String {
+        return ""
     }
     
     init() {
@@ -45,6 +50,9 @@ struct TimerTask: RoutineUnitTask {
     var isCompleted: Bool
     var type: RoutineUnitType {
         return .timer
+    }
+    var taskContent: String {
+        return ""
     }
     
     var targetTime: TimeInterval?
@@ -62,6 +70,9 @@ struct StopWatchTask: RoutineUnitTask {
     var type: RoutineUnitType {
         return .stopWatch
     }
+    var taskContent: String {
+        return ""
+    }
     
     var targetTime: TimeInterval?
     var remainingTime: TimeInterval?
@@ -78,14 +89,17 @@ struct CounterTask: RoutineUnitTask {
     var type: RoutineUnitType {
         return .counter
     }
+    var taskContent: String {
+        return "\(currentCount) / \(targetCount)"
+    }
     
     var targetCount: Int
     var currentCount: Int
    
-    init() {
-        isCompleted = false
-        targetCount = 0
-        currentCount = 0
+    init(isCompleted: Bool = false, targetCount: Int, currentCount: Int = 0) {
+        self.isCompleted = isCompleted
+        self.targetCount = targetCount
+        self.currentCount = currentCount
     }
     
     mutating func increase() {
@@ -100,6 +114,9 @@ struct CounterTask: RoutineUnitTask {
     mutating func decrease() {
         if(currentCount > 0) {
             currentCount -= 1
+            if(currentCount != targetCount) {
+                isCompleted = false
+            }
         }
     }
 }

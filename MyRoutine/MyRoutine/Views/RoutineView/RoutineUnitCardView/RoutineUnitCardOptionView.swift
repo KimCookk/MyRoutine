@@ -9,7 +9,7 @@ import SwiftUI
 
 #Preview {
     RoutineUnitCardOptionView(viewModel: RoutineViewModel(),
-                              routineUnit: RoutineUnit(title: "테스트", isSelected: false, targetTask: CounterTask()))
+                              routineUnit: RoutineUnit(title: "테스트", isSelected: false, targetTask: CounterTask(targetCount: 15)))
 }
 
 struct RoutineUnitCardOptionView: View {
@@ -205,7 +205,7 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            Text("0 / 10")
+            Text(routineUnit.targetTask.taskContent)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
@@ -220,16 +220,20 @@ struct RoutineUnitCardOptionView: View {
             Spacer()
             
             IconButton(activeIconName: "icon.active.plus") {
-                
+                withAnimation(.spring) {
+                    viewModel.increaseCountTask(for: routineUnit)
+                }
             }
             
             IconButton(activeIconName: "icon.active.minus") {
-                
+                withAnimation(.spring) {
+                    viewModel.decreaseCountTask(for: routineUnit)
+                }
             }
             
             IconButton(activeIconName: "icon.active.check",
                        inactiveIconName: "icon.inactive.check",
-                       isActivate: false,
+                       isActivate: routineUnit.targetTask.isCompleted,
                        onTapped: {
                 withAnimation(.spring) {
                     viewModel.toggleRoutineUnitCompleted(for: routineUnit)
