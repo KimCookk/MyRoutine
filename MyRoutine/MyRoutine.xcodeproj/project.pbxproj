@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */; };
+		200301092C300EB500C77BE5 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200301082C300EB500C77BE5 /* IconButton.swift */; };
 		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
 		20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */; };
 		20121C3A2C245CA0001DD38E /* NotoSansKR-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */; };
@@ -27,7 +28,6 @@
 		20DE79842BFB89C8001BCBB7 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */; };
 		20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79872BFCDD97001BCBB7 /* MainView.swift */; };
 		20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */; };
-		20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */; };
 		20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */; };
 		20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */; };
 		20F1D7C32C26A59300B64D70 /* RoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */; };
@@ -38,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRoutineUnitCardView.swift; sourceTree = "<group>"; };
+		200301082C300EB500C77BE5 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
 		20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoView.swift; sourceTree = "<group>"; };
 		20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.ttf"; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		20DE79832BFB89C8001BCBB7 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		20DE79872BFCDD97001BCBB7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
-		20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIconView.swift; sourceTree = "<group>"; };
 		20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTag.swift; sourceTree = "<group>"; };
 		20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitType.swift; sourceTree = "<group>"; };
 		20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardView.swift; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 		20F1D7B92C25B06400B64D70 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				20F1D7BA2C25B08600B64D70 /* ToggleIconView.swift */,
+				200301082C300EB500C77BE5 /* IconButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
 				20F1D7C82C29A43E00B64D70 /* RoutineViewModel.swift in Sources */,
 				20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */,
-				20F1D7BB2C25B08600B64D70 /* ToggleIconView.swift in Sources */,
+				200301092C300EB500C77BE5 /* IconButton.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
 				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,
 			);

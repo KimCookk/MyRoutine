@@ -13,7 +13,7 @@ import SwiftUI
 //}
 //
 #Preview {
-    RoutineUnitCardView(viewModel: RoutineViewModel(), routineUnit: RoutineUnit(title: "Title 이다", isSelected: false, targetTask: TodoTask()))
+    RoutineUnitCardView(viewModel: RoutineViewModel(), routineUnit: RoutineUnit(title: "Title 이다", isSelected: false, targetTask: CounterTask(targetCount: 15), tip: RoutineUnitTip(tipComment: "팁")))
 }
 
 struct RoutineUnitCardView: View {
