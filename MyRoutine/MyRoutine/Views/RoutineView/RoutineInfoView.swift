@@ -19,6 +19,7 @@ struct RoutineInfoView: View {
                 
                 Spacer()
             }
+            .padding(.horizontal, 10)
             
             RoutineUnitCardListView(viewModel: viewModel)
             
@@ -48,9 +49,9 @@ private struct RoutineUnitCardListView: View {
     
     @ViewBuilder
     private func routineUnitCardListView() -> some View {
-        ForEach(viewModel.routineUnitList) { routineUnit in
+        ForEach(viewModel.routineUnitList.indices, id: \.self) { index in
             RoutineUnitCardView(viewModel: viewModel,
-                                routineUnit: routineUnit)
+                                index: index)
                                 //isEdited: $viewModel.editModeActivate,
                                 
         }

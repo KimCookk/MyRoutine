@@ -12,9 +12,9 @@ import SwiftUI
 //
 //}
 //
-#Preview {
-    RoutineUnitCardView(viewModel: RoutineViewModel(), routineUnit: RoutineUnit(title: "Title 이다", isSelected: false, targetTask: CounterTask(targetCount: 15), tip: RoutineUnitTip(tipComment: "팁")))
-}
+//#Preview {
+//    RoutineUnitCardView(viewModel: RoutineViewModel(), routineUnit: RoutineUnit(title: "Title 이다", isSelected: false, targetTask: CounterTask(targetCount: 15), tip: RoutineUnitTip(tipComment: "팁")))
+//}
 
 struct RoutineUnitCardView: View {
     
@@ -22,7 +22,7 @@ struct RoutineUnitCardView: View {
     //@Binding var isEdited: Bool
     //@Binding var isEmpty: Bool
     // View에서 편집 누르면 select 버튼 있어야함
-    let routineUnit: RoutineUnit
+    let index: Int
     
     //    @State var type: RoutineUnitType
     //    var isSelected: Bool = false;
@@ -44,7 +44,7 @@ struct RoutineUnitCardView: View {
                                 
                             }
                             
-                            if(routineUnit.isSelected) {
+                            if(viewModel.routineUnitList[index].isSelected) {
                                 GeometryReader { geo in
                                     Circle()
                                         .frame(width: 9, height: 9)
@@ -58,10 +58,10 @@ struct RoutineUnitCardView: View {
                     }
                     
                     HStack(spacing: 16) {
-                        RoutineUnitTypeIconView(type: routineUnit.targetTask.type)
+                        RoutineUnitTypeIconView(type: viewModel.routineUnitList[index].targetTask.type)
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(routineUnit.title)
+                            Text(viewModel.routineUnitList[index].title)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
                             
@@ -70,11 +70,11 @@ struct RoutineUnitCardView: View {
                         }
                         
                         RoutineUnitCardOptionView(viewModel: viewModel,
-                                                  routineUnit: routineUnit)
+                                                  index: index)
                     }
                     .padding(16)
                     
-                    if(routineUnit.targetTask.isCompleted) {
+                    if(viewModel.routineUnitList[index].targetTask.isCompleted) {
                         GeometryReader { geo in
                             Color.black001.opacity(0.4)
                         }
@@ -86,7 +86,7 @@ struct RoutineUnitCardView: View {
             .frame(height: 84)
             .onTapGesture {
                 withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitSelected(for: routineUnit)
+                    viewModel.toggleRoutineUnitSelected(for: viewModel.routineUnitList[index])
                 }
             }
     }
