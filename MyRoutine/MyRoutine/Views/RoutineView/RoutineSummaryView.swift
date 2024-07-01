@@ -17,6 +17,7 @@ struct RoutineSummaryView: View {
     var body: some View {
         VStack(spacing: 25) {
             routineSummaryHeaderView()
+                .padding(.horizontal, 10)
             
             TimerCardView()
 
@@ -43,35 +44,55 @@ struct RoutineSummaryView: View {
             
             if(viewModel.editModeActivate) {
                 
-                IconButton(activeIconName: "icon.arrow.up") {
+                Button {
                     withAnimation(.spring) {
                         viewModel.upOrderRoutineUnitSelected()
                     }
+                } label: {
+                    Image("icon.arrow.up")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
                 
-                IconButton(activeIconName: "icon.arrow.down") {
+                Button {
                     withAnimation(.spring) {
                         viewModel.downOrderRoutineUnitSelected()
                     }
+                } label: {
+                    Image("icon.arrow.down")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
                 
-                IconButton(activeIconName: "icon.pencil") {
+                Button {
                     withAnimation(.spring) {
-                        // selected가 하나인지 확인 후 수정
+                        
                     }
+                } label: {
+                    Image("icon.pencil")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
                 
-                IconButton(activeIconName: "icon.trash") {
+                Button {
                     withAnimation(.spring) {
                         viewModel.deleteRoutineUnitSelected()
                     }
+                } label: {
+                    Image("icon.trash")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
             }
             
-            IconButton(activeIconName: "icon.menu.dots") {
+            Button {
                 withAnimation(.spring) {
                     viewModel.toggleEditModeActivate()
                 }
+            } label: {
+                Image("icon.menu.dots")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
         }
 

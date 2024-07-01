@@ -9,17 +9,17 @@ import SwiftUI
 
 #Preview {
     RoutineUnitCardOptionView(viewModel: RoutineViewModel(),
-                              routineUnit: RoutineUnit(title: "테스트", isSelected: false, targetTask: CounterTask(targetCount: 15)))
+                              index: 1)
 }
 
 struct RoutineUnitCardOptionView: View {
     @ObservedObject var viewModel: RoutineViewModel
     
-    let routineUnit: RoutineUnit
+    let index: Int
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            switch routineUnit.targetTask.type {
+            switch viewModel.routineUnitList[index].targetTask.type {
             case .todo:
                 todoTypeOptionView()
             case .timer:
@@ -39,9 +39,15 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            if routineUnit.tip != nil   {
-                IconButton(activeIconName: "icon.active.tip") {
-                    
+            if viewModel.routineUnitList[index].tip != nil   {
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.increaseCountTask(for: index)
+                    }
+                } label: {
+                    Image("icon.active.tip")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
             }
         }
@@ -49,14 +55,14 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            IconButton(activeIconName: "icon.active.check",
-                       inactiveIconName: "icon.inactive.check",
-                       isActivate: false,
-                       onTapped: {
-                withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }
-            })
+            Toggle(isOn: $viewModel.routineUnitList[index].targetTask.isCompleted) {
+                Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
+            .toggleStyle(.button)
+            .frame(width: 15, height: 15)
+            .accentColor(.clear)
         }
         
     }
@@ -94,9 +100,15 @@ struct RoutineUnitCardOptionView: View {
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
-            if routineUnit.tip != nil   {
-                IconButton(activeIconName: "icon.active.tip") {
-                    
+            if viewModel.routineUnitList[index].tip != nil   {
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.increaseCountTask(for: index)
+                    }
+                } label: {
+                    Image("icon.active.tip")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
             }
         }
@@ -104,42 +116,44 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            
-            IconButton(activeIconName: "icon.active.play",
-                       inactiveIconName: "icon.inactive.play",
-                       isActivate: false,
-                       onTapped: {
+            Button {
                 withAnimation(.spring) {
                     
                 }
-            })
+            } label: {
+                Image("icon.active.play")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
             
-            IconButton(activeIconName: "icon.active.pause",
-                       inactiveIconName: "icon.inactive.pause",
-                       isActivate: false,
-                       onTapped: {
+            Button {
                 withAnimation(.spring) {
-                   
+                    
                 }
-            })
+            } label: {
+                Image("icon.active.pause")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
             
-            IconButton(activeIconName: "icon.active.stop",
-                       inactiveIconName: "icon.inactive.stop",
-                       isActivate: false,
-                       onTapped: {
+            Button {
                 withAnimation(.spring) {
                     // stop 클릭시 반드시 초기화 여부를 묻는다
                 }
-            })
+            } label: {
+                Image("icon.active.stop")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
             
-            IconButton(activeIconName: "icon.active.check",
-                       inactiveIconName: "icon.inactive.check",
-                       isActivate: false,
-                       onTapped: {
-                withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }
-            })
+            Toggle(isOn: $viewModel.routineUnitList[index].targetTask.isCompleted) {
+                Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
+            .toggleStyle(.button)
+            .frame(width: 15, height: 15)
+            .accentColor(.clear)
         }
     }
     
@@ -152,9 +166,15 @@ struct RoutineUnitCardOptionView: View {
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
-            if routineUnit.tip != nil   {
-                IconButton(activeIconName: "icon.active.tip") {
-                    
+            if viewModel.routineUnitList[index].tip != nil   {
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.increaseCountTask(for: index)
+                    }
+                } label: {
+                    Image("icon.active.tip")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
             }
         }
@@ -162,41 +182,44 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            IconButton(activeIconName: "icon.active.play",
-                       inactiveIconName: "icon.inactive.play",
-                       isActivate: false,
-                       onTapped: {
+            Button {
                 withAnimation(.spring) {
                     
                 }
-            })
+            } label: {
+                Image("icon.active.play")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
             
-            IconButton(activeIconName: "icon.active.pause",
-                       inactiveIconName: "icon.inactive.pause",
-                       isActivate: false,
-                       onTapped: {
+            Button {
                 withAnimation(.spring) {
-                   
+                    
                 }
-            })
+            } label: {
+                Image("icon.active.pause")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
             
-            IconButton(activeIconName: "icon.active.stop",
-                       inactiveIconName: "icon.inactive.stop",
-                       isActivate: false,
-                       onTapped: {
+            Button {
                 withAnimation(.spring) {
                     // stop 클릭시 반드시 초기화 여부를 묻는다
                 }
-            })
+            } label: {
+                Image("icon.active.stop")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
             
-            IconButton(activeIconName: "icon.active.check",
-                       inactiveIconName: "icon.inactive.check",
-                       isActivate: false,
-                       onTapped: {
-                withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }
-            })
+            Toggle(isOn: $viewModel.routineUnitList[index].targetTask.isCompleted) {
+                Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
+            .toggleStyle(.button)
+            .frame(width: 15, height: 15)
+            .accentColor(.clear)
         }
     }
     
@@ -205,13 +228,19 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            Text(routineUnit.targetTask.taskContent)
+            Text(viewModel.routineUnitList[index].targetTask.taskContent)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
-            if routineUnit.tip != nil   {
-                IconButton(activeIconName: "icon.active.tip") {
-                    
+            if viewModel.routineUnitList[index].tip != nil   {
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.increaseCountTask(for: index)
+                    }
+                } label: {
+                    Image("icon.active.tip")
+                        .resizable()
+                        .frame(width: 15, height: 15)
                 }
             }
         }
@@ -219,26 +248,44 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            IconButton(activeIconName: "icon.active.plus") {
+            Button {
                 withAnimation(.spring) {
-                    viewModel.increaseCountTask(for: routineUnit)
+                    viewModel.increaseCountTask(for: index)
                 }
+            } label: {
+                Image("icon.active.plus")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
+           
+            Button {
+                withAnimation(.spring) {
+                    viewModel.decreaseCountTask(for: index)
+                }
+            } label: {
+                Image("icon.active.minus")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
             
-            IconButton(activeIconName: "icon.active.minus") {
+            Button {
                 withAnimation(.spring) {
-                    viewModel.decreaseCountTask(for: routineUnit)
+                    viewModel.routineUnitList[index].targetTask.isCompleted.toggle()
                 }
+            } label: {
+                Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
-            
-            IconButton(activeIconName: "icon.active.check",
-                       inactiveIconName: "icon.inactive.check",
-                       isActivate: routineUnit.targetTask.isCompleted,
-                       onTapped: {
-                withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-                }
-            })
+//
+//            Toggle(isOn: $viewModel.routineUnitList[index].targetTask.isCompleted) {
+//                Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+//                    .resizable()
+//                    .frame(width: 15, height: 15)
+//            }
+//            .toggleStyle(.button)
+//            .frame(width: 15, height: 15)
+//            .accentColor(.clear)
         }
     }
 }

@@ -86,6 +86,7 @@ struct StopWatchTask: RoutineUnitTask {
 
 struct CounterTask: RoutineUnitTask {
     var isCompleted: Bool
+    
     var type: RoutineUnitType {
         return .counter
     }
@@ -118,6 +119,10 @@ struct CounterTask: RoutineUnitTask {
                 isCompleted = false
             }
         }
+    }
+    
+    mutating func reset() {
+        currentCount = 0
     }
 }
 

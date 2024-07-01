@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */; };
-		200301092C300EB500C77BE5 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200301082C300EB500C77BE5 /* IconButton.swift */; };
 		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
 		20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */; };
 		20121C3A2C245CA0001DD38E /* NotoSansKR-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */; };
@@ -38,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRoutineUnitCardView.swift; sourceTree = "<group>"; };
-		200301082C300EB500C77BE5 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
 		20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoView.swift; sourceTree = "<group>"; };
 		20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.ttf"; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 		20F1D7B92C25B06400B64D70 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				200301082C300EB500C77BE5 /* IconButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -326,7 +323,6 @@
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
 				20F1D7C82C29A43E00B64D70 /* RoutineViewModel.swift in Sources */,
 				20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */,
-				200301092C300EB500C77BE5 /* IconButton.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
 				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,
 			);
