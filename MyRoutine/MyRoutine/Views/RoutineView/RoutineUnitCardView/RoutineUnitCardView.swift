@@ -19,14 +19,8 @@ import SwiftUI
 struct RoutineUnitCardView: View {
     
     @ObservedObject var viewModel: RoutineViewModel
-    //@Binding var isEdited: Bool
     //@Binding var isEmpty: Bool
-    // View에서 편집 누르면 select 버튼 있어야함
     let index: Int
-    
-    //    @State var type: RoutineUnitType
-    //    var isSelected: Bool = false;
-    //    var isCompleted: Bool = false;
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
@@ -80,6 +74,24 @@ struct RoutineUnitCardView: View {
                         }
                         .cornerRadius(10)
                         .allowsHitTesting(false)
+                    } else {
+                        if let task = viewModel.routineUnitList[index].targetTask as? TimerTask {
+                            if(task.isProgress) {
+                                GeometryReader { geo in
+                                    Color.purple002.opacity(0.4)
+                                }
+                                .cornerRadius(10)
+                                .allowsHitTesting(false)
+                            }
+                        } else if let task = viewModel.routineUnitList[index].targetTask as? StopWatchTask {
+                            if(task.isProgress) {
+                                GeometryReader { geo in
+                                    Color.purple002.opacity(0.4)
+                                }
+                                .cornerRadius(10)
+                                .allowsHitTesting(false)
+                            }
+                        }
                     }
                 }
             }

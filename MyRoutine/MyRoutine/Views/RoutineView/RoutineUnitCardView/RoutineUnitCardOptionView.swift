@@ -39,17 +39,17 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            if viewModel.routineUnitList[index].tip != nil   {
-                Button {
-                    withAnimation(.spring) {
-                        viewModel.increaseCountTask(for: index)
-                    }
-                } label: {
-                    Image("icon.active.tip")
-                        .resizable()
-                        .frame(width: 15, height: 15)
+            
+            Button {
+                withAnimation(.spring) {
+                    
                 }
+            } label: {
+                Image("icon.active.tip")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
+            
         }
         
         HStack(spacing: 10) {
@@ -67,50 +67,27 @@ struct RoutineUnitCardOptionView: View {
         
     }
     
-    //    @ViewBuilder
-    //    private func tipTypeOptionView() -> some View {
-    //
-    //        HStack(spacing: 10) {
-    //            Spacer()
-    //
-    //            ToggleIconView(activeIconName: "icon.active.tip", useToggle: false)
-    //
-    //        }
-    //
-    //        HStack(spacing: 10) {
-    //            Spacer()
-    //
-    //            ToggleIconView(activeIconName: "icon.active.check",
-    //                           inactiveIconName: "icon.inactive.check",
-    //                           onTapped: {
-    //                withAnimation(.spring) {
-    //                    viewModel.toggleRoutineUnitCompleted(for: routineUnit)
-    //                }
-    //            })
-    //        }
-    //    }
-    
     @ViewBuilder
     private func timerTypeOptionView() -> some View {
         
         HStack(spacing: 10) {
             Spacer()
             
-            Text("00:00:21")
+            Text(viewModel.routineUnitList[index].targetTask.taskContent)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
-            if viewModel.routineUnitList[index].tip != nil   {
-                Button {
-                    withAnimation(.spring) {
-                        viewModel.increaseCountTask(for: index)
-                    }
-                } label: {
-                    Image("icon.active.tip")
-                        .resizable()
-                        .frame(width: 15, height: 15)
+            
+            Button {
+                withAnimation(.spring) {
+                    
                 }
+            } label: {
+                Image("icon.active.tip")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
+            
         }
         
         HStack(spacing: 10) {
@@ -118,42 +95,49 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    
+                    viewModel.startTimerTask(for: index)
                 }
             } label: {
                 Image("icon.active.play")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
+            
             
             Button {
                 withAnimation(.spring) {
-                    
+                    viewModel.pauseTimerTask(for: index)
                 }
             } label: {
                 Image("icon.active.pause")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
             
             Button {
                 withAnimation(.spring) {
-                    // stop 클릭시 반드시 초기화 여부를 묻는다
+                    // TODO: 초기화 여부 알럿을 띄운다.
+                    viewModel.stopTimerTask(for: index)
                 }
             } label: {
                 Image("icon.active.stop")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
             
-            Toggle(isOn: $viewModel.routineUnitList[index].targetTask.isCompleted) {
+            Button {
+                withAnimation(.spring) {
+                    viewModel.toggleCompleteTaks(for: index,
+                                                 type: .timer)
+                }
+            } label: {
                 Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .toggleStyle(.button)
-            .frame(width: 15, height: 15)
-            .accentColor(.clear)
         }
     }
     
@@ -162,21 +146,20 @@ struct RoutineUnitCardOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            Text("00:42:21")
+            Text(viewModel.routineUnitList[index].targetTask.taskContent)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
-            if viewModel.routineUnitList[index].tip != nil   {
-                Button {
-                    withAnimation(.spring) {
-                        viewModel.increaseCountTask(for: index)
-                    }
-                } label: {
-                    Image("icon.active.tip")
-                        .resizable()
-                        .frame(width: 15, height: 15)
+            Button {
+                withAnimation(.spring) {
+                    
                 }
+            } label: {
+                Image("icon.active.tip")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
+            
         }
         
         HStack(spacing: 10) {
@@ -184,42 +167,51 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    
+                    viewModel.startStopWatchTask(for: index)
                 }
             } label: {
                 Image("icon.active.play")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
+            
             
             Button {
                 withAnimation(.spring) {
-                    
+                    viewModel.pauseStopWatchTask(for: index)
                 }
             } label: {
                 Image("icon.active.pause")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
+            
             
             Button {
                 withAnimation(.spring) {
-                    // stop 클릭시 반드시 초기화 여부를 묻는다
+                    // TODO: 초기화 여부 알럿을 띄운다.
+                    viewModel.stopStopWatchTask(for: index)
                 }
             } label: {
                 Image("icon.active.stop")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
             
-            Toggle(isOn: $viewModel.routineUnitList[index].targetTask.isCompleted) {
+            
+            Button {
+                withAnimation(.spring) {
+                    viewModel.toggleCompleteTaks(for: index,
+                                                 type: .stopWatch)
+                }
+            } label: {
                 Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .toggleStyle(.button)
-            .frame(width: 15, height: 15)
-            .accentColor(.clear)
         }
     }
     
@@ -232,17 +224,16 @@ struct RoutineUnitCardOptionView: View {
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .lineLimit(1)
             
-            if viewModel.routineUnitList[index].tip != nil   {
-                Button {
-                    withAnimation(.spring) {
-                        viewModel.increaseCountTask(for: index)
-                    }
-                } label: {
-                    Image("icon.active.tip")
-                        .resizable()
-                        .frame(width: 15, height: 15)
+            Button {
+                withAnimation(.spring) {
+                    
                 }
+            } label: {
+                Image("icon.active.tip")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
+            
         }
         
         HStack(spacing: 10) {
@@ -257,7 +248,8 @@ struct RoutineUnitCardOptionView: View {
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-           
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
+            
             Button {
                 withAnimation(.spring) {
                     viewModel.decreaseCountTask(for: index)
@@ -267,6 +259,7 @@ struct RoutineUnitCardOptionView: View {
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            .disabled(viewModel.routineUnitList[index].targetTask.isCompleted)
             
             Button {
                 withAnimation(.spring) {
@@ -277,15 +270,6 @@ struct RoutineUnitCardOptionView: View {
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-//
-//            Toggle(isOn: $viewModel.routineUnitList[index].targetTask.isCompleted) {
-//                Image(viewModel.routineUnitList[index].targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
-//                    .resizable()
-//                    .frame(width: 15, height: 15)
-//            }
-//            .toggleStyle(.button)
-//            .frame(width: 15, height: 15)
-//            .accentColor(.clear)
         }
     }
 }

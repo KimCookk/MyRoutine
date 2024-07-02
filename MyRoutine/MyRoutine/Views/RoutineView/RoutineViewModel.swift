@@ -10,18 +10,22 @@ import Foundation
 class RoutineViewModel: ObservableObject {
     @Published var editModeActivate: Bool = false
     @Published var routineUnitList: [RoutineUnit] = [
-        RoutineUnit(title: "Todo Routine", isSelected: false, targetTask: TodoTask(), tip: RoutineUnitTip(tipComment: "tip")),
-        RoutineUnit(title: "Counter Routine", isSelected: false, targetTask: CounterTask(targetCount: 5), tip: RoutineUnitTip(tipComment: "tip")),
-        RoutineUnit(title: "Tip Routine", isSelected: false, targetTask: TodoTask(), tip: RoutineUnitTip(tipComment: "tip")),
-        RoutineUnit(title: "Stop Watch Routine", isSelected: false, targetTask: StopWatchTask(), tip: RoutineUnitTip(tipComment: "tip")),
-        RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(), tip: RoutineUnitTip(tipComment: "tip"))
+        RoutineUnit(title: "Todo Routine", isSelected: false, targetTask: TodoTask()),
+        RoutineUnit(title: "Counter Routine", isSelected: false, targetTask: CounterTask(targetCount: 5)),
+        RoutineUnit(title: "Tip Routine", isSelected: false, targetTask: TodoTask()),
+        RoutineUnit(title: "Stop Watch Routine", isSelected: false, targetTask: StopWatchTask(targetTime: 10, remainingTime: 10)),
+        RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask())
     ]
+    
+    var timerDictionary: [String: Timer] = [:]
     
     func toggleEditModeActivate() {
         editModeActivate.toggle()
         
         if(editModeActivate == false) {
             allRoutineUnitUnSelected()
+        } else {
+            allPauseTimer()
         }
     }
     
@@ -83,12 +87,34 @@ class RoutineViewModel: ObservableObject {
         print("RoutineViewModel addRoutineUnit")
     }
     
+    func toggleCompleteTaks(for index: Int, type: RoutineUnitType) {
+        let search = routineUnitList[index]
+        
+        var task = search.targetTask
+       
+        switch(type) {
+            case .counter: break
+            case .stopWatch:
+                self.pauseStopWatchTask(for: index)
+                break
+            case .timer:
+                self.pauseTimerTask(for: index)
+                break
+            case .todo: break
+        }
+        
+        task.isCompleted.toggle()
+        routineUnitList[index].targetTask = task
+
+    }
+    
     func increaseCountTask(for index: Int) {
         let search = routineUnitList[index]
         
         if var counterTask = search.targetTask as? CounterTask {
             counterTask.increase()
             routineUnitList[index].targetTask = counterTask
+            
         }
         
     }
@@ -99,6 +125,90 @@ class RoutineViewModel: ObservableObject {
         if var counterTask = search.targetTask as? CounterTask {
             counterTask.decrease()
             routineUnitList[index].targetTask = counterTask
+        }
+    }
+    
+    func allPauseTimer() {
+        timerDictionary.values.forEach { timer in
+            timer.invalidate()
+        }
+    }
+    
+    func startTimerTask(for index: Int) {
+        let search = routineUnitList[index]
+
+        if var timerTask = search.targetTask as? TimerTask {
+            let unitID = search.id
+            
+            let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                timerTask.run()
+                self.routineUnitList[index].targetTask = timerTask
+            }
+            
+            timerDictionary.updateValue(timer, forKey: unitID)
+        }
+    }
+    
+    func pauseTimerTask(for index: Int) {
+        let search = routineUnitList[index]
+
+        if var timerTask = search.targetTask as? TimerTask {
+            let unitID = search.id
+            timerDictionary[unitID]?.invalidate()
+            
+            timerTask.pause()
+            routineUnitList[index].targetTask = timerTask
+        }
+    }
+    
+    func stopTimerTask(for index: Int) {
+        let search = routineUnitList[index]
+
+        if var timerTask = search.targetTask as? TimerTask {
+            let unitID = search.id
+            timerDictionary[unitID]?.invalidate()
+            
+            timerTask.stop()
+            routineUnitList[index].targetTask = timerTask
+        }
+    }
+    
+    func startStopWatchTask(for index: Int) {
+        let search = routineUnitList[index]
+
+        if var stopWatchTask = search.targetTask as? StopWatchTask {
+            let unitID = search.id
+            
+            let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                stopWatchTask.run()
+                self.routineUnitList[index].targetTask = stopWatchTask
+            }
+            
+            timerDictionary.updateValue(timer, forKey: unitID)
+        }
+    }
+    
+    func pauseStopWatchTask(for index: Int) {
+        let search = routineUnitList[index]
+
+        if var stopWatchTask = search.targetTask as? StopWatchTask {
+            let unitID = search.id
+            timerDictionary[unitID]?.invalidate()
+            
+            stopWatchTask.pause()
+            routineUnitList[index].targetTask = stopWatchTask
+        }
+    }
+    
+    func stopStopWatchTask(for index: Int) {
+        let search = routineUnitList[index]
+
+        if var stopWatchTask = search.targetTask as? StopWatchTask {
+            let unitID = search.id
+            timerDictionary[unitID]?.invalidate()
+            
+            stopWatchTask.stop()
+            routineUnitList[index].targetTask = stopWatchTask
         }
     }
     

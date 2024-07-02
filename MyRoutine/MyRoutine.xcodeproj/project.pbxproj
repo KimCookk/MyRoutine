@@ -17,6 +17,7 @@
 		20121CD32C245E56001DD38E /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD22C245E56001DD38E /* FontManager.swift */; };
 		20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */; };
 		20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */; };
+		20B7D7E22C33CD1000CCB3A8 /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */; };
 		20C018732C188C1500E8BA20 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018722C188C1500E8BA20 /* DummyData.swift */; };
 		20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018742C188D6700E8BA20 /* DropViewDelegate.swift */; };
 		20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */; };
@@ -47,6 +48,7 @@
 		20121CD22C245E56001DD38E /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoSansKRFont.swift; sourceTree = "<group>"; };
 		20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTagCardView.swift; sourceTree = "<group>"; };
+		20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
 		20C018722C188C1500E8BA20 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		20C018742C188D6700E8BA20 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
 		20DE796F2BFB83D5001BCBB7 /* MyRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 			children = (
 				20121CD22C245E56001DD38E /* FontManager.swift */,
 				20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */,
+				20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				20DE79822BFB897A001BCBB7 /* TabBar.swift in Sources */,
 				20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */,
 				20121CD32C245E56001DD38E /* FontManager.swift in Sources */,
+				20B7D7E22C33CD1000CCB3A8 /* TimeInterval+.swift in Sources */,
 				20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */,
 				20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */,
 				20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */,

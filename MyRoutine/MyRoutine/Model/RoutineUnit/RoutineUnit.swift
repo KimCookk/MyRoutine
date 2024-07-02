@@ -13,14 +13,14 @@ struct RoutineUnit: Identifiable {
     var title: String
     var isSelected: Bool
     var targetTask: RoutineUnitTask
-    var tip: RoutineUnitTip?
+    var tipComment: String
     
-    init(id: String = UUID().uuidString, title: String, isSelected: Bool, targetTask: RoutineUnitTask, tip: RoutineUnitTip? = nil) {
+    init(id: String = UUID().uuidString, title: String, isSelected: Bool, targetTask: RoutineUnitTask, tip: String = "") {
         self.id = id
         self.title = title
         self.isSelected = isSelected
         self.targetTask = targetTask
-        self.tip = tip
+        self.tipComment = tip
     }
 }
 
@@ -51,17 +51,39 @@ struct TimerTask: RoutineUnitTask {
     var type: RoutineUnitType {
         return .timer
     }
+
+    var isProgress: Bool
+    var elapsedTime: TimeInterval
+
+    
     var taskContent: String {
-        return ""
+        return elapsedTime.getFormattedString("HH:mm:ss")
     }
     
-    var targetTime: TimeInterval?
-    var elapsedTime: TimeInterval?
-
     init() {
         isCompleted = false
-        targetTime = nil
-        elapsedTime = nil
+        isProgress = false
+        elapsedTime = TimeInterval()
+    }
+    
+    mutating func run() {
+        elapsedTime += 1
+        if(isProgress != true) {
+            isProgress = true
+        }
+    }
+    
+    mutating func pause() {
+        if(isProgress != false) {
+            isProgress = false
+        }
+    }
+    
+    mutating func stop() {
+        elapsedTime = 0
+        if(isProgress != false) {
+            isProgress = false
+        }
     }
 }
 
@@ -70,17 +92,52 @@ struct StopWatchTask: RoutineUnitTask {
     var type: RoutineUnitType {
         return .stopWatch
     }
-    var taskContent: String {
-        return ""
-    }
     
-    var targetTime: TimeInterval?
-    var remainingTime: TimeInterval?
+    var isProgress: Bool
+    var targetTime: TimeInterval
+    var remainingTime: TimeInterval
+    
+    var taskContent: String {
+        return remainingTime.getFormattedString("HH:mm:ss")
+    }
     
     init() {
         isCompleted = false
-        targetTime = nil
-        remainingTime = nil
+        isProgress = false
+        targetTime = TimeInterval()
+        remainingTime = TimeInterval()
+    }
+    
+    init(targetTime: TimeInterval, remainingTime: TimeInterval) {
+        self.isCompleted = false
+        self.isProgress = false
+        self.targetTime = targetTime
+        self.remainingTime = remainingTime
+    }
+    
+    mutating func run() {
+        if(remainingTime > 0) {
+            remainingTime -= 1
+            
+            if(isProgress != true) {
+                isProgress = true
+            }
+        } else if(remainingTime == 0) {
+            isCompleted = true
+        }
+    }
+    
+    mutating func pause() {
+        if(isProgress != false) {
+            isProgress = false
+        }
+    }
+    
+    mutating func stop() {
+        remainingTime = targetTime
+        if(isProgress != false) {
+            isProgress = false
+        }
     }
 }
 
@@ -124,9 +181,5 @@ struct CounterTask: RoutineUnitTask {
     mutating func reset() {
         currentCount = 0
     }
-}
-
-struct RoutineUnitTip {
-    var tipComment: String
 }
 
