@@ -12,14 +12,18 @@ import SwiftUI
 //
 //}
 //
-//#Preview {
-//    RoutineUnitCardView(viewModel: RoutineViewModel(), routineUnit: RoutineUnit(title: "Title 이다", isSelected: false, targetTask: CounterTask(targetCount: 15), tip: RoutineUnitTip(tipComment: "팁")))
-//}
+#Preview {
+    RoutineUnitCardView(viewModel: RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine", isSelected: false, targetTask: TodoTask())),
+                        editModeActivate: .constant(false),
+                              index: 0)
+}
 
 struct RoutineUnitCardView: View {
     
-    @ObservedObject var viewModel: RoutineViewModel
-    //@Binding var isEmpty: Bool
+    //@ObservedObject var viewModel: RoutineViewModel
+    @ObservedObject var viewModel: RoutineUnitCardViewModel
+    @Binding var editModeActivate: Bool
+    
     let index: Int
     
     var body: some View {
@@ -27,7 +31,7 @@ struct RoutineUnitCardView: View {
             .fill(Color.white)
             .overlay {
                 ZStack {
-                    if(viewModel.editModeActivate) {
+                    if(editModeActivate) {
                         ZStack {
                             GeometryReader { geo in
                                 Circle()
@@ -38,7 +42,7 @@ struct RoutineUnitCardView: View {
                                 
                             }
                             
-                            if(viewModel.routineUnitList[index].isSelected) {
+                            if(viewModel.routineUnit.isSelected) {
                                 GeometryReader { geo in
                                     Circle()
                                         .frame(width: 9, height: 9)
@@ -52,10 +56,10 @@ struct RoutineUnitCardView: View {
                     }
                     
                     HStack(spacing: 16) {
-                        RoutineUnitTypeIconView(type: viewModel.routineUnitList[index].targetTask.type)
+                        RoutineUnitTypeIconView(type: viewModel.routineUnit.targetTask.type)
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(viewModel.routineUnitList[index].title)
+                            Text(viewModel.routineUnit.title)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
                             
@@ -68,14 +72,14 @@ struct RoutineUnitCardView: View {
                     }
                     .padding(16)
                     
-                    if(viewModel.routineUnitList[index].targetTask.isCompleted) {
+                    if(viewModel.routineUnit.targetTask.isCompleted) {
                         GeometryReader { geo in
                             Color.black001.opacity(0.4)
                         }
                         .cornerRadius(10)
                         .allowsHitTesting(false)
                     } else {
-                        if let task = viewModel.routineUnitList[index].targetTask as? TimerTask {
+                        if let task = viewModel.routineUnit.targetTask as? TimerTask {
                             if(task.isProgress) {
                                 GeometryReader { geo in
                                     Color.purple002.opacity(0.4)
@@ -83,7 +87,7 @@ struct RoutineUnitCardView: View {
                                 .cornerRadius(10)
                                 .allowsHitTesting(false)
                             }
-                        } else if let task = viewModel.routineUnitList[index].targetTask as? StopWatchTask {
+                        } else if let task = viewModel.routineUnit.targetTask as? StopWatchTask {
                             if(task.isProgress) {
                                 GeometryReader { geo in
                                     Color.purple002.opacity(0.4)
@@ -98,7 +102,9 @@ struct RoutineUnitCardView: View {
             .frame(height: 84)
             .onTapGesture {
                 withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitSelected(for: viewModel.routineUnitList[index])
+                    if(editModeActivate) {
+                        viewModel.toggleRoutineUnitSelected()
+                    }
                 }
             }
     }

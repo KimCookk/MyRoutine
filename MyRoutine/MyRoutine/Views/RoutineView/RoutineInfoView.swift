@@ -38,7 +38,7 @@ private struct RoutineUnitCardListView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                if(viewModel.routineUnitList.isEmpty) {
+                if(viewModel.routineUnitCardViewModelList.isEmpty) {
                     emptyCardListView()
                 } else {
                     routineUnitCardListView()
@@ -49,8 +49,9 @@ private struct RoutineUnitCardListView: View {
     
     @ViewBuilder
     private func routineUnitCardListView() -> some View {
-        ForEach(viewModel.routineUnitList.indices, id: \.self) { index in
-            RoutineUnitCardView(viewModel: viewModel,
+        ForEach(viewModel.routineUnitCardViewModelList.indices, id: \.self) { index in
+            RoutineUnitCardView(viewModel: viewModel.routineUnitCardViewModelList[index],
+                                editModeActivate: $viewModel.editModeActivate,
                                 index: index)
                                 //isEdited: $viewModel.editModeActivate,
                                 

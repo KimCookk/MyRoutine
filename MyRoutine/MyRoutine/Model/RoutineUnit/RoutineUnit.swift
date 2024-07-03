@@ -124,6 +124,7 @@ struct StopWatchTask: RoutineUnitTask {
             }
         } else if(remainingTime == 0) {
             isCompleted = true
+            isProgress = false
         }
     }
     
