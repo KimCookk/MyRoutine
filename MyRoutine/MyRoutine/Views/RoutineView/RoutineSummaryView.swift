@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-//#Preview {
-//    RoutineSummaryView()
-//}
+#Preview {
+    RoutineSummaryView(viewModel: RoutineViewModel())
+}
 
 struct RoutineSummaryView: View {
     @ObservedObject var viewModel: RoutineViewModel
@@ -26,11 +26,10 @@ struct RoutineSummaryView: View {
     
     @ViewBuilder
     private func routineSummaryHeaderView() -> some View {
-        HStack {
-            Text("Title")
-                .font(NotoSansKRFont(fontStyle: .bold, size: 24).font())
-            
-            Spacer()
+        HStack(spacing: 10) {
+            TextField("Title을 입력해주세요.", text: $viewModel.routineSummary.title)
+                .font(NotoSansKRFont(fontStyle: .bold, size: 20).font())
+              
             
             editModeView()
         }
@@ -39,8 +38,6 @@ struct RoutineSummaryView: View {
     @ViewBuilder
     private func editModeView() -> some View {
         HStack(spacing: 12) {
-            
-            Spacer()
             
             if(viewModel.editModeActivate) {
                 
@@ -76,7 +73,7 @@ struct RoutineSummaryView: View {
                 
                 Button {
                     withAnimation(.spring) {
-                        viewModel.deleteRoutineUnitSelected()
+                        viewModel.removeRoutineUnitSelected()
                     }
                 } label: {
                     Image("icon.trash")

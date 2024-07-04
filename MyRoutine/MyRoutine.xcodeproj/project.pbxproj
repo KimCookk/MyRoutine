@@ -19,6 +19,7 @@
 		20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */; };
 		20B7D7E22C33CD1000CCB3A8 /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */; };
 		20B7D7E42C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E32C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift */; };
+		20B7D7E72C36B37100CCB3A8 /* RoutineSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E62C36B37100CCB3A8 /* RoutineSummary.swift */; };
 		20C018732C188C1500E8BA20 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018722C188C1500E8BA20 /* DummyData.swift */; };
 		20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C018742C188D6700E8BA20 /* DropViewDelegate.swift */; };
 		20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */; };
@@ -51,6 +52,7 @@
 		20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTagCardView.swift; sourceTree = "<group>"; };
 		20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
 		20B7D7E32C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardViewModel.swift; sourceTree = "<group>"; };
+		20B7D7E62C36B37100CCB3A8 /* RoutineSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummary.swift; sourceTree = "<group>"; };
 		20C018722C188C1500E8BA20 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		20C018742C188D6700E8BA20 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
 		20DE796F2BFB83D5001BCBB7 /* MyRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,14 @@
 				20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		20B7D7E52C36B35300CCB3A8 /* RoutineSummary */ = {
+			isa = PBXGroup;
+			children = (
+				20B7D7E62C36B37100CCB3A8 /* RoutineSummary.swift */,
+			);
+			path = RoutineSummary;
 			sourceTree = "<group>";
 		};
 		20C018712C188C0100E8BA20 /* Test */ = {
@@ -211,6 +221,7 @@
 		20F1D7BC2C26A2AB00B64D70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				20B7D7E52C36B35300CCB3A8 /* RoutineSummary */,
 				20F1D7C12C26A3EE00B64D70 /* RoutineUnit */,
 			);
 			path = Model;
@@ -327,6 +338,7 @@
 				200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */,
 				20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */,
 				20B7D7E42C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift in Sources */,
+				20B7D7E72C36B37100CCB3A8 /* RoutineSummary.swift in Sources */,
 				20F1D7CA2C29A93D00B64D70 /* RoutineUnit.swift in Sources */,
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
 				20F1D7C82C29A43E00B64D70 /* RoutineViewModel.swift in Sources */,
