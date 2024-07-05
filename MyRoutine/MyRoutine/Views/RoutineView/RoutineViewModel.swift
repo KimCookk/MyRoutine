@@ -9,6 +9,7 @@ import Foundation
 
 class RoutineViewModel: ObservableObject {
     @Published var editModeActivate: Bool = false
+    @Published var titleActivate: Bool = false
     
     @Published var routineSummary: RoutineSummary = RoutineSummary()
     @Published var routineUnitCardViewModelList: [RoutineUnitCardViewModel] = [
@@ -19,14 +20,24 @@ class RoutineViewModel: ObservableObject {
         RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask()))
     ]
     
+    var summaryTimer: Timer?
+    
     func toggleEditModeActivate() {
         editModeActivate.toggle()
         
         if(editModeActivate == false) {
             allRoutineUnitUnSelected()
         } else {
-            allPauseTimer()
+            //allPauseTimer()
         }
+    }
+    
+    func activeTitleActivate() {
+        titleActivate = true
+    }
+    
+    func inactiveTitleActivate() {
+        titleActivate = false
     }
         
     func allRoutineUnitUnSelected() {
@@ -78,15 +89,45 @@ class RoutineViewModel: ObservableObject {
         // TODO: selected가 하나인지 확인 필요
     }
     
-    func allPauseTimer() {
-        routineUnitCardViewModelList.forEach { viewModel in
-            let task = viewModel.routineUnit.targetTask
-            
-            if var timerTask = task as? TimerTask {
-                timerTask.pause()
-            } else if var stopwatchTimer = task as? StopWatchTask {
-                stopwatchTimer.pause()
-            }
+    func startSummaryTimer() {
+        routineSummary.isProgress = true
+        
+        let scheduledTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            self.routineSummary.run()
         }
+        
+        if let summaryTimer = summaryTimer {
+            summaryTimer.invalidate()
+        }
+        
+        summaryTimer = scheduledTimer
     }
+    
+    func puaseSummaryTimer() {
+        if let summaryTimer = summaryTimer {
+            summaryTimer.invalidate()
+        }
+        
+        routineSummary.pause()
+    }
+    
+    func stopSummaryTimer() {
+        if let summaryTimer = summaryTimer {
+            summaryTimer.invalidate()
+        }
+        
+        routineSummary.stop()
+    }
+    
+//    func allPauseTimer() {
+//        routineUnitCardViewModelList.forEach { viewModel in
+//            let task = viewModel.routineUnit.targetTask
+//            
+//            if var timerTask = task as? TimerTask {
+//                timerTask.pause()
+//            } else if var stopwatchTimer = task as? StopWatchTask {
+//                stopwatchTimer.pause()
+//            }
+//        }
+//    }
 }

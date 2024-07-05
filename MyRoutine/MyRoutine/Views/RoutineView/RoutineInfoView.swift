@@ -18,6 +18,8 @@ struct RoutineInfoView: View {
                     .font(NotoSansKRFont(fontStyle: .medium, size: 20).font())
                 
                 Spacer()
+                
+                editModeView()
             }
             .padding(.horizontal, 10)
             
@@ -25,6 +27,66 @@ struct RoutineInfoView: View {
             
             Spacer()
         }
+    }
+    
+    @ViewBuilder
+    private func editModeView() -> some View {
+        HStack(spacing: 12) {
+            
+            if(viewModel.editModeActivate) {
+                
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.upOrderRoutineUnitSelected()
+                    }
+                } label: {
+                    Image("icon.arrow.up")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                }
+                
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.downOrderRoutineUnitSelected()
+                    }
+                } label: {
+                    Image("icon.arrow.down")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                }
+                
+                Button {
+                    withAnimation(.spring) {
+                        
+                    }
+                } label: {
+                    Image("icon.pencil")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                }
+                
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.removeRoutineUnitSelected()
+                    }
+                } label: {
+                    Image("icon.trash")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                }
+            }
+            
+            Button {
+                withAnimation(.spring) {
+                    viewModel.toggleEditModeActivate()
+                }
+            } label: {
+                Image("icon.menu.dots")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            }
+        }
+
     }
 }
 
@@ -64,7 +126,6 @@ private struct RoutineUnitCardListView: View {
 //RoutineUnitCardView(viewModel: viewModel,
 //                            routineUnit: nil)
     }
-    
 }
 
 
