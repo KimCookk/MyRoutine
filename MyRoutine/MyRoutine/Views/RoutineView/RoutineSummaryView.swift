@@ -100,7 +100,9 @@ struct RoutineSummaryView: View {
                 TextField("Title을 입력해주세요.",
                           text: $viewModel.routineSummary.title,
                           onCommit: {
-                    viewModel.titleActivate = true
+                    if(viewModel.routineSummary.title.isEmpty == false) {
+                        viewModel.titleActivate = true
+                    }
                 })
                 .font(NotoSansKRFont(fontStyle: .bold,
                                      size: 20).font())
