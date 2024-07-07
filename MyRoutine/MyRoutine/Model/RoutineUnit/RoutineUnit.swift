@@ -13,13 +13,21 @@ struct RoutineUnit: Identifiable {
     var title: String
     var isSelected: Bool
     var targetTask: RoutineUnitTask
+    var tags: [RoutineUnitTag?]
     var tipComment: String
     
-    init(id: String = UUID().uuidString, title: String, isSelected: Bool, targetTask: RoutineUnitTask, tip: String = "") {
+    init(id: String = UUID().uuidString,
+         title: String,
+         isSelected: Bool,
+         targetTask: RoutineUnitTask,
+         tags: [RoutineUnitTag?] = [],
+         tip: String = "") {
+        
         self.id = id
         self.title = title
         self.isSelected = isSelected
         self.targetTask = targetTask
+        self.tags = tags
         self.tipComment = tip
     }
 }

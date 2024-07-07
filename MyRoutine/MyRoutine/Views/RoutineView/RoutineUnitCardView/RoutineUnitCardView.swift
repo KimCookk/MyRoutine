@@ -63,7 +63,7 @@ struct RoutineUnitCardView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
                             
-                            RoutineUnitTagCardListView()
+                            RoutineUnitTagCardListView(tags: viewModel.routineUnit.tags)
                                 .frame(height: 24)
                         }
                         
@@ -121,11 +121,16 @@ private struct RoutineUnitTypeIconView: View {
 /// Routine Tag 리스트
 // TODO: 태그들의 width에 따른 갯수 조정이 필요.. scroll view..?
 private struct RoutineUnitTagCardListView: View {
+    let tags: [RoutineUnitTag?]
+    
     var body: some View {
         HStack(spacing: 8) {
-            RoutineUnitTagCardView(tag: "Personal", styleColor: Color.gray)
-            
-            RoutineUnitTagCardView(tag: "Workout", styleColor: Color.orange)
+            ForEach(tags.indices) { index in
+                if let tag = tags[index] {
+                    RoutineUnitTagCardView(tag: tag.name,
+                                           styleColor: Color(hex: tag.styleColorString) ?? Color.white)
+                }
+            }
             
             Spacer()
         }
