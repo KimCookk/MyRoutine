@@ -13,9 +13,12 @@ import SwiftUI
 //}
 //
 #Preview {
-    RoutineUnitCardView(viewModel: RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine", isSelected: false, targetTask: TodoTask())),
+    RoutineUnitCardView(viewModel: RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
+                                                                                     isSelected: false,
+                                                                                     targetTask: TodoTask(),
+                                                                                     tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
                         editModeActivate: .constant(false),
-                              index: 0)
+                        index: 0)
 }
 
 struct RoutineUnitCardView: View {
@@ -124,15 +127,24 @@ private struct RoutineUnitTagCardListView: View {
     let tags: [RoutineUnitTag?]
     
     var body: some View {
-        HStack(spacing: 8) {
-            ForEach(tags.indices) { index in
-                if let tag = tags[index] {
-                    RoutineUnitTagCardView(tag: tag.name,
-                                           styleColor: Color(hex: tag.styleColorString) ?? Color.white)
+        ScrollView(.horizontal,
+                   showsIndicators: false) {
+            HStack(spacing: 8) {
+                
+                if(tags.isEmpty) {
+                    RoutineUnitTagCardView(tag: "No Tag",
+                                           styleColor: Color.black)
+                } else {
+                    ForEach(tags.indices, id: \.self) { index in
+                        if let tag = tags[index] {
+                            RoutineUnitTagCardView(tag: tag.name,
+                                                   styleColor: Color(hex: tag.styleColorString) ?? Color.white)
+                        }
+                    }
                 }
+                
+                Spacer()
             }
-            
-            Spacer()
         }
     }
 }

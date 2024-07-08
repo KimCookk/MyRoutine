@@ -16,19 +16,24 @@ struct RoutineUnitTagCardView: View {
         return styleColor.opacity(0.1)
     }
     
+    var width: CGFloat = 0
+    
     var body: some View {
-        Text(tag)
-            .font(NotoSansKRFont(fontStyle: .regular
-                                 , size: 12).font())
-            .foregroundColor(styleColor)
-            .padding(5)
-            .background( RoundedRectangle(cornerRadius: 6.0)
+        //GeometryReader { geo in
+            Text(tag)
+                .font(NotoSansKRFont(fontStyle: .regular
+                                     , size: 12).font())
+                .foregroundColor(styleColor)
+                .padding(5)
+                .background( RoundedRectangle(cornerRadius: 6.0)
                 .fill(backgroundColor))
-        
-        
+//                .onAppear(perform: {
+//                    print(geo.size.width)
+//                })
+        //}
     }
 }
 
 #Preview {
-    RoutineUnitTagCardView(tag: "Test", styleColor: Color.red)
+    RoutineUnitTagCardView(tag: "No Tag", styleColor: Color.black)
 }
