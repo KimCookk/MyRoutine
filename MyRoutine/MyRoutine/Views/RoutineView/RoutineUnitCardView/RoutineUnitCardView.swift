@@ -13,7 +13,8 @@ import SwiftUI
 //}
 //
 #Preview {
-    RoutineUnitCardView(viewModel: RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
+    RoutineUnitCardView(routineViewModel: RoutineViewModel(),
+                        viewModel: RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
                                                                                      isSelected: false,
                                                                                      targetTask: TodoTask(),
                                                                                      tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
@@ -23,7 +24,7 @@ import SwiftUI
 
 struct RoutineUnitCardView: View {
     
-    //@ObservedObject var viewModel: RoutineViewModel
+    @ObservedObject var routineViewModel: RoutineViewModel
     @ObservedObject var viewModel: RoutineUnitCardViewModel
     @Binding var editModeActivate: Bool
     
@@ -75,31 +76,25 @@ struct RoutineUnitCardView: View {
                     }
                     .padding(16)
                     
-                    if(viewModel.routineUnit.targetTask.isCompleted) {
-                        GeometryReader { geo in
+                    GeometryReader { geo in
+                        if(routineViewModel.routineSummary.isProgress == false) {
+                            Color.black001.opacity(0.1)
+                        } else if(viewModel.routineUnit.targetTask.isCompleted) {
                             Color.black001.opacity(0.4)
-                        }
-                        .cornerRadius(10)
-                        .allowsHitTesting(false)
-                    } else {
-                        if let task = viewModel.routineUnit.targetTask as? TimerTask {
-                            if(task.isProgress) {
-                                GeometryReader { geo in
+                        } else {
+                            if let task = viewModel.routineUnit.targetTask as? TimerTask {
+                                if(task.isProgress) {
                                     Color.purple002.opacity(0.4)
                                 }
-                                .cornerRadius(10)
-                                .allowsHitTesting(false)
-                            }
-                        } else if let task = viewModel.routineUnit.targetTask as? StopWatchTask {
-                            if(task.isProgress) {
-                                GeometryReader { geo in
+                            } else if let task = viewModel.routineUnit.targetTask as? StopWatchTask {
+                                if(task.isProgress) {
                                     Color.purple002.opacity(0.4)
                                 }
-                                .cornerRadius(10)
-                                .allowsHitTesting(false)
                             }
                         }
                     }
+                    .cornerRadius(10)
+                    .allowsHitTesting(routineViewModel.routineSummary.isProgress ? false : true)
                 }
             }
             .frame(height: 84)

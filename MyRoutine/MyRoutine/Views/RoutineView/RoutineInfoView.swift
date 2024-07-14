@@ -112,7 +112,8 @@ private struct RoutineUnitCardListView: View {
     @ViewBuilder
     private func routineUnitCardListView() -> some View {
         ForEach(viewModel.routineUnitCardViewModelList.indices, id: \.self) { index in
-            RoutineUnitCardView(viewModel: viewModel.routineUnitCardViewModelList[index],
+            RoutineUnitCardView(routineViewModel: viewModel,
+                                viewModel: viewModel.routineUnitCardViewModelList[index],
                                 editModeActivate: $viewModel.editModeActivate,
                                 index: index)
                                 //isEdited: $viewModel.editModeActivate,
