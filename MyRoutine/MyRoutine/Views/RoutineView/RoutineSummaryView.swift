@@ -49,6 +49,7 @@ struct RoutineSummaryView: View {
                         Button {
                             withAnimation(.spring) {
                                 viewModel.puaseSummaryTimer()
+                                viewModel.allPauseTimer()
                             }
                         } label: {
                             Image("icon.active.pause")
@@ -59,6 +60,7 @@ struct RoutineSummaryView: View {
                         Button {
                             withAnimation(.spring) {
                                 viewModel.stopSummaryTimer()
+                                viewModel.allResetTask()
                             }
                         } label: {
                             Image("icon.active.stop")

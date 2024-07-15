@@ -131,15 +131,31 @@ class RoutineViewModel: ObservableObject {
         routineSummary.stop()
     }
     
-//    func allPauseTimer() {
-//        routineUnitCardViewModelList.forEach { viewModel in
-//            let task = viewModel.routineUnit.targetTask
-//            
-//            if var timerTask = task as? TimerTask {
-//                timerTask.pause()
-//            } else if var stopwatchTimer = task as? StopWatchTask {
-//                stopwatchTimer.pause()
-//            }
-//        }
-//    }
+    func allPauseTimer() {
+        routineUnitCardViewModelList.forEach { viewModel in
+            let task = viewModel.routineUnit.targetTask
+            
+            if var timerTask = task as? TimerTask {
+                timerTask.pause()
+            } else if var stopwatchTask = task as? StopWatchTask {
+                stopwatchTask.pause()
+            }
+        }
+    }
+    
+    func allResetTask() {
+        routineUnitCardViewModelList.forEach { viewModel in
+            let task = viewModel.routineUnit.targetTask
+            
+            if var timerTask = task as? TimerTask {
+                timerTask.stop()
+            } else if var stopwatchTask = task as? StopWatchTask {
+                stopwatchTask.stop()
+            } else if var counterTask = task as? CounterTask {
+                counterTask.reset()
+            } else if var todoTask = task as? TodoTask {
+                todoTask.isCompleted = false
+            }
+        }
+    }
 }

@@ -14,8 +14,7 @@ import SwiftUI
 
 struct RoutineUnitCardOptionView: View {
     @ObservedObject var viewModel: RoutineUnitCardViewModel
-    
-    let index: Int
+    @ObservedObject var routineViewModel: RoutineViewModel
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
@@ -45,7 +44,7 @@ struct RoutineUnitCardOptionView: View {
                     
                 }
             } label: {
-                Image("icon.active.tip")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -60,7 +59,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.toggleCompleteTask()
                 }
             } label: {
-                Image(viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -76,6 +75,7 @@ struct RoutineUnitCardOptionView: View {
             
             Text(viewModel.routineUnit.targetTask.taskContent)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
+                .foregroundColor(routineViewModel.routineSummary.isProgress ? Color.black001 : Color.purple001)
                 .lineLimit(1)
             
             
@@ -84,7 +84,7 @@ struct RoutineUnitCardOptionView: View {
                     
                 }
             } label: {
-                Image("icon.active.tip")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -99,7 +99,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.startTimerTask()
                 }
             } label: {
-                Image("icon.active.play")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.play" : "icon.inactive.play")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -111,7 +111,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.pauseTimerTask()
                 }
             } label: {
-                Image("icon.active.pause")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.pause" : "icon.inactive.pause")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -123,7 +123,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.stopTimerTask()
                 }
             } label: {
-                Image("icon.active.stop")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.stop" : "icon.inactive.stop")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -135,7 +135,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.toggleCompleteTask()
                 }
             } label: {
-                Image(viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -149,6 +149,7 @@ struct RoutineUnitCardOptionView: View {
             
             Text(viewModel.routineUnit.targetTask.taskContent)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
+                .foregroundColor(routineViewModel.routineSummary.isProgress ? Color.black001 : Color.purple001)
                 .lineLimit(1)
             
             Button {
@@ -156,7 +157,7 @@ struct RoutineUnitCardOptionView: View {
                     
                 }
             } label: {
-                Image("icon.active.tip")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -171,7 +172,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.startStopWatchTask()
                 }
             } label: {
-                Image("icon.active.play")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.play" : "icon.inactive.play")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -183,7 +184,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.pauseStopWatchTask()
                 }
             } label: {
-                Image("icon.active.pause")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.pause" : "icon.inactive.pause")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -196,7 +197,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.stopStopWatchTask()
                 }
             } label: {
-                Image("icon.active.stop")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.stop" : "icon.inactive.stop")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -209,7 +210,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.toggleCompleteTask()
                 }
             } label: {
-                Image(viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -223,6 +224,7 @@ struct RoutineUnitCardOptionView: View {
             
             Text(viewModel.routineUnit.targetTask.taskContent)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
+                .foregroundColor(routineViewModel.routineSummary.isProgress ? Color.black001 : Color.purple001)
                 .lineLimit(1)
             
             Button {
@@ -230,7 +232,7 @@ struct RoutineUnitCardOptionView: View {
                     
                 }
             } label: {
-                Image("icon.active.tip")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -245,7 +247,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.increaseCountTask()
                 }
             } label: {
-                Image("icon.active.plus")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.plus" : "icon.inactive.plus")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -256,7 +258,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.decreaseCountTask()
                 }
             } label: {
-                Image("icon.active.minus")
+                Image(routineViewModel.routineSummary.isProgress ? "icon.active.minus" : "icon.inactive.minus")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -267,7 +269,7 @@ struct RoutineUnitCardOptionView: View {
                     viewModel.toggleCompleteTask()
                 }
             } label: {
-                Image(viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }

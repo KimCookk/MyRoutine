@@ -12,6 +12,8 @@ import SwiftUI
 //
 //}
 //
+//TODO:  Routine Card View Model 확인
+// struct로 ... 바라보다보니까.. 전체적으로 검토가 필요할듯
 #Preview {
     RoutineUnitCardView(routineViewModel: RoutineViewModel(),
                         viewModel: RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
@@ -72,7 +74,7 @@ struct RoutineUnitCardView: View {
                         }
                         
                         RoutineUnitCardOptionView(viewModel: viewModel,
-                                                  index: index)
+                                                  routineViewModel: routineViewModel)
                     }
                     .padding(16)
                     

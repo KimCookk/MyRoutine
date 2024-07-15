@@ -23,6 +23,10 @@ class RoutineUnitCardViewModel: ObservableObject {
         routineUnit.targetTask.isCompleted.toggle()
     }
     
+    func inactivateCompleteTask() {
+        routineUnit.targetTask.isCompleted = false
+    }
+    
     func increaseCountTask() {
         if var counterTask = routineUnit.targetTask as? CounterTask {
             counterTask.increase()
@@ -35,6 +39,13 @@ class RoutineUnitCardViewModel: ObservableObject {
     func decreaseCountTask() {
         if var counterTask = routineUnit.targetTask as? CounterTask {
             counterTask.decrease()
+            routineUnit.targetTask = counterTask
+        }
+    }
+    
+    func resetCounterTask() {
+        if var counterTask = routineUnit.targetTask as? CounterTask {
+            counterTask.reset()
             routineUnit.targetTask = counterTask
         }
     }
@@ -122,5 +133,17 @@ class RoutineUnitCardViewModel: ObservableObject {
             stopWatchTask.stop()
             routineUnit.targetTask = stopWatchTask
         }
+    }
+    
+    func pauseTask() {
+        pauseTimerTask()
+        pauseStopWatchTask()
+    }
+    
+    func stopTask() {
+        resetCounterTask()
+        stopTimerTask()
+        stopStopWatchTask()
+        inactivateCompleteTask()
     }
 }
