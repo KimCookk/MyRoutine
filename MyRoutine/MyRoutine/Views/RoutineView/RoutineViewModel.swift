@@ -132,30 +132,36 @@ class RoutineViewModel: ObservableObject {
     }
     
     func allPauseTimer() {
-        routineUnitCardViewModelList.forEach { viewModel in
+        routineUnitCardViewModelList.indices.forEach { index in
+            let viewModel = routineUnitCardViewModelList[index]
             let task = viewModel.routineUnit.targetTask
             
             if var timerTask = task as? TimerTask {
-                timerTask.pause()
+                viewModel.pauseTimerTask()
+                routineUnitCardViewModelList[index] = viewModel
             } else if var stopwatchTask = task as? StopWatchTask {
-                stopwatchTask.pause()
+                viewModel.pauseStopWatchTask()
+                routineUnitCardViewModelList[index] = viewModel
             }
         }
     }
     
     func allResetTask() {
-        routineUnitCardViewModelList.forEach { viewModel in
+        routineUnitCardViewModelList.indices.forEach { index in
+            let viewModel = routineUnitCardViewModelList[index]
             let task = viewModel.routineUnit.targetTask
             
             if var timerTask = task as? TimerTask {
-                timerTask.stop()
+                viewModel.stopTimerTask()
             } else if var stopwatchTask = task as? StopWatchTask {
-                stopwatchTask.stop()
+                viewModel.stopStopWatchTask()
             } else if var counterTask = task as? CounterTask {
-                counterTask.reset()
-            } else if var todoTask = task as? TodoTask {
-                todoTask.isCompleted = false
+                viewModel.resetCounterTask()
             }
+            viewModel.inactivateCompleteTask()
+            
+            routineUnitCardViewModelList[index] = viewModel
+
         }
     }
 }
