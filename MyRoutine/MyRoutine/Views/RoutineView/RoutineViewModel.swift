@@ -136,10 +136,10 @@ class RoutineViewModel: ObservableObject {
             let viewModel = routineUnitCardViewModelList[index]
             let task = viewModel.routineUnit.targetTask
             
-            if var timerTask = task as? TimerTask {
+            if var _ = task as? TimerTask {
                 viewModel.pauseTimerTask()
                 routineUnitCardViewModelList[index] = viewModel
-            } else if var stopwatchTask = task as? StopWatchTask {
+            } else if var _ = task as? StopWatchTask {
                 viewModel.pauseStopWatchTask()
                 routineUnitCardViewModelList[index] = viewModel
             }
@@ -151,11 +151,11 @@ class RoutineViewModel: ObservableObject {
             let viewModel = routineUnitCardViewModelList[index]
             let task = viewModel.routineUnit.targetTask
             
-            if var timerTask = task as? TimerTask {
+            if var _ = task as? TimerTask {
                 viewModel.stopTimerTask()
-            } else if var stopwatchTask = task as? StopWatchTask {
+            } else if var _ = task as? StopWatchTask {
                 viewModel.stopStopWatchTask()
-            } else if var counterTask = task as? CounterTask {
+            } else if var _ = task as? CounterTask {
                 viewModel.resetCounterTask()
             }
             viewModel.inactivateCompleteTask()
