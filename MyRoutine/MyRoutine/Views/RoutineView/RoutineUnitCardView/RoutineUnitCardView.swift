@@ -29,7 +29,7 @@ struct RoutineUnitCardView: View {
     @ObservedObject var routineViewModel: RoutineViewModel
     @ObservedObject var viewModel: RoutineUnitCardViewModel
     @Binding var editModeActivate: Bool
-    
+
     let index: Int
     
     var body: some View {
@@ -107,6 +107,15 @@ struct RoutineUnitCardView: View {
                     }
                 }
             }
+            .sheet(isPresented: $viewModel.isSheetPresented) {
+                SheetView()
+            }
+    }
+}
+
+struct SheetView: View {
+    var body: some View {
+        Text("This is the sheet content")
     }
 }
 

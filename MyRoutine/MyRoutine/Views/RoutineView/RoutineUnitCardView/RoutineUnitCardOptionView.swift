@@ -41,7 +41,7 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    
+                    viewModel.isSheetPresented = true
                 }
             } label: {
                 Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")

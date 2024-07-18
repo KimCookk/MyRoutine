@@ -1,0 +1,23 @@
+//
+//  TabViewModel.swift
+//  MyRoutine
+//
+//  Created by 김태성 on 7/18/24.
+//
+
+import Foundation
+
+class TabViewModel: ObservableObject {
+    
+    func tappedRoutine() {
+        print("tapped Routine")
+    }
+    
+    func tappedPlus() {
+        print("tapped Plus")
+    }
+    
+    func tappedAnalysis() {
+        print("tapped Analysis")
+    }
+}

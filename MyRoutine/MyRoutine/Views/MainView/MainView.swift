@@ -11,9 +11,10 @@ struct MainView: View {
     var body: some View {
         ZStack {
             RoutineView()
-            
-            BottomTabView()
+                .padding(.horizontal, 10)
         }
+        .background(Color.background001)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

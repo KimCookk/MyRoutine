@@ -9,6 +9,7 @@ import Foundation
 
 class RoutineUnitCardViewModel: ObservableObject {
     @Published var routineUnit: RoutineUnit
+    @Published var isSheetPresented = false
     var timer: Timer?
     
     init(routineUnit: RoutineUnit) {

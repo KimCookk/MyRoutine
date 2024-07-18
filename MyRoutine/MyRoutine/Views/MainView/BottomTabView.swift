@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BottomTabView: View {
+    @ObservedObject private var tabViewModel = TabViewModel()
+    
     var body: some View {
         VStack {
             Spacer()
@@ -17,26 +19,26 @@ struct BottomTabView: View {
                 Spacer()
                 
                 Button {
-                    
+                    tabViewModel.tappedRoutine()
                 } label: {
                     Image("icon.active.routine")
                 }
                 
                 Button {
-                    
+                    tabViewModel.tappedPlus()
                 } label: {
                     Image("icon.active.plus")
                 }
                 
                 Button {
-                    
+                    tabViewModel.tappedAnalysis()
                 } label: {
                     Image("icon.active.analysis")
                 }
 
                 Spacer()
             }
-            .frame(height: 70)
+            .frame(height: 100)
             .background(.white)
             .clipShape(RoundedCorner(radius: 20, corners: [.topLeft, .topRight]))
         }
