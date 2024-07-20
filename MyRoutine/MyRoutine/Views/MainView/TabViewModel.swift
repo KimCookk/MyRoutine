@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+class TabViewModel: ObservableObject {
+    
+    func tappedRoutine() {
+        
+    }
+    
+    func tappedPlus() {
+        
+    }
+    
+    func tappedAnalysis() {
+        
+    }
+    
+}

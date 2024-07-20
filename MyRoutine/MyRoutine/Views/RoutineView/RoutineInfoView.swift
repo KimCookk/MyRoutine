@@ -26,6 +26,7 @@ struct RoutineInfoView: View {
             RoutineUnitCardListView(viewModel: viewModel)
             
             Spacer()
+                .frame(height: 100)
         }
     }
     
