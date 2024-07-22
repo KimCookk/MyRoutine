@@ -16,6 +16,8 @@ struct RoutineUnitCardOptionView: View {
     @ObservedObject var viewModel: RoutineUnitCardViewModel
     @ObservedObject var routineViewModel: RoutineViewModel
     
+    @State private var isShowingStopCheckAlert = false
+    
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
             switch viewModel.routineUnit.targetTask.type {
@@ -118,16 +120,24 @@ struct RoutineUnitCardOptionView: View {
             .disabled(viewModel.routineUnit.targetTask.isCompleted)
             
             Button {
-                withAnimation(.spring) {
-                    // TODO: 초기화 여부 알럿을 띄운다.
-                    viewModel.stopTimerTask()
-                }
+                isShowingStopCheckAlert = true
             } label: {
                 Image(routineViewModel.routineSummary.isProgress ? "icon.active.stop" : "icon.inactive.stop")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
             .disabled(viewModel.routineUnit.targetTask.isCompleted)
+            .alert("메시지", isPresented: $isShowingStopCheckAlert) {
+                Button("OK") {
+                    withAnimation(.spring) {
+                        viewModel.stopTimerTask()
+                    }
+                }
+                
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("해당 루틴 진행이 초기화됩니다. 정말 정지하시겠습니까?")
+            }
             
             Button {
                 withAnimation(.spring) {
@@ -193,8 +203,7 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    // TODO: 초기화 여부 알럿을 띄운다.
-                    viewModel.stopStopWatchTask()
+                    isShowingStopCheckAlert = true
                 }
             } label: {
                 Image(routineViewModel.routineSummary.isProgress ? "icon.active.stop" : "icon.inactive.stop")
@@ -202,6 +211,17 @@ struct RoutineUnitCardOptionView: View {
                     .frame(width: 15, height: 15)
             }
             .disabled(viewModel.routineUnit.targetTask.isCompleted)
+            .alert("메시지", isPresented: $isShowingStopCheckAlert) {
+                Button("OK") {
+                    withAnimation(.spring) {
+                        viewModel.stopStopWatchTask()
+                    }
+                }
+                
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("해당 루틴 진행이 초기화됩니다. 정말 정지하시겠습니까?")
+            }
             
             
             Button {

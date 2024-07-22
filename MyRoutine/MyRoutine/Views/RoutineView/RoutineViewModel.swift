@@ -27,9 +27,9 @@ class RoutineViewModel: ObservableObject {
                                                           tags: [RoutineUnitTagManager.shared.getTag("Shared")])),
         RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Stop Watch Routine",
                                                           isSelected: false,
-                                                          targetTask: StopWatchTask(targetTime: 10, remainingTime: 10),
+                                                          targetTask: StopWatchTask(),
                                                           tags: [RoutineUnitTagManager.shared.getTag("Test"),RoutineUnitTagManager.shared.getTag("Community"),RoutineUnitTagManager.shared.getTag("Shared"), RoutineUnitTagManager.shared.getTag("Programming")])),
-        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask()))
+        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
     ]
     
     var summaryTimer: Timer?

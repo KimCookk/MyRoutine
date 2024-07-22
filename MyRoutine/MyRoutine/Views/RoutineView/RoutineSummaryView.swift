@@ -14,6 +14,8 @@ import SwiftUI
 struct RoutineSummaryView: View {
     @ObservedObject var viewModel: RoutineViewModel
     
+    @State private var isShowingStopCheckAlert = false
+    
     var body: some View {
         VStack(spacing: 25) {
             routineSummaryHeaderView()
@@ -58,14 +60,23 @@ struct RoutineSummaryView: View {
                         }
                         
                         Button {
-                            withAnimation(.spring) {
-                                viewModel.stopSummaryTimer()
-                                viewModel.allResetTask()
-                            }
+                            isShowingStopCheckAlert = true
                         } label: {
                             Image("icon.active.stop")
                                 .resizable()
                                 .frame(width: 15, height: 15)
+                        }
+                        .alert("메시지", isPresented: $isShowingStopCheckAlert) {
+                            Button("OK") {
+                                withAnimation(.spring) {
+                                    viewModel.stopSummaryTimer()
+                                    viewModel.allResetTask()
+                                }
+                            }
+                            
+                            Button("Cancel", role: .cancel) { }
+                        } message: {
+                            Text("전체 루틴 진행이 초기화됩니다. 정말 정지하시겠습니까?")
                         }
                     }
                 }

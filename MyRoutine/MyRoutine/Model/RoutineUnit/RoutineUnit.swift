@@ -54,10 +54,10 @@ struct TodoTask: RoutineUnitTask {
     }
 }
 
-struct TimerTask: RoutineUnitTask {
+struct StopWatchTask: RoutineUnitTask {
     var isCompleted: Bool
     var type: RoutineUnitType {
-        return .timer
+        return .stopWatch
     }
 
     var isProgress: Bool
@@ -95,10 +95,10 @@ struct TimerTask: RoutineUnitTask {
     }
 }
 
-struct StopWatchTask: RoutineUnitTask {
+struct TimerTask: RoutineUnitTask {
     var isCompleted: Bool
     var type: RoutineUnitType {
-        return .stopWatch
+        return .timer
     }
     
     var isProgress: Bool
