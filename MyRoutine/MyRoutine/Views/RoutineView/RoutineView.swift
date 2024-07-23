@@ -11,16 +11,24 @@ struct RoutineView: View {
     @StateObject private var viewModel = RoutineViewModel()
     
     var body: some View {
-        
-        VStack {
-            Spacer()
-                .frame(height: 68)
-            
-            RoutineSummaryView(viewModel: viewModel)
-            
-            RoutineInfoView(viewModel: viewModel)
-            
-            Spacer()
+        NavigationView {
+            ZStack {
+                VStack {
+                    Spacer()
+                        .frame(height: 68)
+                    
+                    RoutineSummaryView(viewModel: viewModel)
+                    
+                    RoutineInfoView(viewModel: viewModel)
+                    
+//                    Spacer()
+                }
+                .padding(.horizontal, 20)
+                
+               BottomTabView()
+            }
+            .background(Color.background001)
+            .edgesIgnoringSafeArea(.all)
         }
     }
 }

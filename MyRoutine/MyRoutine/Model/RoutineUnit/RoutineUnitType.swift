@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RoutineUnitType {
+enum RoutineUnitType: CaseIterable, Identifiable{
     // 사용자의 체크를 통해 완료 처리
     // 체크 박스 필요
     case todo
@@ -22,6 +22,10 @@ enum RoutineUnitType {
     // 체크 박스 및 + - 버튼, 현황
     case counter
     
+    var id: String {
+        return "\(self.hashValue)"
+    }
+    
     var iconImageName: String {
         switch self {
         case .todo:
@@ -32,6 +36,19 @@ enum RoutineUnitType {
             return "routine.stopwatch.type"
         case .counter:
             return "routine.counter.type"
+        }
+    }
+    
+    var typeName: String {
+        switch self {
+        case .todo:
+            return "To Do"
+        case .timer:
+            return "Timer"
+        case .stopWatch:
+            return "Stop Watch"
+        case .counter:
+            return "Counter"
         }
     }
 }

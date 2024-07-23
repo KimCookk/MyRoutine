@@ -24,11 +24,10 @@ struct BottomTabView: View {
                     Image("icon.active.routine")
                 }
                 
-                Button {
-                    tabViewModel.tappedPlus()
-                } label: {
+                NavigationLink(destination: RoutineUnitAddView()) {
                     Image("icon.active.plus")
                 }
+                
                 
                 Button {
                     tabViewModel.tappedAnalysis()

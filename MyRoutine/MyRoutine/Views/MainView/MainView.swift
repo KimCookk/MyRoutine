@@ -9,14 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        ZStack {
-           RoutineView()
-                .padding(.horizontal, 30)
-            
-           BottomTabView()
-        }
-        .background(Color.background001)
-        .edgesIgnoringSafeArea(.all)
+            RoutineView()
     }
 }
 
