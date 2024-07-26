@@ -17,6 +17,10 @@
 		20121CD32C245E56001DD38E /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD22C245E56001DD38E /* FontManager.swift */; };
 		20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */; };
 		20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */; };
+		20A954DD2C531D450087DAE8 /* CustomAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954DC2C531D450087DAE8 /* CustomAppView.swift */; };
+		20A954DF2C531EC20087DAE8 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954DE2C531EC20087DAE8 /* CustomNavigationView.swift */; };
+		20A954E12C531FB90087DAE8 /* CustomNavigationBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */; };
+		20A954E32C5323370087DAE8 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954E22C5323370087DAE8 /* CustomNavigationBarView.swift */; };
 		20B7D7E22C33CD1000CCB3A8 /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */; };
 		20B7D7E42C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E32C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift */; };
 		20B7D7E72C36B37100CCB3A8 /* RoutineSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E62C36B37100CCB3A8 /* RoutineSummary.swift */; };
@@ -55,6 +59,10 @@
 		20121CD22C245E56001DD38E /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		20121CD42C245ECD001DD38E /* NotoSansKRFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoSansKRFont.swift; sourceTree = "<group>"; };
 		20121CD62C246456001DD38E /* RoutineUnitTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTagCardView.swift; sourceTree = "<group>"; };
+		20A954DC2C531D450087DAE8 /* CustomAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppView.swift; sourceTree = "<group>"; };
+		20A954DE2C531EC20087DAE8 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarContainerView.swift; sourceTree = "<group>"; };
+		20A954E22C5323370087DAE8 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
 		20B7D7E32C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardViewModel.swift; sourceTree = "<group>"; };
 		20B7D7E62C36B37100CCB3A8 /* RoutineSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummary.swift; sourceTree = "<group>"; };
@@ -126,6 +134,33 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		20A954D92C531CA20087DAE8 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				20A954DB2C531D0B0087DAE8 /* TabView */,
+				20A954DA2C531D060087DAE8 /* NavigationView */,
+				20A954DC2C531D450087DAE8 /* CustomAppView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		20A954DA2C531D060087DAE8 /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				20A954E22C5323370087DAE8 /* CustomNavigationBarView.swift */,
+				20A954DE2C531EC20087DAE8 /* CustomNavigationView.swift */,
+				20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */,
+			);
+			path = NavigationView;
+			sourceTree = "<group>";
+		};
+		20A954DB2C531D0B0087DAE8 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
 		20B7D7E52C36B35300CCB3A8 /* RoutineSummary */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				20F1D7B92C25B06400B64D70 /* Common */,
+				20A954D92C531CA20087DAE8 /* CustomView */,
 				20DE79892BFCDDAC001BCBB7 /* RoutineView */,
 				20DE79862BFCDD79001BCBB7 /* MainView */,
 			);
@@ -349,6 +385,7 @@
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
 				20D1536E2C4E884C000CFC19 /* RoutineUnitAddView.swift in Sources */,
 				20D153702C4E886E000CFC19 /* RoutineUnitAddViewModel.swift in Sources */,
+				20A954DD2C531D450087DAE8 /* CustomAppView.swift in Sources */,
 				20D1536B2C494A97000CFC19 /* TabViewModel.swift in Sources */,
 				20D153692C48031E000CFC19 /* RoundedCorner.swift in Sources */,
 				20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */,
@@ -363,14 +400,17 @@
 				200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */,
 				20B7D80B2C3A8EAF00CCB3A8 /* Color+.swift in Sources */,
 				20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */,
+				20A954E32C5323370087DAE8 /* CustomNavigationBarView.swift in Sources */,
 				20B7D7E42C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift in Sources */,
 				20B7D7E72C36B37100CCB3A8 /* RoutineSummary.swift in Sources */,
 				20F1D7CA2C29A93D00B64D70 /* RoutineUnit.swift in Sources */,
+				20A954E12C531FB90087DAE8 /* CustomNavigationBarContainerView.swift in Sources */,
 				20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */,
 				20B7D8092C3A8AA900CCB3A8 /* RoutineUnitTagManager.swift in Sources */,
 				20F1D7C82C29A43E00B64D70 /* RoutineViewModel.swift in Sources */,
 				20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */,
 				20D153672C47AC29000CFC19 /* BottomTabView.swift in Sources */,
+				20A954DF2C531EC20087DAE8 /* CustomNavigationView.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
 				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,
 			);
