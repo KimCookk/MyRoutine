@@ -9,13 +9,27 @@ import SwiftUI
 
 struct CustomAppView: View {
     
-    @State private var useNavigation: Bool = true
-    @State private var useBottomTab: Bool = true
+    //@State private var useNavigation: Bool = true
+    //@State private var useBottomTab: Bool = true
     
     var body: some View {
-        ZStack {
-            // Background
-            Color.gray001.ignoresSafeArea()
+        CustomNavigationView {
+            ZStack {
+                Color.gray001.ignoresSafeArea()
+                
+                CustomNavigationLink(destination:
+                    Text("Detiantion")
+                        .customNavigationTitle("Seconds Screen")
+                        .customNavigationUseBackButton(true)
+                , label: {
+                    Text("Navigate")
+                })
+            }
+            .customNavigationBarItems(
+                title: "Find!!!",
+                useBackButton: false,
+                useOptionButton: false
+            )
         }
     }
 }

@@ -33,6 +33,8 @@
 		20D1536B2C494A97000CFC19 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1536A2C494A97000CFC19 /* TabViewModel.swift */; };
 		20D1536E2C4E884C000CFC19 /* RoutineUnitAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1536D2C4E884C000CFC19 /* RoutineUnitAddView.swift */; };
 		20D153702C4E886E000CFC19 /* RoutineUnitAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1536F2C4E886E000CFC19 /* RoutineUnitAddViewModel.swift */; };
+		20D153992C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D153982C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift */; };
+		20D1539B2C5535F4000CFC19 /* CustomNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1539A2C5535F4000CFC19 /* CustomNavigationLink.swift */; };
 		20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */; };
 		20DE79752BFB83D6001BCBB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79742BFB83D6001BCBB7 /* ContentView.swift */; };
 		20DE79772BFB83D8001BCBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DE79762BFB83D8001BCBB7 /* Assets.xcassets */; };
@@ -75,6 +77,8 @@
 		20D1536A2C494A97000CFC19 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		20D1536D2C4E884C000CFC19 /* RoutineUnitAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitAddView.swift; sourceTree = "<group>"; };
 		20D1536F2C4E886E000CFC19 /* RoutineUnitAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitAddViewModel.swift; sourceTree = "<group>"; };
+		20D153982C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarPreferenceKeys.swift; sourceTree = "<group>"; };
+		20D1539A2C5535F4000CFC19 /* CustomNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLink.swift; sourceTree = "<group>"; };
 		20DE796F2BFB83D5001BCBB7 /* MyRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineApp.swift; sourceTree = "<group>"; };
 		20DE79742BFB83D6001BCBB7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				20A954E22C5323370087DAE8 /* CustomNavigationBarView.swift */,
 				20A954DE2C531EC20087DAE8 /* CustomNavigationView.swift */,
 				20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */,
+				20D153982C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift */,
+				20D1539A2C5535F4000CFC19 /* CustomNavigationLink.swift */,
 			);
 			path = NavigationView;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D153992C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift in Sources */,
 				20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */,
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
 				20D1536E2C4E884C000CFC19 /* RoutineUnitAddView.swift in Sources */,
@@ -402,6 +409,7 @@
 				20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */,
 				20A954E32C5323370087DAE8 /* CustomNavigationBarView.swift in Sources */,
 				20B7D7E42C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift in Sources */,
+				20D1539B2C5535F4000CFC19 /* CustomNavigationLink.swift in Sources */,
 				20B7D7E72C36B37100CCB3A8 /* RoutineSummary.swift in Sources */,
 				20F1D7CA2C29A93D00B64D70 /* RoutineUnit.swift in Sources */,
 				20A954E12C531FB90087DAE8 /* CustomNavigationBarContainerView.swift in Sources */,

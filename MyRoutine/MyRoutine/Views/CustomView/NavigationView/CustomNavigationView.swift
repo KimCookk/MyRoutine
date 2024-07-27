@@ -17,8 +17,9 @@ struct CustomNavigationView<Content: View>: View {
     
     var body: some View {
         NavigationView {
-            content
-                .navigationBarHidden(true)
+            CustomNavigationBarContainerView {
+                content
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
