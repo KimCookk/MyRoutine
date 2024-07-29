@@ -7,6 +7,8 @@
 
 import Foundation
 
+let testTabs: [TabBarItem] = [.home, .favorite, .profile]
+
 let dummyTitles = ["test", "test2", "test3", "test4", "test5", "test6", "test7"]
 
 let dummyRoutines = [DummyRoutine(title: "test1", isDrag: false),
