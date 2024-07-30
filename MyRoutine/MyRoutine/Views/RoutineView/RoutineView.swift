@@ -11,25 +11,26 @@ struct RoutineView: View {
     @StateObject private var viewModel = RoutineViewModel()
     
     var body: some View {
-        NavigationView {
+        
+        CustomNavigationView {
             ZStack {
                 VStack {
-                    Spacer()
-                        .frame(height: 68)
                     
                     RoutineSummaryView(viewModel: viewModel)
                     
                     RoutineInfoView(viewModel: viewModel)
                     
-//                    Spacer()
                 }
                 .padding(.horizontal, 20)
-                
-               BottomTabView()
+               
             }
-            .background(Color.background001)
-            .edgesIgnoringSafeArea(.all)
-        }
+            .background(Color.background001.ignoresSafeArea(.all))
+            .customNavigationBarItems(title: "Test",
+                                      useBackButton: false,
+                                      useOptionButton: false)
+        }            
+        
+
     }
 }
 

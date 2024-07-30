@@ -11,7 +11,7 @@ import SwiftUI
 struct MyRoutineApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            CustomAppView()
         }
     }
 }

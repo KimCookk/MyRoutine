@@ -20,6 +20,7 @@ struct CustomNavigationView<Content: View>: View {
             CustomNavigationBarContainerView {
                 content
             }
+            //.ignoresSafeArea(.all)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

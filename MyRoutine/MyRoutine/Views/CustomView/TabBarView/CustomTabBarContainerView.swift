@@ -10,12 +10,14 @@ import SwiftUI
 struct CustomTabBarContainerView<Content: View>: View {
     
     @Binding var selection: TabBarItem
+    let tabUse: Bool
     let content: Content
     
     @State private var tabs: [TabBarItem] = []
     
-    init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content) {
+    init(selection: Binding<TabBarItem>, tabUse: Bool, @ViewBuilder content: () -> Content) {
         self._selection = selection
+        self.tabUse = tabUse
         self.content = content()
     }
     
@@ -24,9 +26,11 @@ struct CustomTabBarContainerView<Content: View>: View {
             content
                 .ignoresSafeArea()
             
-            CustomTabBarView(tabs: tabs,
-                             selection: $selection,
-                             localSelection: selection)
+            if(tabUse) {
+                CustomTabBarView(tabs: tabs,
+                                 selection: $selection,
+                                 localSelection: selection)
+            }
         }
         .onPreferenceChange(CustomTabBarItemsPreferencyKey.self, perform: { value in
             self.tabs = value
@@ -35,7 +39,7 @@ struct CustomTabBarContainerView<Content: View>: View {
 }
 
 #Preview {
-    CustomTabBarContainerView(selection: .constant(testTabs.first!)) {
+    CustomTabBarContainerView(selection: .constant(testTabs.first!), tabUse: true) {
         Color.red
     }
 }

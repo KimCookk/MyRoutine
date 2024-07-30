@@ -15,26 +15,10 @@ struct CustomAppView: View {
     
     var body: some View {
         
-        CustomTabBarContainerView(selection: $tabSelection) {
-            CustomNavigationView {
-                ZStack {
-                    Color.blue.ignoresSafeArea()
-                    
-                    CustomNavigationLink(destination:
-                        Text("Detiantion")
-                            .customNavigationTitle("Seconds Screen")
-                            .customNavigationUseBackButton(true)
-                    , label: {
-                        Text("Navigate")
-                    })
-                }
-                .customNavigationBarItems(
-                    title: "Home View",
-                    useBackButton: false,
-                    useOptionButton: false
-                )
-            }
-            .tabBarItem(tab: .home, selection: $tabSelection)
+        CustomTabBarContainerView(selection: $tabSelection, tabUse: false) {
+            
+            RoutineView()
+                .tabBarItem(tab: .home, selection: $tabSelection)
             
             CustomNavigationView {
                 ZStack {

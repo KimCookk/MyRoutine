@@ -25,8 +25,8 @@ struct RoutineInfoView: View {
             
             RoutineUnitCardListView(viewModel: viewModel)
             
-            Spacer()
-                .frame(height: 100)
+//            Spacer()
+//                .frame(height: 100)
         }
     }
     
@@ -99,7 +99,7 @@ private struct RoutineUnitCardListView: View {
     @ObservedObject var viewModel: RoutineViewModel
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 16) {
                 if(viewModel.routineUnitCardViewModelList.isEmpty) {
                     emptyCardListView()
@@ -108,6 +108,7 @@ private struct RoutineUnitCardListView: View {
                 }
             }
         }
+        
     }
     
     @ViewBuilder
@@ -120,6 +121,9 @@ private struct RoutineUnitCardListView: View {
                                 //isEdited: $viewModel.editModeActivate,
                                 
         }
+        
+        Spacer()
+            .frame(height: 68)
     }
     
     @ViewBuilder

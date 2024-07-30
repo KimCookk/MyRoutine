@@ -23,6 +23,8 @@ struct CustomNavigationBarContainerView<Content: View>: View {
             NavigationBarView(useBackButton: useBackButton,
                               title: title,
                               useOptionButton: useOptionButton)
+            .background(.clear)
+            
             content
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
