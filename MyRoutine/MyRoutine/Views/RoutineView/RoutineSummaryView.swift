@@ -18,8 +18,6 @@ struct RoutineSummaryView: View {
     
     var body: some View {
         VStack(spacing: 25) {
-            routineSummaryHeaderView()
-                .padding(.horizontal, 10)
             
             timerCardView()
 

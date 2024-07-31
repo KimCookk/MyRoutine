@@ -22,28 +22,33 @@ struct NavigationBarView: View {
     @Environment(\.presentationMode) var presentationMode
     let useBackButton: Bool
     let title: String
-    let useOptionButton: Bool
+    let options: [NavigationBarOptionButtomItem]
     
     var body: some View {
-        HStack {
-            backButton()
-                .opacity(useBackButton ? 1.0 : 0.0)
-            
-            Spacer()
-            
-            titleSectionView()
-            
-            Spacer()
-            
-            backButton()
-                .opacity(useOptionButton ? 1.0 : 0.0)
-        }
-        .padding()
+        HStack(spacing: 25) {
+                backButton()
+                    .opacity(useBackButton ? 1.0 : 0.0)
+                    .frame(width: 60, alignment: .leading)
+                
+                titleSectionView()
+                    .frame(maxWidth: .infinity)
+                
+                optionButton()
+                    .opacity(options.count > 0 ? 1.0 : 0.0)
+                    .frame(width: 60, alignment: .trailing)
+
+            }
+            .background(Color.clear)
+            .padding(.vertical)
+            .padding(.horizontal, 20)
+        
     }
 }
 
 #Preview {
-    NavigationBarView(useBackButton: true, title: "Title", useOptionButton: false)
+    NavigationBarView(useBackButton: true,
+                      title: "Test",
+                      options: [.edit, .add])
 }
 
 // 실제 Custom NavigationBar가 정의되고 draw되는 영역
@@ -55,21 +60,31 @@ extension NavigationBarView: NavigationBarViewConfigurable {
             presentationMode.wrappedValue.dismiss()
         }, label: {
             Image("icon.active.back")
+                .resizable()
+                .frame(width: 15, height: 15)
         })
     }
     
     @ViewBuilder
     func titleSectionView() -> some View {
         Text(title)
-            .font(NotoSansKRFont(fontStyle: .bold, size: 15).font())
+            .lineLimit(1)
+            .font(NotoSansKRFont(fontStyle: .bold,
+                                 size: 20).font())
     }
     
     @ViewBuilder
     func optionButton() -> some View {
-        Button(action: {
-            
-        }, label: {
-            
-        })
+        HStack(spacing: 25) {
+            ForEach(options, id: \.id) { option in
+                Button(action: {
+                    
+                }, label: {
+                    Image(option.iconName)
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                })
+            }
+        }
     }
 }

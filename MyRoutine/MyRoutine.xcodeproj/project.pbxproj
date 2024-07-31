@@ -21,6 +21,7 @@
 		20234F962C57C5FB00746A2B /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20234F952C57C5FB00746A2B /* TabBarItem.swift */; };
 		20234F982C57C78000746A2B /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20234F972C57C78000746A2B /* CustomTabBarView.swift */; };
 		20234F9A2C57CD5400746A2B /* CustomTabBarItemsPreferencyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20234F992C57CD5400746A2B /* CustomTabBarItemsPreferencyKey.swift */; };
+		209C49A82C5A10AB00707EDD /* NavigationBarOptionButtomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C49A72C5A10AB00707EDD /* NavigationBarOptionButtomItem.swift */; };
 		20A954DD2C531D450087DAE8 /* CustomAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954DC2C531D450087DAE8 /* CustomAppView.swift */; };
 		20A954DF2C531EC20087DAE8 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954DE2C531EC20087DAE8 /* CustomNavigationView.swift */; };
 		20A954E12C531FB90087DAE8 /* CustomNavigationBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */; };
@@ -69,6 +70,7 @@
 		20234F952C57C5FB00746A2B /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		20234F972C57C78000746A2B /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		20234F992C57CD5400746A2B /* CustomTabBarItemsPreferencyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItemsPreferencyKey.swift; sourceTree = "<group>"; };
+		209C49A72C5A10AB00707EDD /* NavigationBarOptionButtomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarOptionButtomItem.swift; sourceTree = "<group>"; };
 		20A954DC2C531D450087DAE8 /* CustomAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppView.swift; sourceTree = "<group>"; };
 		20A954DE2C531EC20087DAE8 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarContainerView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */,
 				20D153982C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift */,
 				20D1539A2C5535F4000CFC19 /* CustomNavigationLink.swift */,
+				209C49A72C5A10AB00707EDD /* NavigationBarOptionButtomItem.swift */,
 			);
 			path = NavigationView;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				20B7D7E22C33CD1000CCB3A8 /* TimeInterval+.swift in Sources */,
 				20234F9A2C57CD5400746A2B /* CustomTabBarItemsPreferencyKey.swift in Sources */,
 				20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */,
+				209C49A82C5A10AB00707EDD /* NavigationBarOptionButtomItem.swift in Sources */,
 				20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */,
 				20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */,
 				200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */,

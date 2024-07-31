@@ -22,13 +22,12 @@ struct RoutineView: View {
                     
                 }
                 .padding(.horizontal, 20)
-               
             }
-            .background(Color.background001.ignoresSafeArea(.all))
             .customNavigationBarItems(title: "Test",
-                                      useBackButton: false,
-                                      useOptionButton: false)
-        }            
+                                      useBackButton: true,
+                                      options: [.edit])
+        }
+
         
 
     }

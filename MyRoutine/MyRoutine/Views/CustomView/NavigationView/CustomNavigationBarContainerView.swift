@@ -12,7 +12,7 @@ struct CustomNavigationBarContainerView<Content: View>: View {
     let content: Content
     @State private var useBackButton: Bool = true
     @State private var title: String = "TEst"
-    @State private var useOptionButton: Bool = false
+    @State private var options: [NavigationBarOptionButtomItem] = [.edit]
     
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
@@ -22,21 +22,21 @@ struct CustomNavigationBarContainerView<Content: View>: View {
         VStack(spacing: 0) {
             NavigationBarView(useBackButton: useBackButton,
                               title: title,
-                              useOptionButton: useOptionButton)
-            .background(.clear)
+                              options: options)
             
             content
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
         }
+        .background(.background001)
         .onPreferenceChange(CustomNavBarTitlePreferenceKeys.self, perform: { value in
             self.title = value
         })
         .onPreferenceChange(CustomNavBarUseBackButtonPreferenceKeys.self, perform: { value in
             self.useBackButton = value
         })
-        .onPreferenceChange(CustomNavBarUseOptionButtonPreferenceKeys.self, perform: { value in
-            self.useOptionButton = value
+        .onPreferenceChange(CustomNavBarOptionButtonItemsPreferenceKeys.self, perform: { value in
+            self.options = value
         })
         .navigationBarHidden(true)
     }
@@ -51,7 +51,7 @@ struct CustomNavigationBarContainerView<Content: View>: View {
                 .customNavigationBarItems(
                     title: "TEst",
                     useBackButton: true,
-                    useOptionButton: false
+                    options: [.edit]
                 )
         }
     }
