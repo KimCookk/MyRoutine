@@ -25,8 +25,6 @@ struct RoutineInfoView: View {
             
             RoutineUnitCardListView(viewModel: viewModel)
             
-//            Spacer()
-//                .frame(height: 100)
         }
     }
     
@@ -86,6 +84,13 @@ struct RoutineInfoView: View {
                     .resizable()
                     .frame(width: 15, height: 15)
             }
+            
+            CustomNavigationLink(destination: RoutineUnitAddView(),
+                                 label: {
+                Image("icon.active.plus")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            })
         }
 
     }

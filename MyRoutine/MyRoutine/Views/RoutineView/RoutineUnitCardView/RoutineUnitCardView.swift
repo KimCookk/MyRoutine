@@ -119,7 +119,7 @@ struct SheetView: View {
     }
 }
 
-private struct RoutineUnitTypeIconView: View {
+struct RoutineUnitTypeIconView: View {
     let type: RoutineUnitType
     
     var body: some View {
