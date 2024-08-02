@@ -8,7 +8,8 @@
 import Foundation
 
 class RoutineUnitAddViewModel: ObservableObject  {
-    @Published var type: RoutineUnitType = .todo
+    @Published var selectedType: RoutineUnitType = .todo
+    
     @Published var title: String = ""
     @Published var tip: String = ""
     

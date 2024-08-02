@@ -12,9 +12,10 @@ struct RoutineUnitAddView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 16) {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 8) {
+            ScrollView {
+                VStack(spacing: 15) {
+                    // Type Select Area
+                    VStack(alignment: .center, spacing: 15) {
                         HStack {
                             Text("Type")
                                 .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
@@ -22,54 +23,92 @@ struct RoutineUnitAddView: View {
                             Spacer()
                         }
                         
-                        Picker("Segment", selection: $viewModel.type) {
-                            ForEach(RoutineUnitType.allCases, id: \.id) { type in
-                                Text(type.typeName)
-                                    .tag(type)
+                        // Type Cards View
+                        VStack {
+                            HStack {
+                                RoutineUnitAddCardView(type: .todo,
+                                                       state: viewModel)
+                                
+                                RoutineUnitAddCardView(type: .counter)
+                            }
+                            
+                            HStack {
+                                RoutineUnitAddCardView(type: .timer)
+                                
+                                RoutineUnitAddCardView(type: .stopWatch)
                             }
                         }
-                        .pickerStyle(.segmented)
-                        //.controlSize(.extraLarge)
-                        .padding(.vertical, 12)
                     }
                     
-                    VStack(alignment: .leading, spacing: 8) {
+                    // Title Input Area
+                    VStack(alignment: .center, spacing: 15) {
                         HStack {
                             Text("Title")
-                                .font(NotoSansKRFont(fontStyle: .bold, size: 15).font())
+                                .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
                             
                             Spacer()
                         }
                         
-                        TextField(text: $viewModel.title) {
-                            Text("Title을 입력해주세요.")
+                        VStack {
+                            TextField(text: $viewModel.title) {
+                                Text("Title을 입력해주세요.")
+                                    .font(NotoSansKRFont(fontStyle: .bold, size: 20).font())
+                            }
+                            
+                            Rectangle()
+                                .fill(.gray001)
+                                .frame(height: 1)
                         }
-                        .padding(.vertical, 12)
                     }
                     
-                    VStack(alignment: .leading, spacing: 8) {
+                    // Tag Input Area
+                    VStack(alignment: .center, spacing: 15) {
+                        HStack {
+                            Text("Tag")
+                                .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
+                            
+                            Spacer()
+                        }
+                    }
+                    
+                    VStack(alignment: .center, spacing: 15) {
                         HStack {
                             Text("Tip")
-                                .font(NotoSansKRFont(fontStyle: .bold, size: 15).font())
+                                .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
                             
                             Spacer()
                         }
                         
-                        TextEditor(text: $viewModel.tip)
+                        RoundedRectangle(cornerRadius: 9)
+                            .fill(Color.gray003.opacity(0.4))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 7)
+                                    .fill(Color.white)
+                                    .overlay {
+                                        TextEditor(text: $viewModel.tip)
+                                            .font(NotoSansKRFont(fontStyle: .regular, size: 13).font())
+                                            .cornerRadius(9)
+                                            .padding(10)
+                                    }
+                                    .padding(2)
+                            }
                             .frame(height: 200)
-                            .cornerRadius(8)
-                    }
-                    
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("추가하기")
+                       
                     }
                 }
                 
-                Spacer()
                 
+                
+                
+                
+                
+                
+                
+                Button {
+                    
+                } label: {
+                    Text("추가하기")
+                }
             }
             .padding(.horizontal, 20)
         }
