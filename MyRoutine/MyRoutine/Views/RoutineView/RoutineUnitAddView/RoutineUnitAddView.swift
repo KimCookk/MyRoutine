@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RoutineUnitAddView: View {
-    @ObservedObject var viewModel = RoutineUnitAddViewModel()
+    @State var viewModel = RoutineUnitAddViewModel()
     
     var body: some View {
         ZStack {
@@ -24,20 +24,7 @@ struct RoutineUnitAddView: View {
                         }
                         
                         // Type Cards View
-                        VStack {
-                            HStack {
-                                RoutineUnitAddCardView(type: .todo,
-                                                       state: viewModel)
-                                
-                                RoutineUnitAddCardView(type: .counter)
-                            }
-                            
-                            HStack {
-                                RoutineUnitAddCardView(type: .timer)
-                                
-                                RoutineUnitAddCardView(type: .stopWatch)
-                            }
-                        }
+                        RoutineUnitCardCollectionView(viewModel: viewModel)
                     }
                     
                     // Title Input Area
@@ -120,4 +107,45 @@ struct RoutineUnitAddView: View {
 
 #Preview {
     RoutineUnitAddView()
+}
+
+struct RoutineUnitCardCollectionView: View {
+    
+    @ObservedObject var viewModel: RoutineUnitAddViewModel
+    
+    var body: some View {
+        VStack {
+            HStack {
+                RoutineUnitAddCardView(type: .todo,
+                                       state: viewModel.selectedType == .todo ? Binding.constant(.selected) : Binding.constant(.normal))
+                .onTapGesture {
+                    print("tapped todo")
+                    viewModel.selectedType = .todo
+                }
+                
+                RoutineUnitAddCardView(type: .counter,
+                                       state: viewModel.selectedType == .counter ? Binding.constant(.selected) : Binding.constant(.normal))
+                .onTapGesture {
+                    print("tapped counter")
+                    viewModel.selectedType = .counter
+                }
+            }
+            
+            HStack {
+                RoutineUnitAddCardView(type: .timer,
+                                       state: viewModel.selectedType == .timer ? Binding.constant(.selected) : Binding.constant(.normal))
+                .onTapGesture {
+                    print("tapped timer")
+                    viewModel.selectedType = .timer
+                }
+                
+                RoutineUnitAddCardView(type: .stopWatch,
+                                       state: viewModel.selectedType == .stopWatch ? Binding.constant(.selected) : Binding.constant(.normal))
+                .onTapGesture {
+                    print("tapped stopWatch")
+                    viewModel.selectedType = .stopWatch
+                }
+            }
+        }
+    }
 }

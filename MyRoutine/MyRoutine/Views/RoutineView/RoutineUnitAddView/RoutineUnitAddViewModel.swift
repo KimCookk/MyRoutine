@@ -12,5 +12,4 @@ class RoutineUnitAddViewModel: ObservableObject  {
     
     @Published var title: String = ""
     @Published var tip: String = ""
-    
 }
