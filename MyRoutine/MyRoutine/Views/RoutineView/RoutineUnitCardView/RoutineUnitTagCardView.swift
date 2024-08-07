@@ -19,18 +19,14 @@ struct RoutineUnitTagCardView: View {
     var width: CGFloat = 0
     
     var body: some View {
-        //GeometryReader { geo in
-            Text(tag)
-                .font(NotoSansKRFont(fontStyle: .regular
-                                     , size: 12).font())
-                .foregroundColor(styleColor)
-                .padding(5)
-                .background( RoundedRectangle(cornerRadius: 6.0)
+        
+        Text(tag)
+            .font(NotoSansKRFont(fontStyle: .regular
+                                 , size: 12).font())
+            .foregroundColor(styleColor)
+            .padding(5)
+            .background( RoundedRectangle(cornerRadius: 6.0)
                 .fill(backgroundColor))
-//                .onAppear(perform: {
-//                    print(geo.size.width)
-//                })
-        //}
     }
 }
 

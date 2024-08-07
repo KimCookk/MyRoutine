@@ -28,7 +28,7 @@ struct CustomNavigationBarContainerView<Content: View>: View {
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
         }
-        .background(.background001)
+        //.background(.background001)
         .onPreferenceChange(CustomNavBarTitlePreferenceKeys.self, perform: { value in
             self.title = value
         })
