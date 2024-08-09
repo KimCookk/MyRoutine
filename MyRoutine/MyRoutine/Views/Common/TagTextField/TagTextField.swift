@@ -8,26 +8,56 @@
 import SwiftUI
 
 struct TagTextField: View {
-    @Binding var tags: [String]
+    @State var tags: [String]
     let placeholder: String
     
     @State private var inputText = ""
     
     var body: some View {
-        HStack {
-            ForEach(tags, id: \.self) { tag in
-                TagCardView(tag: tag, styleColor: .black) { tag in
-                    tags.removeAll(where: {
-                        $0 == tag
-                    })
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(tags, id: \.self) { tag in
+                    TagCardView(tag: tag, styleColor: .black) { tag in
+                        tags.removeAll(where: {
+                            $0 == tag
+                        })
+                    }
                 }
+                
+                TextFieldWrapper(inputText: $inputText,
+                                 placeholder: placeholder)
+                .updatePlaceholder("Enter Tags")
+                .onSubmit {
+                    addTag(inputText)
+                    inputText = ""
+                }
+                .onChange { oldValue, newValue in
+                    if(inputText.hasSuffix(" ") && newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false) {
+                        print(String(inputText[..<inputText.index(before: inputText.endIndex)]))
+                        addTag(String(inputText[..<inputText.index(before: inputText.endIndex)]))
+                        inputText = ""
+                    }
+                }
+                .onDelete { oldValue, newValue in
+                    if !tags.isEmpty && (oldValue.isEmpty == true && newValue.isEmpty == true) {
+                        let last = tags.removeLast()
+                        inputText = last
+                    }
+                }
+                
             }
+        }
+    }
+    
+    func addTag(_ tag: String) {
+        if(!tags.contains(tag)) {
+            self.tags.append(tag)
         }
     }
 }
 
 #Preview {
-    TagTextField(tags: Binding.constant(["test"]),
+    TagTextField(tags: ["test", "test22"],
                  placeholder: "Enter Tag")
 }
 
@@ -48,6 +78,7 @@ struct TagCardView: View {
                 .font(NotoSansKRFont(fontStyle: .regular
                                      , size: 12).font())
                 .foregroundColor(styleColor)
+                .lineLimit(1)
                 
             Button {
                 

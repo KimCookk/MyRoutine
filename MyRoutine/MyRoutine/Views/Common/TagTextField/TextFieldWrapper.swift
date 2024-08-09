@@ -11,6 +11,21 @@ import UIKit
 //protocol CustomTextFieldDelegate: AnyObject {
 //    func textFieldDidDeleteBackward(_ textField: TextField)
 //}
+protocol DetectBackwardTextFieldDelegate: AnyObject {
+    func textFieldDidDeleteBackward(_ textField: DetectBackwardTextField)
+}
+
+class DetectBackwardTextField: UITextField {
+    weak var detectBackwardDelegate: DetectBackwardTextFieldDelegate?
+    
+    override func deleteBackward() {
+        super.deleteBackward()
+        
+        if let delegate = detectBackwardDelegate {
+            delegate.textFieldDidDeleteBackward(self)
+        }
+    }
+}
 
 struct TextFieldWrapper: UIViewRepresentable {
     
@@ -19,11 +34,12 @@ struct TextFieldWrapper: UIViewRepresentable {
     var preText: String = ""
     var placeholder: String
     
-    var onSubmit: (() -> Void)?
-    var onChange: ((_ oldValue: String, _ newValue: String) -> Void)?
-    var onDelete: ((_ oldValue: String, _ newValue: String) -> Void)?
+    var textOnSubmit: (() -> Void)?
+    var textOnChange: ((_ oldValue: String, _ newValue: String) -> Void)?
+    var textOnDelete: ((_ oldValue: String, _ newValue: String) -> Void)?
     
-    class Coordinator: NSObject, UITextFieldDelegate {
+    class Coordinator: NSObject, UITextFieldDelegate, DetectBackwardTextFieldDelegate {
+        
         var parent: TextFieldWrapper
         
         init(parent: TextFieldWrapper) {
@@ -34,8 +50,8 @@ struct TextFieldWrapper: UIViewRepresentable {
             DispatchQueue.main.async {
                 self.parent.inputText = textField.text ?? ""
                 
-                if let onChange = self.parent.onChange {
-                    onChange(self.parent.preText, self.parent.inputText)
+                if let textOnChange = self.parent.textOnChange {
+                    textOnChange(self.parent.preText, self.parent.inputText)
                 }
                 
                 self.parent.preText = textField.text ?? ""
@@ -43,16 +59,16 @@ struct TextFieldWrapper: UIViewRepresentable {
         }
         
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            if let onSubmit = parent.onSubmit {
-                onSubmit()
+            if let textOnSubmit = parent.textOnSubmit {
+                textOnSubmit()
             }
             
             return true
         }
         
-        func textFieldDidDeleteBackward(_ textField: UITextField) {
-            if let onDelete = parent.onDelete {
-                onDelete(parent.preText, textField.text ?? "")
+        func textFieldDidDeleteBackward(_ textField: DetectBackwardTextField) {
+            if let textOnDelete = parent.textOnDelete {
+                textOnDelete(parent.preText, textField.text ?? "")
             }
         }
     }
@@ -61,20 +77,45 @@ struct TextFieldWrapper: UIViewRepresentable {
         Coordinator(parent: self)
     }
     
-    func makeUIView(context: Context) -> UITextField {
-        let textField = UITextField()
+    func makeUIView(context: Context) -> DetectBackwardTextField {
+        let textField = DetectBackwardTextField()
         textField.delegate = context.coordinator
+        textField.detectBackwardDelegate = context.coordinator
+        textField.placeholder = placeholder
         
         return textField
+        
     }
     
-    func updateUIView(_ uiView: UITextField, context: Context) {
+    func updateUIView(_ uiView: DetectBackwardTextField, context: Context) {
         uiView.text = inputText
     }
     
-    func updatePlaceholder(_ text: String) ->  TextFieldWrapper{
+    func updatePlaceholder(_ text: String) -> TextFieldWrapper {
         var view = self
+        
         view.placeholder = text
+        return view
+    }
+    
+    func onSubmit(_ submit: @escaping () -> Void) -> TextFieldWrapper {
+        var view = self
+
+        view.textOnSubmit = submit
+        return view
+    }
+    
+    func onChange(_ change: @escaping (_ oldValue: String, _ newValue: String) -> Void) -> TextFieldWrapper {
+        var view = self
+
+        view.textOnChange = change
+        return view
+    }
+    
+    func onDelete(_ delete: @escaping (_ oldValue: String, _ newValue: String) -> Void) -> TextFieldWrapper {
+        var view = self
+
+        view.textOnDelete = delete
         return view
     }
 }

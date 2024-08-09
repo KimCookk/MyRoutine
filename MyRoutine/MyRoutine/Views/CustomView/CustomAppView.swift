@@ -15,12 +15,13 @@ struct CustomAppView: View {
     
     var body: some View {
         
-        CustomTabBarContainerView(selection: $tabSelection, tabUse: true) {
-            
-            RoutineView()
-                .tabBarItem(tab: .home, selection: $tabSelection)
-            
-        }
+//        CustomTabBarContainerView(selection: $tabSelection, tabUse: true) {
+//            
+//            RoutineView()
+//                .tabBarItem(tab: .home, selection: $tabSelection)
+//            
+//        }
+        TagTextField(tags: [], placeholder: "enter tag")
     }
 }
 
