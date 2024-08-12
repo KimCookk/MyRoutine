@@ -27,9 +27,6 @@ struct RoutineView: View {
                                       useBackButton: true,
                                       options: [.edit])
         }
-
-        
-
     }
 }
 

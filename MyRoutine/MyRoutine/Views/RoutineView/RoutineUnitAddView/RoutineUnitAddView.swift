@@ -24,8 +24,16 @@ struct RoutineUnitAddView: View {
                         }
                         
                         // Type Cards View 
-                        RoutineUnitCardCollectionView(viewModel: viewModel)
+                        RoutineUnitTypeCardCollectionView(viewModel: viewModel)
                     }
+                    
+                    // Type Option Area
+                    // Timer : 시간 설정
+                    // Counter : 횟수
+                    //if(viewModel.useOptionView) {
+                        RoutineUnitTypeOptionView(viewModel: viewModel)
+                    //}
+                    
                     
                     // Title Input Area
                     VStack(alignment: .center, spacing: 15) {
@@ -56,6 +64,10 @@ struct RoutineUnitAddView: View {
                             
                             Spacer()
                         }
+                        
+                        TagTextField(tags: viewModel.tags,
+                                     placeholder: viewModel.tagTextFieldPlaceholder)
+                                    .frame(height: 35)
                     }
                     
                     VStack(alignment: .center, spacing: 15) {
@@ -84,13 +96,6 @@ struct RoutineUnitAddView: View {
                     }
                 }
                 
-                
-                
-                
-                
-                
-                
-                
                 Button {
                     
                 } label: {
@@ -109,7 +114,7 @@ struct RoutineUnitAddView: View {
     RoutineUnitAddView()
 }
 
-struct RoutineUnitCardCollectionView: View {
+struct RoutineUnitTypeCardCollectionView: View {
     
     @ObservedObject var viewModel: RoutineUnitAddViewModel
     
@@ -120,14 +125,18 @@ struct RoutineUnitCardCollectionView: View {
                                        state: viewModel.selectedType == .todo ? Binding.constant(.selected) : Binding.constant(.normal))
                 .onTapGesture {
                     print("tapped todo")
-                    viewModel.selectedType = .todo
+                    withAnimation(.spring) {
+                        viewModel.selectedType = .todo
+                    }
                 }
                 
                 RoutineUnitAddCardView(type: .counter,
                                        state: viewModel.selectedType == .counter ? Binding.constant(.selected) : Binding.constant(.normal))
                 .onTapGesture {
                     print("tapped counter")
-                    viewModel.selectedType = .counter
+                    withAnimation(.spring) {
+                        viewModel.selectedType = .counter
+                    }
                 }
             }
             
@@ -136,16 +145,68 @@ struct RoutineUnitCardCollectionView: View {
                                        state: viewModel.selectedType == .timer ? Binding.constant(.selected) : Binding.constant(.normal))
                 .onTapGesture {
                     print("tapped timer")
-                    viewModel.selectedType = .timer
+                    withAnimation(.spring) {
+                        viewModel.selectedType = .timer
+                    }
                 }
                 
                 RoutineUnitAddCardView(type: .stopWatch,
                                        state: viewModel.selectedType == .stopWatch ? Binding.constant(.selected) : Binding.constant(.normal))
                 .onTapGesture {
                     print("tapped stopWatch")
-                    viewModel.selectedType = .stopWatch
+                    withAnimation(.spring) {
+                        viewModel.selectedType = .stopWatch
+                    }
                 }
             }
         }
+    }
+}
+
+struct RoutineUnitTypeOptionView: View {
+    @ObservedObject var viewModel: RoutineUnitAddViewModel
+    
+    var body: some View {
+        if(viewModel.useOptionView) {
+//            VStack(alignment: .center, spacing: 15) {
+//                HStack {
+//                    Text("Option")
+//                        .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
+//                    
+//                    Spacer()
+//                }
+//                
+//                optionView(type: viewModel.selectedType)
+//            }
+        }
+    }
+    
+    @ViewBuilder
+    func optionView(type: RoutineUnitType) -> some View {
+//        HStack(spacing: 25) {
+//            // Timer : 시간 설정
+//            // Counter : 횟수
+//        }
+        
+        VStack(alignment: .center, spacing: 15) {
+            // Header
+            HStack {
+                Text(type.typeName)
+                    .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
+                
+                Spacer()
+            }
+            // Input
+        }
+    }
+    
+    @ViewBuilder
+    func timerOptionView() -> some View {
+        
+    }
+    
+    @ViewBuilder
+    func counterOptionView() -> some View {
+        
     }
 }

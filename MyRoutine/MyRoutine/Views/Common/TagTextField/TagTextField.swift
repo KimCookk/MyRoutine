@@ -14,13 +14,15 @@ struct TagTextField: View {
     @State private var inputText = ""
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(tags, id: \.self) { tag in
                     TagCardView(tag: tag, styleColor: .black) { tag in
-                        tags.removeAll(where: {
-                            $0 == tag
-                        })
+                        withAnimation(.spring) {
+                            tags.removeAll(where: {
+                                $0 == tag
+                            })
+                        }
                     }
                 }
                 
@@ -44,7 +46,6 @@ struct TagTextField: View {
                         inputText = last
                     }
                 }
-                
             }
         }
     }
@@ -63,8 +64,8 @@ struct TagTextField: View {
 
 struct TagCardView: View {
     
-    let tag:String
-    let styleColor:Color
+    let tag: String
+    let styleColor: Color
     
     var backgroundColor: Color {
         return styleColor.opacity(0.1)
@@ -81,12 +82,13 @@ struct TagCardView: View {
                 .lineLimit(1)
                 
             Button {
-                
+                onDelete(tag)
             } label: {
                 Image(systemName: "x.circle")
                     .resizable()
                     .frame(width: 10, height: 10)
             }
+            
         }
         .padding(5)
         .background( RoundedRectangle(cornerRadius: 6.0)
