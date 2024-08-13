@@ -12,7 +12,7 @@ struct RoutineUnitAddView: View {
     
     var body: some View {
         ZStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(spacing: 15) {
                     // Type Select Area
                     VStack(alignment: .center, spacing: 15) {
@@ -52,7 +52,7 @@ struct RoutineUnitAddView: View {
                             
                             Rectangle()
                                 .fill(.gray001)
-                                .frame(height: 1)
+                                .frame(height: 1.5)
                         }
                     }
                     
@@ -92,14 +92,23 @@ struct RoutineUnitAddView: View {
                                     .padding(2)
                             }
                             .frame(height: 200)
-                       
                     }
-                }
-                
-                Button {
                     
-                } label: {
-                    Text("추가하기")
+                    Spacer()
+                        .frame(height: 20)
+                    
+                
+                    Button {
+                        
+                    } label: {
+                        Text("Routine Unit Add")
+                            .font(NotoSansKRFont(fontStyle: .bold, size: 18).font())
+                            .foregroundColor(.black001)
+                            .padding()
+                    }
+                    .background(.purple002)
+                    .cornerRadius(20)
+                    
                 }
             }
             .padding(.horizontal, 20)
@@ -168,16 +177,8 @@ struct RoutineUnitTypeOptionView: View {
     
     var body: some View {
         if(viewModel.useOptionView) {
-//            VStack(alignment: .center, spacing: 15) {
-//                HStack {
-//                    Text("Option")
-//                        .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
-//                    
-//                    Spacer()
-//                }
-//                
-//                optionView(type: viewModel.selectedType)
-//            }
+
+            optionView(type: viewModel.selectedType)
         }
     }
     
@@ -197,16 +198,21 @@ struct RoutineUnitTypeOptionView: View {
                 Spacer()
             }
             // Input
+            if(type == .timer) {
+                timerOptionView()
+            } else if (type == .counter) {
+                counterOptionView()
+            }
         }
     }
     
     @ViewBuilder
     func timerOptionView() -> some View {
-        
+        TimePickerView()
     }
     
     @ViewBuilder
     func counterOptionView() -> some View {
-        
+        CounterTextField()
     }
 }

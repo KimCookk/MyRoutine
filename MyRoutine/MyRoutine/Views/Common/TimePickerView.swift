@@ -13,8 +13,7 @@ struct TimePickerView: View {
     @State private var selectedSecond = 0
     
     var body: some View {
-        VStack {
-            HStack() {
+            HStack {
                 // Hour Picker
                 Picker(selection: $selectedHour, label: Text("Hour")) {
                     ForEach(0..<24) { hour in
@@ -55,15 +54,7 @@ struct TimePickerView: View {
                 Text("s")
                     .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
             }
-            .frame(height: 120)
-            .padding()
-            
-
-            // Display the selected time
-//            Text("Selected Time: \(selectedHour)h \(selectedMinute)m \(selectedSecond)s")
-//                .font(.headline)
-//                .padding()
-        }
+            .frame(height: 100)
     }
 }
 

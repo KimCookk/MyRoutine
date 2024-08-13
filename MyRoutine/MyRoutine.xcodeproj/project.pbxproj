@@ -10,6 +10,7 @@
 		200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */; };
 		2009DDA52C6984CA00EB90F7 /* RoutineUnitAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA42C6984CA00EB90F7 /* RoutineUnitAddView.swift */; };
 		2009DDA72C69933B00EB90F7 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA62C69933B00EB90F7 /* TimePickerView.swift */; };
+		2009DDA92C6AD19E00EB90F7 /* CounterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA82C6AD19E00EB90F7 /* CounterTextField.swift */; };
 		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
 		20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */; };
 		20121C3A2C245CA0001DD38E /* NotoSansKR-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */; };
@@ -63,6 +64,7 @@
 		200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRoutineUnitCardView.swift; sourceTree = "<group>"; };
 		2009DDA42C6984CA00EB90F7 /* RoutineUnitAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineUnitAddView.swift; sourceTree = "<group>"; };
 		2009DDA62C69933B00EB90F7 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		2009DDA82C6AD19E00EB90F7 /* CounterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTextField.swift; sourceTree = "<group>"; };
 		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
 		20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoView.swift; sourceTree = "<group>"; };
 		20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.ttf"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				20D153682C48031E000CFC19 /* RoundedCorner.swift */,
 				20A4B8802C5C509A00F08553 /* ButtonState.swift */,
 				2009DDA62C69933B00EB90F7 /* TimePickerView.swift */,
+				2009DDA82C6AD19E00EB90F7 /* CounterTextField.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				20234F962C57C5FB00746A2B /* TabBarItem.swift in Sources */,
 				20D153672C47AC29000CFC19 /* BottomTabView.swift in Sources */,
 				20A954DF2C531EC20087DAE8 /* CustomNavigationView.swift in Sources */,
+				2009DDA92C6AD19E00EB90F7 /* CounterTextField.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
 				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,
 				2025DED82C635B8600373DC8 /* TextFieldWrapper.swift in Sources */,
