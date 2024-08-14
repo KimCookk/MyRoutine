@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */; };
-		2009DDA52C6984CA00EB90F7 /* RoutineUnitAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA42C6984CA00EB90F7 /* RoutineUnitAddView.swift */; };
+		2009DDA52C6984CA00EB90F7 /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA42C6984CA00EB90F7 /* AddRoutineView.swift */; };
 		2009DDA72C69933B00EB90F7 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA62C69933B00EB90F7 /* TimePickerView.swift */; };
 		2009DDA92C6AD19E00EB90F7 /* CounterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA82C6AD19E00EB90F7 /* CounterTextField.swift */; };
 		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
@@ -43,7 +43,7 @@
 		20D153672C47AC29000CFC19 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D153662C47AC29000CFC19 /* BottomTabView.swift */; };
 		20D153692C48031E000CFC19 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D153682C48031E000CFC19 /* RoundedCorner.swift */; };
 		20D1536B2C494A97000CFC19 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1536A2C494A97000CFC19 /* TabViewModel.swift */; };
-		20D153702C4E886E000CFC19 /* RoutineUnitAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1536F2C4E886E000CFC19 /* RoutineUnitAddViewModel.swift */; };
+		20D153702C4E886E000CFC19 /* AddRoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1536F2C4E886E000CFC19 /* AddRoutineViewModel.swift */; };
 		20D153992C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D153982C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift */; };
 		20D1539B2C5535F4000CFC19 /* CustomNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1539A2C5535F4000CFC19 /* CustomNavigationLink.swift */; };
 		20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79722BFB83D5001BCBB7 /* MyRoutineApp.swift */; };
@@ -62,7 +62,7 @@
 
 /* Begin PBXFileReference section */
 		200300FD2C2C4D3600C77BE5 /* EmptyRoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRoutineUnitCardView.swift; sourceTree = "<group>"; };
-		2009DDA42C6984CA00EB90F7 /* RoutineUnitAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineUnitAddView.swift; sourceTree = "<group>"; };
+		2009DDA42C6984CA00EB90F7 /* AddRoutineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
 		2009DDA62C69933B00EB90F7 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		2009DDA82C6AD19E00EB90F7 /* CounterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTextField.swift; sourceTree = "<group>"; };
 		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		20D153662C47AC29000CFC19 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
 		20D153682C48031E000CFC19 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		20D1536A2C494A97000CFC19 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
-		20D1536F2C4E886E000CFC19 /* RoutineUnitAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitAddViewModel.swift; sourceTree = "<group>"; };
+		20D1536F2C4E886E000CFC19 /* AddRoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineViewModel.swift; sourceTree = "<group>"; };
 		20D153982C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarPreferenceKeys.swift; sourceTree = "<group>"; };
 		20D1539A2C5535F4000CFC19 /* CustomNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLink.swift; sourceTree = "<group>"; };
 		20DE796F2BFB83D5001BCBB7 /* MyRoutine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRoutine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,14 +219,14 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
-		20D1536C2C4E883B000CFC19 /* RoutineUnitAddView */ = {
+		20D1536C2C4E883B000CFC19 /* AddRoutineView */ = {
 			isa = PBXGroup;
 			children = (
-				2009DDA42C6984CA00EB90F7 /* RoutineUnitAddView.swift */,
-				20D1536F2C4E886E000CFC19 /* RoutineUnitAddViewModel.swift */,
+				2009DDA42C6984CA00EB90F7 /* AddRoutineView.swift */,
+				20D1536F2C4E886E000CFC19 /* AddRoutineViewModel.swift */,
 				20234F9B2C5BC79200746A2B /* RoutineUnitAddCardView.swift */,
 			);
-			path = RoutineUnitAddView;
+			path = AddRoutineView;
 			sourceTree = "<group>";
 		};
 		20DE79662BFB83D5001BCBB7 = {
@@ -301,7 +301,7 @@
 		20DE79892BFCDDAC001BCBB7 /* RoutineView */ = {
 			isa = PBXGroup;
 			children = (
-				20D1536C2C4E883B000CFC19 /* RoutineUnitAddView */,
+				20D1536C2C4E883B000CFC19 /* AddRoutineView */,
 				20F1D7C42C26A96500B64D70 /* RoutineUnitCardView */,
 				20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */,
 				20121C282C22CB20001DD38E /* RoutineSummaryView.swift */,
@@ -431,7 +431,7 @@
 				20D153992C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift in Sources */,
 				20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */,
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
-				20D153702C4E886E000CFC19 /* RoutineUnitAddViewModel.swift in Sources */,
+				20D153702C4E886E000CFC19 /* AddRoutineViewModel.swift in Sources */,
 				20A4B8812C5C509A00F08553 /* ButtonState.swift in Sources */,
 				20A954DD2C531D450087DAE8 /* CustomAppView.swift in Sources */,
 				20D1536B2C494A97000CFC19 /* TabViewModel.swift in Sources */,
@@ -446,7 +446,7 @@
 				208D36E22C6207B700EAE42B /* TagTextField.swift in Sources */,
 				20234F9A2C57CD5400746A2B /* CustomTabBarItemsPreferencyKey.swift in Sources */,
 				20C018752C188D6700E8BA20 /* DropViewDelegate.swift in Sources */,
-				2009DDA52C6984CA00EB90F7 /* RoutineUnitAddView.swift in Sources */,
+				2009DDA52C6984CA00EB90F7 /* AddRoutineView.swift in Sources */,
 				209C49A82C5A10AB00707EDD /* NavigationBarOptionButtomItem.swift in Sources */,
 				20121CD52C245ECD001DD38E /* NotoSansKRFont.swift in Sources */,
 				20F1D7C62C26A9A500B64D70 /* RoutineUnitCardOptionView.swift in Sources */,

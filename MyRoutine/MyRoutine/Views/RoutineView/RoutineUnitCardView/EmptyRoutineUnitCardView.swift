@@ -26,7 +26,7 @@ struct EmptyRoutineUnitCardView: View {
             .frame(height: 84)
             .onTapGesture {
                 withAnimation(.spring) {
-                    viewModel.addRoutineUnit()
+                    //viewModel.addRoutineUnit()
                 }
             }
     }

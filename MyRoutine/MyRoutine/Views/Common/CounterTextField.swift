@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct CounterTextField: View {
-    @State var numberString: String = "0"
+    @Binding var numberString: String
     
     var body: some View {
         HStack(spacing: 20) {
@@ -63,5 +63,5 @@ struct CounterTextField: View {
 }
 
 #Preview {
-    CounterTextField()
+    CounterTextField(numberString: Binding.constant("0"))
 }

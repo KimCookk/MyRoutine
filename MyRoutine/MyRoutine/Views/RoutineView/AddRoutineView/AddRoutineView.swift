@@ -7,34 +7,26 @@
 
 import SwiftUI
 
-struct RoutineUnitAddView: View {
-    @State var viewModel = RoutineUnitAddViewModel()
+struct AddRoutineView: View {
+    @ObservedObject var addRoutineViewModel = AddRoutineViewModel()
+    @ObservedObject var routineViewModel: RoutineViewModel
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 15) {
                     // Type Select Area
-                    VStack(alignment: .center, spacing: 15) {
-                        HStack {
-                            Text("Type")
-                                .font(NotoSansKRFont(fontStyle: .bold, size: 13).font())
-                            
-                            Spacer()
-                        }
-                        
-                        // Type Cards View 
-                        RoutineUnitTypeCardCollectionView(viewModel: viewModel)
-                    }
+                   
+                    RoutineUnitTypeSelectView(selectedRoutineUnitType: $addRoutineViewModel.selectedType)
                     
                     // Type Option Area
                     // Timer : 시간 설정
                     // Counter : 횟수
                     //if(viewModel.useOptionView) {
-                        RoutineUnitTypeOptionView(viewModel: viewModel)
+                        RoutineUnitTypeOptionView(viewModel: addRoutineViewModel)
                     //}
-                    
-                    
                     // Title Input Area
                     VStack(alignment: .center, spacing: 15) {
                         HStack {
@@ -45,7 +37,7 @@ struct RoutineUnitAddView: View {
                         }
                         
                         VStack {
-                            TextField(text: $viewModel.title) {
+                            TextField(text: $addRoutineViewModel.title) {
                                 Text("Title을 입력해주세요.")
                                     .font(NotoSansKRFont(fontStyle: .bold, size: 20).font())
                             }
@@ -65,8 +57,8 @@ struct RoutineUnitAddView: View {
                             Spacer()
                         }
                         
-                        TagTextField(tags: viewModel.tags,
-                                     placeholder: viewModel.tagTextFieldPlaceholder)
+                        TagTextField(tags: addRoutineViewModel.tags,
+                                     placeholder: addRoutineViewModel.tagTextFieldPlaceholder)
                                     .frame(height: 35)
                     }
                     
@@ -84,7 +76,7 @@ struct RoutineUnitAddView: View {
                                 RoundedRectangle(cornerRadius: 7)
                                     .fill(Color.white)
                                     .overlay {
-                                        TextEditor(text: $viewModel.tip)
+                                        TextEditor(text: $addRoutineViewModel.tipComment)
                                             .font(NotoSansKRFont(fontStyle: .regular, size: 13).font())
                                             .cornerRadius(9)
                                             .padding(10)
@@ -99,7 +91,8 @@ struct RoutineUnitAddView: View {
                     
                 
                     Button {
-                        
+                        routineViewModel.addRoutineUnit(addRoutineViewModel.getRoutineUnit())
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Routine Unit Add")
                             .font(NotoSansKRFont(fontStyle: .bold, size: 18).font())
@@ -108,7 +101,6 @@ struct RoutineUnitAddView: View {
                     }
                     .background(.purple002)
                     .cornerRadius(20)
-                    
                 }
             }
             .padding(.horizontal, 20)
@@ -120,60 +112,12 @@ struct RoutineUnitAddView: View {
 }
 
 #Preview {
-    RoutineUnitAddView()
+    AddRoutineView(routineViewModel: RoutineViewModel())
 }
 
-struct RoutineUnitTypeCardCollectionView: View {
-    
-    @ObservedObject var viewModel: RoutineUnitAddViewModel
-    
-    var body: some View {
-        VStack {
-            HStack {
-                RoutineUnitAddCardView(type: .todo,
-                                       state: viewModel.selectedType == .todo ? Binding.constant(.selected) : Binding.constant(.normal))
-                .onTapGesture {
-                    print("tapped todo")
-                    withAnimation(.spring) {
-                        viewModel.selectedType = .todo
-                    }
-                }
-                
-                RoutineUnitAddCardView(type: .counter,
-                                       state: viewModel.selectedType == .counter ? Binding.constant(.selected) : Binding.constant(.normal))
-                .onTapGesture {
-                    print("tapped counter")
-                    withAnimation(.spring) {
-                        viewModel.selectedType = .counter
-                    }
-                }
-            }
-            
-            HStack {
-                RoutineUnitAddCardView(type: .timer,
-                                       state: viewModel.selectedType == .timer ? Binding.constant(.selected) : Binding.constant(.normal))
-                .onTapGesture {
-                    print("tapped timer")
-                    withAnimation(.spring) {
-                        viewModel.selectedType = .timer
-                    }
-                }
-                
-                RoutineUnitAddCardView(type: .stopWatch,
-                                       state: viewModel.selectedType == .stopWatch ? Binding.constant(.selected) : Binding.constant(.normal))
-                .onTapGesture {
-                    print("tapped stopWatch")
-                    withAnimation(.spring) {
-                        viewModel.selectedType = .stopWatch
-                    }
-                }
-            }
-        }
-    }
-}
 
 struct RoutineUnitTypeOptionView: View {
-    @ObservedObject var viewModel: RoutineUnitAddViewModel
+    @ObservedObject var viewModel: AddRoutineViewModel
     
     var body: some View {
         if(viewModel.useOptionView) {
@@ -213,6 +157,16 @@ struct RoutineUnitTypeOptionView: View {
     
     @ViewBuilder
     func counterOptionView() -> some View {
-        CounterTextField()
+        CounterTextField(numberString: Binding( 
+        get: {
+            guard let task = viewModel.routineUnitTask as? CounterTask else {
+                return "0"
+            }
+            
+            return "\(task.targetCount)"
+            
+        }, set: { newValue in
+            viewModel.updateCounterTaskCount(Int(newValue) ?? 0)
+        }))
     }
 }

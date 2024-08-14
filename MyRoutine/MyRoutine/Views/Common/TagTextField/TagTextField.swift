@@ -30,8 +30,10 @@ struct TagTextField: View {
                                  placeholder: placeholder)
                 .updatePlaceholder("Enter Tags")
                 .onSubmit {
-                    addTag(inputText)
-                    inputText = ""
+                    if(inputText.isEmpty == false) {
+                        addTag(inputText)
+                        inputText = ""
+                    }
                 }
                 .onChange { oldValue, newValue in
                     if(inputText.hasSuffix(" ") && newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false) {

@@ -85,7 +85,7 @@ struct RoutineInfoView: View {
                     .frame(width: 15, height: 15)
             }
             
-            CustomNavigationLink(destination: RoutineUnitAddView(),
+            CustomNavigationLink(destination: AddRoutineView(routineViewModel: viewModel),
                                  label: {
                 Image("icon.active.plus")
                     .resizable()

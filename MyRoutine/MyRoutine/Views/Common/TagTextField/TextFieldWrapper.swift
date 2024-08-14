@@ -8,9 +8,6 @@
 import SwiftUI
 import UIKit
 
-//protocol CustomTextFieldDelegate: AnyObject {
-//    func textFieldDidDeleteBackward(_ textField: TextField)
-//}
 protocol DetectBackwardTextFieldDelegate: AnyObject {
     func textFieldDidDeleteBackward(_ textField: DetectBackwardTextField)
 }

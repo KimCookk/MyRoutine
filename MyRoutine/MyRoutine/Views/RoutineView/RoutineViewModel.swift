@@ -89,8 +89,10 @@ class RoutineViewModel: ObservableObject {
         }
     }
     
-    func addRoutineUnit() {
+    func addRoutineUnit(_ routineUnit: RoutineUnit) {
         print("RoutineViewModel addRoutineUnit")
+        routineUnitCardViewModelList.append(RoutineUnitCardViewModel(routineUnit: routineUnit))
+        
     }
     
     func removeRoutineUnitSelected() {

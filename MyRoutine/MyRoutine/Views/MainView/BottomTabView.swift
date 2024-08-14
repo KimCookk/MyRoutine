@@ -24,9 +24,9 @@ struct BottomTabView: View {
                     Image("icon.active.routine")
                 }
                 
-                NavigationLink(destination: RoutineUnitAddView()) {
-                    Image("icon.active.plus")
-                }
+//                NavigationLink(destination: AddRoutineView()) {
+//                    Image("icon.active.plus")
+//                }
                 
                 
                 Button {
