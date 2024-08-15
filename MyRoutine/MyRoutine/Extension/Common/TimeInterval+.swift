@@ -17,4 +17,16 @@ extension TimeInterval {
         
         return dateFormatter.string(from: date)
     }
+    
+    func getHours() -> Int {
+        return Int(self) / 3600
+    }
+    
+    func getMinutes() -> Int {
+        return (Int(self) % 3600) / 60
+    }
+    
+    func getSeconds() -> Int {
+        return Int(self) % 60
+    }
 }

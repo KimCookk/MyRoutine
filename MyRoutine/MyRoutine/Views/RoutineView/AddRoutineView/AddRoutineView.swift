@@ -17,17 +17,12 @@ struct AddRoutineView: View {
         ZStack {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 15) {
-                    // Type Select Area
-                   
+                    // Routine Unit Type Select Section
                     RoutineUnitTypeSelectView(selectedRoutineUnitType: $addRoutineViewModel.selectedType)
                     
-                    // Type Option Area
-                    // Timer : 시간 설정
-                    // Counter : 횟수
-                    //if(viewModel.useOptionView) {
-                        RoutineUnitTypeOptionView(viewModel: addRoutineViewModel)
-                    //}
-                    // Title Input Area
+                    // Routine Unit Type Option Section
+                    RoutineUnitTypeOptionView(viewModel: addRoutineViewModel)
+                    
                     VStack(alignment: .center, spacing: 15) {
                         HStack {
                             Text("Title")
@@ -41,7 +36,6 @@ struct AddRoutineView: View {
                                 Text("Title을 입력해주세요.")
                                     .font(NotoSansKRFont(fontStyle: .bold, size: 20).font())
                             }
-                            
                             Rectangle()
                                 .fill(.gray001)
                                 .frame(height: 1.5)
@@ -92,6 +86,7 @@ struct AddRoutineView: View {
                 
                     Button {
                         routineViewModel.addRoutineUnit(addRoutineViewModel.getRoutineUnit())
+                        
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Routine Unit Add")
@@ -121,7 +116,6 @@ struct RoutineUnitTypeOptionView: View {
     
     var body: some View {
         if(viewModel.useOptionView) {
-
             optionView(type: viewModel.selectedType)
         }
     }
@@ -152,7 +146,34 @@ struct RoutineUnitTypeOptionView: View {
     
     @ViewBuilder
     func timerOptionView() -> some View {
-        TimePickerView()
+        TimePickerView(selectedHour: Binding(get: {
+            guard let task = viewModel.routineUnitTask as? TimerTask else {
+                return 0
+            }
+            
+            return task.targetTime.getHours()
+        }, set: { newHours in
+            viewModel.updateTimerTaskHours(newHours)
+            
+        }), selectedMinute: Binding(get: {
+            guard let task = viewModel.routineUnitTask as? TimerTask else {
+                return 0
+            }
+            
+            return task.targetTime.getMinutes()
+        }, set: { newMinutes in
+            viewModel.updateTimerTaskMinutes(newMinutes)
+
+        }), selectedSecond: Binding(get: {
+            guard let task = viewModel.routineUnitTask as? TimerTask else {
+                return 0
+            }
+            
+            return task.targetTime.getSeconds()
+        }, set: { newSeconds in
+            viewModel.updateTimerTaskSeconds(newSeconds)
+
+        }))
     }
     
     @ViewBuilder

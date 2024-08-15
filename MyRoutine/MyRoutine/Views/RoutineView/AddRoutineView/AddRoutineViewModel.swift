@@ -58,6 +58,39 @@ class AddRoutineViewModel: ObservableObject  {
         }
     }
     
+    func updateTimerTaskHours(_ hours: Int) {
+        if var timerTask = routineUnitTask as? TimerTask {
+            let minutes = timerTask.targetTime.getMinutes()
+            let seconds = timerTask.targetTime.getSeconds()
+            
+            timerTask.targetTime = TimeInterval((hours * 3600) + (minutes * 60) + seconds)
+            timerTask.remainingTime = TimeInterval((hours * 3600) + (minutes * 60) + seconds)
+            routineUnitTask = timerTask
+        }
+    }
+    
+    func updateTimerTaskMinutes(_ minutes: Int) {
+        if var timerTask = routineUnitTask as? TimerTask {
+            let hours = timerTask.targetTime.getHours()
+            let seconds = timerTask.targetTime.getSeconds()
+            
+            timerTask.targetTime = TimeInterval((hours * 3600) + (minutes * 60) + seconds)
+            timerTask.remainingTime = TimeInterval((hours * 3600) + (minutes * 60) + seconds)
+            routineUnitTask = timerTask
+        }
+    }
+    
+    func updateTimerTaskSeconds(_ seconds: Int) {
+        if var timerTask = routineUnitTask as? TimerTask {
+            let hours = timerTask.targetTime.getHours()
+            let minutes = timerTask.targetTime.getMinutes()
+            
+            timerTask.targetTime = TimeInterval((hours * 3600) + (minutes * 60) + seconds)
+            timerTask.remainingTime = TimeInterval((hours * 3600) + (minutes * 60) + seconds)
+            routineUnitTask = timerTask
+        }
+    }
+    
     func getRoutineUnit() -> RoutineUnit {
         return RoutineUnit(title: title,
                            isSelected: false,

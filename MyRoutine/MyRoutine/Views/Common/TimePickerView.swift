@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TimePickerView: View {
-    @State private var selectedHour = 0
-    @State private var selectedMinute = 0
-    @State private var selectedSecond = 0
+    @Binding var selectedHour: Int
+    @Binding var selectedMinute: Int
+    @Binding var selectedSecond: Int
     
     var body: some View {
             HStack {
@@ -59,5 +59,5 @@ struct TimePickerView: View {
 }
 
 #Preview {
-    TimePickerView()
+    TimePickerView(selectedHour: Binding.constant(1), selectedMinute: Binding.constant(1), selectedSecond: Binding.constant(1))
 }
