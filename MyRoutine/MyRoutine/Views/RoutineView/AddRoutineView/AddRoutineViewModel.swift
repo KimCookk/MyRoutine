@@ -92,8 +92,18 @@ class AddRoutineViewModel: ObservableObject  {
     }
     
     func getRoutineUnit() -> RoutineUnit {
+        registerTags()
+        
         return RoutineUnit(title: title,
                            isSelected: false,
-                           targetTask: routineUnitTask)
+                           targetTask: routineUnitTask,
+                           tags: RoutineUnitTagManager.shared.getTags(tags),
+                           tip: tipComment)
+    }
+    
+    func registerTags() {
+        if(tags.count > 0 ) {
+            RoutineUnitTagManager.shared.appendTags(tags)
+        }
     }
 }

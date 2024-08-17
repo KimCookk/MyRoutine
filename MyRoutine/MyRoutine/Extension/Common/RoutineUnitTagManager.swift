@@ -35,7 +35,25 @@ class RoutineUnitTagManager {
         }
     }
     
+    func appendTags(_ names: [String]) {
+        names.forEach { name in
+            appendTag(name)
+        }
+    }
+    
     func getTag(_ name: String) -> RoutineUnitTag? {
         return tagDictionary[name]
+    }
+    
+    func getTags(_ names: [String]) -> [RoutineUnitTag] {
+        var tags: [RoutineUnitTag] = []
+        
+        names.forEach { name in
+            if let tag = getTag(name) {
+                tags.append(tag)
+            }
+        }
+        
+        return tags
     }
 }

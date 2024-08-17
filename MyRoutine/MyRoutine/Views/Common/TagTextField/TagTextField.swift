@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TagTextField: View {
-    @State var tags: [String]
+    @Binding var tags: [String]
     let placeholder: String
     
     @State private var inputText = ""
@@ -60,7 +60,7 @@ struct TagTextField: View {
 }
 
 #Preview {
-    TagTextField(tags: ["test", "test22"],
+    TagTextField(tags: Binding.constant(["test", "test22"]),
                  placeholder: "Enter Tag")
 }
 

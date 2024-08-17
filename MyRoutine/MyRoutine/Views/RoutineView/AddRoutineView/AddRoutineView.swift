@@ -51,7 +51,7 @@ struct AddRoutineView: View {
                             Spacer()
                         }
                         
-                        TagTextField(tags: addRoutineViewModel.tags,
+                        TagTextField(tags: $addRoutineViewModel.tags,
                                      placeholder: addRoutineViewModel.tagTextFieldPlaceholder)
                                     .frame(height: 35)
                     }
@@ -126,7 +126,6 @@ struct RoutineUnitTypeOptionView: View {
 //            // Timer : 시간 설정
 //            // Counter : 횟수
 //        }
-        
         VStack(alignment: .center, spacing: 15) {
             // Header
             HStack {

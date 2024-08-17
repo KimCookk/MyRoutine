@@ -124,7 +124,6 @@ private struct RoutineUnitCardListView: View {
                                 editModeActivate: $viewModel.editModeActivate,
                                 index: index)
                                 //isEdited: $viewModel.editModeActivate,
-                                
         }
         
         Spacer()
