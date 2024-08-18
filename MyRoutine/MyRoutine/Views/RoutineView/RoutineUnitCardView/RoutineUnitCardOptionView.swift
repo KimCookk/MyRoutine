@@ -18,6 +18,10 @@ struct RoutineUnitCardOptionView: View {
     
     @State private var isShowingStopCheckAlert = false
     
+    private var isActiveTip: Bool {
+        return !viewModel.routineUnit.tipComment.isEmpty && routineViewModel.routineSummary.isProgress
+    }
+    
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
             switch viewModel.routineUnit.targetTask.type {
@@ -43,10 +47,12 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.isSheetPresented = true
+                    if(isActiveTip) {
+                        viewModel.isSheetPresented = true
+                    }
                 }
             } label: {
-                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
+                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -83,10 +89,11 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    
-                }
+                    if(isActiveTip) {
+                        viewModel.isSheetPresented = true
+                    }                }
             } label: {
-                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
+                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -164,10 +171,11 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    
-                }
+                    if(isActiveTip) {
+                        viewModel.isSheetPresented = true
+                    }                }
             } label: {
-                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
+                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -249,10 +257,11 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    
-                }
+                    if(isActiveTip) {
+                        viewModel.isSheetPresented = true
+                    }                }
             } label: {
-                Image(routineViewModel.routineSummary.isProgress ? "icon.active.tip" : "icon.inactive.tip")
+                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
                     .resizable()
                     .frame(width: 15, height: 15)
             }

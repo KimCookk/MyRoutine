@@ -108,16 +108,13 @@ struct RoutineUnitCardView: View {
                 }
             }
             .sheet(isPresented: $viewModel.isSheetPresented) {
-                SheetView()
+                SheetView(title: viewModel.routineUnit.title,
+                          content: viewModel.routineUnit.tipComment)
             }
     }
 }
 
-struct SheetView: View {
-    var body: some View {
-        Text("This is the sheet content")
-    }
-}
+
 
 struct RoutineUnitTypeIconView: View {
     let type: RoutineUnitType
