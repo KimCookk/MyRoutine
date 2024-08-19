@@ -24,14 +24,12 @@ struct RoutineInfoView: View {
             .padding(.horizontal, 10)
             
             RoutineUnitCardListView(viewModel: viewModel)
-            
         }
     }
     
     @ViewBuilder
     private func editModeView() -> some View {
         HStack(spacing: 12) {
-            
             if(viewModel.editModeActivate) {
                 
                 Button {
@@ -85,7 +83,8 @@ struct RoutineInfoView: View {
                     .frame(width: 15, height: 15)
             }
             
-            CustomNavigationLink(destination: AddRoutineView(routineViewModel: viewModel),
+            CustomNavigationLink(isActive: $viewModel.isRoutineAddViewActive,
+                                 destination: AddRoutineView(routineViewModel: viewModel),
                                  label: {
                 Image("icon.active.plus")
                     .resizable()

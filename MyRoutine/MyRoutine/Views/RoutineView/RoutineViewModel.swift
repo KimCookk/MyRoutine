@@ -33,6 +33,8 @@ class RoutineViewModel: ObservableObject {
         RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
     ]
     
+    @Published var isRoutineAddViewActive: Bool = false
+    
     var summaryTimer: Timer?
     
     func toggleEditModeActivate() {

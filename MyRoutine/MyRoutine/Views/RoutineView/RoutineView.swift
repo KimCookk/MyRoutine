@@ -26,6 +26,12 @@ struct RoutineView: View {
             .customNavigationBarItems(title: "Test",
                                       useBackButton: true,
                                       options: [.edit])
+            .onChange(of: viewModel.isRoutineAddViewActive) { newValue in
+                if(newValue && viewModel.routineSummary.isProgress) {
+                    viewModel.puaseSummaryTimer()
+                    viewModel.allPauseTimer()
+                }
+            }
         }
     }
 }
