@@ -30,68 +30,69 @@ struct RoutineInfoView: View {
     @ViewBuilder
     private func editModeView() -> some View {
         HStack(spacing: 12) {
-            if(viewModel.editModeActivate) {
-                
-                Button {
-                    withAnimation(.spring) {
-                        viewModel.upOrderRoutineUnitSelected()
+            if(!viewModel.routineUnitCardViewModelList.isEmpty) {
+                if(viewModel.editModeActivate) {
+                    
+                    Button {
+                        withAnimation(.spring) {
+                            viewModel.upOrderRoutineUnitSelected()
+                        }
+                    } label: {
+                        Image("icon.arrow.up")
+                            .resizable()
+                            .frame(width: 15, height: 15)
                     }
-                } label: {
-                    Image("icon.arrow.up")
-                        .resizable()
-                        .frame(width: 15, height: 15)
+                    
+                    Button {
+                        withAnimation(.spring) {
+                            viewModel.downOrderRoutineUnitSelected()
+                        }
+                    } label: {
+                        Image("icon.arrow.down")
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                    }
+                    
+                    Button {
+                        withAnimation(.spring) {
+                            
+                        }
+                    } label: {
+                        Image("icon.pencil")
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                    }
+                    
+                    Button {
+                        withAnimation(.spring) {
+                            viewModel.removeRoutineUnitSelected()
+                        }
+                    } label: {
+                        Image("icon.trash")
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                    }
                 }
                 
                 Button {
                     withAnimation(.spring) {
-                        viewModel.downOrderRoutineUnitSelected()
+                        viewModel.toggleEditModeActivate()
                     }
                 } label: {
-                    Image("icon.arrow.down")
+                    Image("icon.menu.dots")
                         .resizable()
                         .frame(width: 15, height: 15)
                 }
                 
-                Button {
-                    withAnimation(.spring) {
-                        
-                    }
-                } label: {
-                    Image("icon.pencil")
+                CustomNavigationLink(isActive: $viewModel.isRoutineAddViewActive,
+                                     destination: AddRoutineView(routineViewModel: viewModel),
+                                     label: {
+                    Image("icon.active.plus")
                         .resizable()
                         .frame(width: 15, height: 15)
-                }
-                
-                Button {
-                    withAnimation(.spring) {
-                        viewModel.removeRoutineUnitSelected()
-                    }
-                } label: {
-                    Image("icon.trash")
-                        .resizable()
-                        .frame(width: 15, height: 15)
-                }
+                })
             }
-            
-            Button {
-                withAnimation(.spring) {
-                    viewModel.toggleEditModeActivate()
-                }
-            } label: {
-                Image("icon.menu.dots")
-                    .resizable()
-                    .frame(width: 15, height: 15)
-            }
-            
-            CustomNavigationLink(isActive: $viewModel.isRoutineAddViewActive,
-                                 destination: AddRoutineView(routineViewModel: viewModel),
-                                 label: {
-                Image("icon.active.plus")
-                    .resizable()
-                    .frame(width: 15, height: 15)
-            })
         }
-
     }
 }
 
