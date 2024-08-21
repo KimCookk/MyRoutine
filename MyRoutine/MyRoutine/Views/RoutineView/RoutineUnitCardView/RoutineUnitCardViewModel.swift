@@ -147,4 +147,8 @@ class RoutineUnitCardViewModel: ObservableObject {
         stopStopWatchTask()
         inactivateCompleteTask()
     }
+    
+    func isCompleted() -> Bool {
+        return routineUnit.targetTask.isCompleted
+    }
 }

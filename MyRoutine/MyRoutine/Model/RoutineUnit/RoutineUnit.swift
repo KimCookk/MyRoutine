@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct RoutineUnit: Identifiable {
+struct RoutineUnit: Identifiable, Equatable {
+    
+    static func == (lhs: RoutineUnit, rhs: RoutineUnit) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     
     let id: String
     var title: String

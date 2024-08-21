@@ -64,7 +64,7 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.toggleCompleteTask()
+                    routineViewModel.toggleRoutineUnitViewModel(viewModel)
                 }
             } label: {
                 Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
@@ -149,8 +149,7 @@ struct RoutineUnitCardOptionView: View {
             Button {
                 withAnimation(.spring) {
                     viewModel.pauseTimerTask()
-                    viewModel.toggleCompleteTask()
-                }
+                    routineViewModel.toggleRoutineUnitViewModel(viewModel)                }
             } label: {
                 Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
@@ -235,8 +234,7 @@ struct RoutineUnitCardOptionView: View {
             Button {
                 withAnimation(.spring) {
                     viewModel.pauseStopWatchTask()
-                    viewModel.toggleCompleteTask()
-                }
+                    routineViewModel.toggleRoutineUnitViewModel(viewModel)                }
             } label: {
                 Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
@@ -295,7 +293,7 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.toggleCompleteTask()
+                    routineViewModel.toggleRoutineUnitViewModel(viewModel)
                 }
             } label: {
                 Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")

@@ -32,6 +32,13 @@ struct RoutineView: View {
                     viewModel.allPauseTimer()
                 }
             }
+            .alert("메시지", isPresented: $viewModel.isAllCompleteRoutineUnit) {
+                Button("OK") {
+                    viewModel.puaseSummaryTimer()
+                }
+            } message: {
+                Text("모든 루틴이 진행되었습니다!")
+            }
         }
     }
 }

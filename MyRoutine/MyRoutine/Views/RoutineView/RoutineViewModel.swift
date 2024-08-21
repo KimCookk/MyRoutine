@@ -12,28 +12,29 @@ class RoutineViewModel: ObservableObject {
     @Published var titleActivate: Bool = false
     
     @Published var routineSummary: RoutineSummary = RoutineSummary()
-    @Published var routineUnitCardViewModelList: [RoutineUnitCardViewModel] = []
-//    [
-//        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
-//                                                          isSelected: false,
-//                                                          targetTask: TodoTask(),
-//                                                          tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
-//        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Counter Routine",
-//                                                          isSelected: false,
-//                                                          targetTask: CounterTask(targetCount: 5),
-//                                                          tags: [RoutineUnitTagManager.shared.getTag("Programming"), RoutineUnitTagManager.shared.getTag("Weekly")])),
-//        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Tip Routine",
-//                                                          isSelected: false,
-//                                                          targetTask: TodoTask(),
-//                                                          tags: [RoutineUnitTagManager.shared.getTag("Shared")])),
-//        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Stop Watch Routine",
-//                                                          isSelected: false,
-//                                                          targetTask: StopWatchTask(),
-//                                                          tags: [RoutineUnitTagManager.shared.getTag("Test"),RoutineUnitTagManager.shared.getTag("Community"),RoutineUnitTagManager.shared.getTag("Shared"), RoutineUnitTagManager.shared.getTag("Programming")])),
-//        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10))),
-//        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
-//    ]
+    @Published var routineUnitCardViewModelList: [RoutineUnitCardViewModel] =
+    [
+        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
+                                                          isSelected: false,
+                                                          targetTask: TodoTask(),
+                                                          tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
+        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Counter Routine",
+                                                          isSelected: false,
+                                                          targetTask: CounterTask(targetCount: 5),
+                                                          tags: [RoutineUnitTagManager.shared.getTag("Programming"), RoutineUnitTagManager.shared.getTag("Weekly")])),
+        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Tip Routine",
+                                                          isSelected: false,
+                                                          targetTask: TodoTask(),
+                                                          tags: [RoutineUnitTagManager.shared.getTag("Shared")])),
+        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Stop Watch Routine",
+                                                          isSelected: false,
+                                                          targetTask: StopWatchTask(),
+                                                          tags: [RoutineUnitTagManager.shared.getTag("Test"),RoutineUnitTagManager.shared.getTag("Community"),RoutineUnitTagManager.shared.getTag("Shared"), RoutineUnitTagManager.shared.getTag("Programming")])),
+        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10))),
+        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
+    ]
     
+    @Published var isAllCompleteRoutineUnit: Bool = false
     @Published var isRoutineAddViewActive: Bool = false
     
     var summaryTimer: Timer?
@@ -168,6 +169,24 @@ class RoutineViewModel: ObservableObject {
             
             routineUnitCardViewModelList[index] = viewModel
 
+        }
+    }
+    
+    func toggleRoutineUnitViewModel(_ routineUnitViewModel: RoutineUnitCardViewModel) {
+        var allCompleted = true
+        
+        routineUnitCardViewModelList.forEach { viewModel in
+            if(viewModel.routineUnit == routineUnitViewModel.routineUnit) {
+                viewModel.toggleCompleteTask()
+            }
+            
+            if(!viewModel.isCompleted()) {
+                allCompleted = false
+            }
+        }
+        
+        if(allCompleted) {
+            isAllCompleteRoutineUnit = true
         }
     }
 }
