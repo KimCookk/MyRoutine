@@ -53,6 +53,9 @@
 		20DE797A2BFB83D8001BCBB7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DE79792BFB83D8001BCBB7 /* Preview Assets.xcassets */; };
 		20DE79882BFCDD97001BCBB7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE79872BFCDD97001BCBB7 /* MainView.swift */; };
 		20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */; };
+		20EAF6EF2C78BC1C005E7D99 /* RoutineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAF6EE2C78BC1C005E7D99 /* RoutineListView.swift */; };
+		20EAF6F12C78BD71005E7D99 /* RoutineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAF6F02C78BD71005E7D99 /* RoutineCardView.swift */; };
+		20EAF6F42C78BDAE005E7D99 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAF6F32C78BDAE005E7D99 /* Routine.swift */; };
 		20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */; };
 		20F1D7C02C26A3DF00B64D70 /* RoutineUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */; };
 		20F1D7C32C26A59300B64D70 /* RoutineUnitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */; };
@@ -110,6 +113,9 @@
 		20DE79792BFB83D8001BCBB7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		20DE79872BFCDD97001BCBB7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		20EAF6EE2C78BC1C005E7D99 /* RoutineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineListView.swift; sourceTree = "<group>"; };
+		20EAF6F02C78BD71005E7D99 /* RoutineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCardView.swift; sourceTree = "<group>"; };
+		20EAF6F32C78BDAE005E7D99 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTag.swift; sourceTree = "<group>"; };
 		20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitType.swift; sourceTree = "<group>"; };
 		20F1D7C22C26A59300B64D70 /* RoutineUnitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitCardView.swift; sourceTree = "<group>"; };
@@ -273,6 +279,7 @@
 		20DE79802BFB8944001BCBB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20EAF6ED2C78BC00005E7D99 /* RoutienListView */,
 				20F1D7B92C25B06400B64D70 /* Common */,
 				20A954D92C531CA20087DAE8 /* CustomView */,
 				20DE79892BFCDDAC001BCBB7 /* RoutineView */,
@@ -313,6 +320,23 @@
 			path = RoutineView;
 			sourceTree = "<group>";
 		};
+		20EAF6ED2C78BC00005E7D99 /* RoutienListView */ = {
+			isa = PBXGroup;
+			children = (
+				20EAF6EE2C78BC1C005E7D99 /* RoutineListView.swift */,
+				20EAF6F02C78BD71005E7D99 /* RoutineCardView.swift */,
+			);
+			path = RoutienListView;
+			sourceTree = "<group>";
+		};
+		20EAF6F22C78BD9D005E7D99 /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				20EAF6F32C78BDAE005E7D99 /* Routine.swift */,
+			);
+			path = Routine;
+			sourceTree = "<group>";
+		};
 		20F1D7B92C25B06400B64D70 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +353,7 @@
 		20F1D7BC2C26A2AB00B64D70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				20EAF6F22C78BD9D005E7D99 /* Routine */,
 				20B7D7E52C36B35300CCB3A8 /* RoutineSummary */,
 				20F1D7C12C26A3EE00B64D70 /* RoutineUnit */,
 			);
@@ -432,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D153992C5533BB000CFC19 /* CustomNavBarPreferenceKeys.swift in Sources */,
+				20EAF6F42C78BDAE005E7D99 /* Routine.swift in Sources */,
 				20F1D7BE2C26A2B900B64D70 /* RoutineUnitTag.swift in Sources */,
 				20C018732C188C1500E8BA20 /* DummyData.swift in Sources */,
 				20D153702C4E886E000CFC19 /* AddRoutineViewModel.swift in Sources */,
@@ -456,7 +482,9 @@
 				200300FE2C2C4D3700C77BE5 /* EmptyRoutineUnitCardView.swift in Sources */,
 				20234F982C57C78000746A2B /* CustomTabBarView.swift in Sources */,
 				20B7D80B2C3A8EAF00CCB3A8 /* Color+.swift in Sources */,
+				20EAF6EF2C78BC1C005E7D99 /* RoutineListView.swift in Sources */,
 				20121CD72C246456001DD38E /* RoutineUnitTagCardView.swift in Sources */,
+				20EAF6F12C78BD71005E7D99 /* RoutineCardView.swift in Sources */,
 				20A954E32C5323370087DAE8 /* CustomNavigationBarView.swift in Sources */,
 				20B7D7E42C351BBE00CCB3A8 /* RoutineUnitCardViewModel.swift in Sources */,
 				20D1539B2C5535F4000CFC19 /* CustomNavigationLink.swift in Sources */,

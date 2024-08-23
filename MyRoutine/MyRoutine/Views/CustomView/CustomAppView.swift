@@ -17,7 +17,7 @@ struct CustomAppView: View {
         
         CustomTabBarContainerView(selection: $tabSelection, tabUse: false) {
             
-            RoutineView()
+            RoutineListView()
                 .tabBarItem(tab: .home, selection: $tabSelection)
             
         }

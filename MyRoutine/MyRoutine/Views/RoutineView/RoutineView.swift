@@ -12,7 +12,7 @@ struct RoutineView: View {
     
     var body: some View {
         
-        CustomNavigationView {
+        //CustomNavigationView {
             ZStack {
                 VStack {
                     
@@ -39,7 +39,7 @@ struct RoutineView: View {
             } message: {
                 Text("모든 루틴이 진행되었습니다!")
             }
-        }
+        //}
     }
 }
 
