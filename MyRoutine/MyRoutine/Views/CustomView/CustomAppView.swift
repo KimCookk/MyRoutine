@@ -16,8 +16,7 @@ struct CustomAppView: View {
     var body: some View {
         
         CustomTabBarContainerView(selection: $tabSelection, tabUse: false) {
-            
-            RoutineListView()
+            RoutineListView(routineListViewModel: RoutineListViewModel(routines: [Routine(title: "", routineUnits: [], status: .pause)]))
                 .tabBarItem(tab: .home, selection: $tabSelection)
             
         }

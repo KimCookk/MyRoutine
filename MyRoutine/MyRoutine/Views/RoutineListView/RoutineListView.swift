@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RoutineListView: View {
+    
+    @ObservedObject var routineListViewModel: RoutineListViewModel
+    
     var body: some View {
         CustomNavigationView {
             ScrollView(showsIndicators: false) {
@@ -26,12 +29,16 @@ struct RoutineListView: View {
     
     @ViewBuilder
     private func routineCardListView() -> some View {
-        RoutineCardView()
         
-        RoutineCardView()
+        ForEach(routineListViewModel.routines) { routine in
+            RoutineCardView(title: routine.title,
+                            completedInfo: "\(routine.completedUnitCount) / \(routine.totalUnitCount)",
+                            status: "test")
+
+        }
     }
 }
 
 #Preview {
-    RoutineListView()
+    RoutineListView(routineListViewModel: RoutineListViewModel(routines: []))
 }

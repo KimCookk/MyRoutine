@@ -9,11 +9,29 @@ import Foundation
 
 struct Routine: Identifiable {
     
-    let id: String = UUID().uuidString
+    enum ProgressStatus {
+        case progress, pause, stop
+    }
+    
     // Routine Title
     // Routine Unit의 총 갯수
     // Routine Unit의 완료 갯수
     // Routine 진행 상태 ( 진행중, 진행중지, 진행멈춤)
+    
+    let id: String = UUID().uuidString
+    var title: String
+    var routineUnits: [RoutineUnit]
+    var status: ProgressStatus
+    
+    var totalUnitCount: Int {
+        return routineUnits.count
+    }
+    
+    var completedUnitCount: Int {
+        return routineUnits.filter { unit in
+            unit.targetTask.isCompleted == true
+        }.count
+    }
     
     
 }

@@ -11,17 +11,21 @@ struct RoutineCardView: View {
     
     @State var isRoutineViewActive: Bool = false
     
+    var title: String
+    var completedInfo: String
+    var status: String
+    
     var body: some View {
         
         CustomNavigationLink(isActive: $isRoutineViewActive,
                              destination: RoutineView(),
                              label: {
             VStack {
-                Text("Routine Title")
+                Text(title)
                 
-                Text("20 / 30")
+                Text(completedInfo)
                 
-                Text("진행중")
+                Text(status)
             }
             .background(Color.green)
         })
@@ -31,5 +35,7 @@ struct RoutineCardView: View {
 }
 
 #Preview {
-    RoutineCardView()
+    RoutineCardView(title: "Routine Title",
+                    completedInfo: "20 / 30",
+                    status: "Progressing")
 }
