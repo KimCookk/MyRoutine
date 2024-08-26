@@ -103,6 +103,13 @@ class RoutineViewModel: ObservableObject {
         routineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == false }
     }
     
+    func copySelectedRoutineUnit() {
+        let copyRoutineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == true }
+                                                                           .map { $0.copy() as! RoutineUnitCardViewModel }
+        
+        routineUnitCardViewModelList.append(contentsOf: copyRoutineUnitCardViewModelList)
+    }
+    
     func editRoutineUnitSelected() {
         print("RoutineViewModel editRoutineUnit")
         // TODO: selected가 하나인지 확인 필요

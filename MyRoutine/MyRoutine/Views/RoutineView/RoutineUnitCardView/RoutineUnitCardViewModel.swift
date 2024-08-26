@@ -7,13 +7,17 @@
 
 import Foundation
 
-class RoutineUnitCardViewModel: ObservableObject {
+class RoutineUnitCardViewModel: ObservableObject, NSCopying {
     @Published var routineUnit: RoutineUnit
     @Published var isSheetPresented = false
     var timer: Timer?
     
     init(routineUnit: RoutineUnit) {
         self.routineUnit = routineUnit
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        return RoutineUnitCardViewModel(routineUnit: self.routineUnit)
     }
     
     func toggleRoutineUnitSelected() {

@@ -29,7 +29,7 @@ struct RoutineUnitCardView: View {
     @ObservedObject var routineViewModel: RoutineViewModel
     @ObservedObject var viewModel: RoutineUnitCardViewModel
     @Binding var editModeActivate: Bool
-
+    
     let index: Int
     
     var body: some View {

@@ -53,12 +53,24 @@ struct RoutineInfoView: View {
                             .frame(width: 15, height: 15)
                     }
                     
+                    // Edit Selected Routine 수정, 단일 Selected 확인 필요
                     Button {
                         withAnimation(.spring) {
                             
                         }
                     } label: {
                         Image("icon.pencil")
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                    }
+                    
+                    // Copy Selected Routine 복사
+                    Button {
+                        withAnimation(.spring) {
+                            viewModel.copySelectedRoutineUnit()
+                        }
+                    } label: {
+                        Image("icon.copy")
                             .resizable()
                             .frame(width: 15, height: 15)
                     }
@@ -113,7 +125,6 @@ private struct RoutineUnitCardListView: View {
                 }
             }
         }
-        
     }
     
     @ViewBuilder
