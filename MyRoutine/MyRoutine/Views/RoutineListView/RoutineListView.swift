@@ -22,19 +22,17 @@ struct RoutineListView: View {
             }
             .customNavigationBarItems(title: "Routine List",
                                       useBackButton: false,
-                                      options: [])
+                                      options: [])   
         }
-       
     }
     
     @ViewBuilder
     private func routineCardListView() -> some View {
-        
         ForEach(routineListViewModel.routines) { routine in
             RoutineCardView(title: routine.title,
                             completedInfo: "\(routine.completedUnitCount) / \(routine.totalUnitCount)",
                             status: "test")
-
+            .id(routine.id)
         }
     }
 }

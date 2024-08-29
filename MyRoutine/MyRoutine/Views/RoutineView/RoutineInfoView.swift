@@ -116,15 +116,23 @@ private struct RoutineUnitCardListView: View {
     @ObservedObject var viewModel: RoutineViewModel
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 16) {
-                if(viewModel.routineUnitCardViewModelList.isEmpty) {
-                    emptyCardListView()
-                } else {
-                    routineUnitCardListView()
+        ScrollViewReader { value in
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 16) {
+                    if(viewModel.routineUnitCardViewModelList.isEmpty) {
+                        emptyCardListView()
+                    } else {
+                        routineUnitCardListView()
+                    }
+                }
+            }
+            .onChange(of: viewModel.updatedRoutineID) { routineID in
+                withAnimation(.spring) {
+                    value.scrollTo(routineID)
                 }
             }
         }
+        
     }
     
     @ViewBuilder
@@ -134,6 +142,7 @@ private struct RoutineUnitCardListView: View {
                                 viewModel: viewModel.routineUnitCardViewModelList[index],
                                 editModeActivate: $viewModel.editModeActivate,
                                 index: index)
+            .id(viewModel.routineUnitCardViewModelList[index].routineUnit.id)
                                 //isEdited: $viewModel.editModeActivate,
         }
         

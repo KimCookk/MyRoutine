@@ -37,6 +37,8 @@ class RoutineViewModel: ObservableObject {
     @Published var isAllCompleteRoutineUnit: Bool = false
     @Published var isRoutineAddViewActive: Bool = false
     
+    @Published var updatedRoutineID: String = ""
+    
     var summaryTimer: Timer?
     
     func toggleEditModeActivate() {
@@ -96,7 +98,7 @@ class RoutineViewModel: ObservableObject {
     func addRoutineUnit(_ routineUnit: RoutineUnit) {
         print("RoutineViewModel addRoutineUnit")
         routineUnitCardViewModelList.append(RoutineUnitCardViewModel(routineUnit: routineUnit))
-        
+        updatedRoutineID = routineUnit.id
     }
     
     func removeRoutineUnitSelected() {
@@ -106,8 +108,10 @@ class RoutineViewModel: ObservableObject {
     func copySelectedRoutineUnit() {
         let copyRoutineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == true }
                                                                            .map { $0.copy() as! RoutineUnitCardViewModel }
-        
-        routineUnitCardViewModelList.append(contentsOf: copyRoutineUnitCardViewModelList)
+        if(copyRoutineUnitCardViewModelList.count > 0) {
+            routineUnitCardViewModelList.append(contentsOf: copyRoutineUnitCardViewModelList)
+            updatedRoutineID = copyRoutineUnitCardViewModelList[copyRoutineUnitCardViewModelList.count - 1].routineUnit.id
+        }
     }
     
     func editRoutineUnitSelected() {
