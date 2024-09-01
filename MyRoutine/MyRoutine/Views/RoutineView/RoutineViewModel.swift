@@ -107,7 +107,8 @@ class RoutineViewModel: ObservableObject {
     
     func copySelectedRoutineUnit() {
         let copyRoutineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == true }
-                                                                           .map { $0.copy() as! RoutineUnitCardViewModel }
+            .map { $0.copy() as! RoutineUnitCardViewModel }
+        
         if(copyRoutineUnitCardViewModelList.count > 0) {
             routineUnitCardViewModelList.append(contentsOf: copyRoutineUnitCardViewModelList)
             updatedRoutineID = copyRoutineUnitCardViewModelList[copyRoutineUnitCardViewModelList.count - 1].routineUnit.id

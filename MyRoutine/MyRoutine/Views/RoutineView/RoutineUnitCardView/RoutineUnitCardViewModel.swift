@@ -17,7 +17,7 @@ class RoutineUnitCardViewModel: ObservableObject, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return RoutineUnitCardViewModel(routineUnit: self.routineUnit)
+        return RoutineUnitCardViewModel(routineUnit: self.routineUnit.copy())
     }
     
     func toggleRoutineUnitSelected() {

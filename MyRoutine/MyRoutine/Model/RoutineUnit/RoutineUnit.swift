@@ -35,6 +35,14 @@ struct RoutineUnit: Identifiable, Equatable {
         self.tags = tags
         self.tipComment = tip
     }
+    
+    func copy(with zone: NSZone? = nil) -> RoutineUnit {
+        return RoutineUnit(title: self.title,
+                           isSelected: false,
+                           targetTask: self.targetTask,
+                           tags: self.tags,
+                           tip: self.tipComment)
+    }
 }
 
 protocol RoutineUnitTask {
