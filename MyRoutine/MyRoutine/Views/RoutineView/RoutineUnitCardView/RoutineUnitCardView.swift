@@ -15,8 +15,8 @@ import SwiftUI
 //TODO:  Routine Card View Model 확인
 // struct로 ... 바라보다보니까.. 전체적으로 검토가 필요할듯
 #Preview {
-    RoutineUnitCardView(routineViewModel: RoutineViewModel(),
-                        viewModel: RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
+    RoutineUnitCardView(routineViewModel: RoutineViewModel(routineUnits: []),
+                        viewModel: RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
                                                                                      isSelected: false,
                                                                                      targetTask: TodoTask(),
                                                                                      tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
@@ -27,7 +27,7 @@ import SwiftUI
 struct RoutineUnitCardView: View {
     
     @ObservedObject var routineViewModel: RoutineViewModel
-    @ObservedObject var viewModel: RoutineUnitCardViewModel
+    @ObservedObject var viewModel: RoutineUnitViewModel
     @Binding var editModeActivate: Bool
     
     let index: Int

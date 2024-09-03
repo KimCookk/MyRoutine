@@ -44,5 +44,5 @@ struct EmptyRoutineUnitCardView: View {
 }
 
 #Preview {
-    EmptyRoutineUnitCardView(viewModel: RoutineViewModel())
+    EmptyRoutineUnitCardView(viewModel: RoutineViewModel(routineUnits: []))
 }

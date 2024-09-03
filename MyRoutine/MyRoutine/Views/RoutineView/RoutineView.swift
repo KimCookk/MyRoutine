@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct RoutineView: View {
-    @StateObject private var viewModel = RoutineViewModel()
+    @StateObject var viewModel: RoutineViewModel
     
     var body: some View {
-        
-        //CustomNavigationView {
             ZStack {
                 VStack {
                     
@@ -39,11 +37,10 @@ struct RoutineView: View {
             } message: {
                 Text("모든 루틴이 진행되었습니다!")
             }
-        //}
     }
 }
 
 #Preview {
-    RoutineView()
+    RoutineView(viewModel: RoutineViewModel(routineUnits: []))
 }
 

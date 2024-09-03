@@ -12,27 +12,28 @@ class RoutineViewModel: ObservableObject {
     @Published var titleActivate: Bool = false
     
     @Published var routineSummary: RoutineSummary = RoutineSummary()
-    @Published var routineUnitCardViewModelList: [RoutineUnitCardViewModel] =
+    @Published var routineUnitCardViewModelList: [RoutineUnitViewModel] =
     [
-        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
                                                           isSelected: false,
                                                           targetTask: TodoTask(),
                                                           tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
-        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Counter Routine",
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Counter Routine",
                                                           isSelected: false,
                                                           targetTask: CounterTask(targetCount: 5),
                                                           tags: [RoutineUnitTagManager.shared.getTag("Programming"), RoutineUnitTagManager.shared.getTag("Weekly")])),
-        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Tip Routine",
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Tip Routine",
                                                           isSelected: false,
                                                           targetTask: TodoTask(),
                                                           tags: [RoutineUnitTagManager.shared.getTag("Shared")])),
-        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Stop Watch Routine",
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Stop Watch Routine",
                                                           isSelected: false,
                                                           targetTask: StopWatchTask(),
                                                           tags: [RoutineUnitTagManager.shared.getTag("Test"),RoutineUnitTagManager.shared.getTag("Community"),RoutineUnitTagManager.shared.getTag("Shared"), RoutineUnitTagManager.shared.getTag("Programming")])),
-        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10))),
-        RoutineUnitCardViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10))),
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
     ]
+    @Published var routineUnits: [RoutineUnit]
     
     @Published var isAllCompleteRoutineUnit: Bool = false
     @Published var isRoutineAddViewActive: Bool = false
@@ -40,6 +41,10 @@ class RoutineViewModel: ObservableObject {
     @Published var updatedRoutineID: String = ""
     
     var summaryTimer: Timer?
+    
+    init(routineUnits: [RoutineUnit]) {
+        self.routineUnits = routineUnits
+    }
     
     func toggleEditModeActivate() {
         editModeActivate.toggle()
@@ -96,8 +101,8 @@ class RoutineViewModel: ObservableObject {
     }
     
     func addRoutineUnit(_ routineUnit: RoutineUnit) {
-        print("RoutineViewModel addRoutineUnit")
-        routineUnitCardViewModelList.append(RoutineUnitCardViewModel(routineUnit: routineUnit))
+        //routineUnitCardViewModelList.append(RoutineUnitViewModel(routineUnit: routineUnit))
+        routineUnits.append(routineUnit)
         updatedRoutineID = routineUnit.id
     }
     
@@ -107,7 +112,7 @@ class RoutineViewModel: ObservableObject {
     
     func copySelectedRoutineUnit() {
         let copyRoutineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == true }
-            .map { $0.copy() as! RoutineUnitCardViewModel }
+            .map { $0.copy() as! RoutineUnitViewModel }
         
         if(copyRoutineUnitCardViewModelList.count > 0) {
             routineUnitCardViewModelList.append(contentsOf: copyRoutineUnitCardViewModelList)
@@ -184,7 +189,7 @@ class RoutineViewModel: ObservableObject {
         }
     }
     
-    func toggleRoutineUnitViewModel(_ routineUnitViewModel: RoutineUnitCardViewModel) {
+    func toggleRoutineUnitViewModel(_ routineUnitViewModel: RoutineUnitViewModel) {
         var allCompleted = true
         
         routineUnitCardViewModelList.forEach { viewModel in

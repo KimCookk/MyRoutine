@@ -16,7 +16,6 @@ struct RoutineListView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 16) {
                     // Routine Schedule이 없는 경우
-                    // Routine Schedule이 있는 경우
                     routineCardListView()
                 }
             }

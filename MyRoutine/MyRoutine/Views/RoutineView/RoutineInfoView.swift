@@ -137,13 +137,15 @@ private struct RoutineUnitCardListView: View {
     
     @ViewBuilder
     private func routineUnitCardListView() -> some View {
-        ForEach(viewModel.routineUnitCardViewModelList.indices, id: \.self) { index in
+        ForEach(viewModel.routineUnits.indices, id: \.self) { index in
+            
+            let routineUnit = viewModel.routineUnits[index]
+            
             RoutineUnitCardView(routineViewModel: viewModel,
-                                viewModel: viewModel.routineUnitCardViewModelList[index],
+                                viewModel: RoutineUnitViewModel(routineUnit: routineUnit),
                                 editModeActivate: $viewModel.editModeActivate,
                                 index: index)
-            .id(viewModel.routineUnitCardViewModelList[index].routineUnit.id)
-                                //isEdited: $viewModel.editModeActivate,
+                                .id(routineUnit.id)
         }
         
         Spacer()
@@ -153,8 +155,7 @@ private struct RoutineUnitCardListView: View {
     @ViewBuilder
     private func emptyCardListView() -> some View {
         EmptyRoutineUnitCardView(viewModel: viewModel)
-//RoutineUnitCardView(viewModel: viewModel,
-//                            routineUnit: nil)
+
     }
 }
 

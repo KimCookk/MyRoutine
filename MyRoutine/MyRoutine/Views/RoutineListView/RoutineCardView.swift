@@ -18,7 +18,7 @@ struct RoutineCardView: View {
     var body: some View {
         
         CustomNavigationLink(isActive: $isRoutineViewActive,
-                             destination: RoutineView(),
+                             destination: RoutineView(viewModel: RoutineViewModel(routineUnits: [])),
                              label: {
             VStack {
                 Text(title)

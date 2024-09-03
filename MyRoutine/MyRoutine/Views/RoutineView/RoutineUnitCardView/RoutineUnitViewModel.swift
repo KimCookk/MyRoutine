@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RoutineUnitCardViewModel: ObservableObject, NSCopying {
+class RoutineUnitViewModel: ObservableObject, NSCopying {
     @Published var routineUnit: RoutineUnit
     @Published var isSheetPresented = false
     var timer: Timer?
@@ -17,7 +17,7 @@ class RoutineUnitCardViewModel: ObservableObject, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return RoutineUnitCardViewModel(routineUnit: self.routineUnit.copy())
+        return RoutineUnitViewModel(routineUnit: self.routineUnit.copy())
     }
     
     func toggleRoutineUnitSelected() {
@@ -36,9 +36,7 @@ class RoutineUnitCardViewModel: ObservableObject, NSCopying {
         if var counterTask = routineUnit.targetTask as? CounterTask {
             counterTask.increase()
             routineUnit.targetTask = counterTask
-            
         }
-        
     }
     
     func decreaseCountTask() {

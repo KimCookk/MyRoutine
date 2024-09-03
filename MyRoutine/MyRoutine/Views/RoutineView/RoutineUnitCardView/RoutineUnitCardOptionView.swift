@@ -13,7 +13,7 @@ import SwiftUI
 //}
 
 struct RoutineUnitCardOptionView: View {
-    @ObservedObject var viewModel: RoutineUnitCardViewModel
+    @ObservedObject var viewModel: RoutineUnitViewModel
     @ObservedObject var routineViewModel: RoutineViewModel
     
     @State private var isShowingStopCheckAlert = false

@@ -36,6 +36,7 @@ struct AddRoutineView: View {
                                 Text("Title을 입력해주세요.")
                                     .font(NotoSansKRFont(fontStyle: .bold, size: 20).font())
                             }
+                            
                             Rectangle()
                                 .fill(.gray001)
                                 .frame(height: 1.5)
@@ -107,7 +108,7 @@ struct AddRoutineView: View {
 }
 
 #Preview {
-    AddRoutineView(routineViewModel: RoutineViewModel())
+    AddRoutineView(routineViewModel: RoutineViewModel(routineUnits: []))
 }
 
 

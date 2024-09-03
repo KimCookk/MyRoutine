@@ -8,7 +8,7 @@
 import SwiftUI
 
 #Preview {
-    RoutineSummaryView(viewModel: RoutineViewModel())
+    RoutineSummaryView(viewModel: RoutineViewModel(routineUnits: []))
 }
 
 struct RoutineSummaryView: View {
