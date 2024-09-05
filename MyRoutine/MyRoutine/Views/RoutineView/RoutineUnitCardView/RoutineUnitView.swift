@@ -15,7 +15,7 @@ import SwiftUI
 //TODO:  Routine Card View Model 확인
 // struct로 ... 바라보다보니까.. 전체적으로 검토가 필요할듯
 #Preview {
-    RoutineUnitCardView(routineViewModel: RoutineViewModel(routineUnits: []),
+    RoutineUnitView(routineViewModel: RoutineViewModel(routineUnits: []),
                         viewModel: RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
                                                                                      isSelected: false,
                                                                                      targetTask: TodoTask(),
@@ -24,7 +24,7 @@ import SwiftUI
                         index: 0)
 }
 
-struct RoutineUnitCardView: View {
+struct RoutineUnitView: View {
     
     @ObservedObject var routineViewModel: RoutineViewModel
     @ObservedObject var viewModel: RoutineUnitViewModel

@@ -141,7 +141,7 @@ private struct RoutineUnitCardListView: View {
             
             let routineUnit = viewModel.routineUnits[index]
             
-            RoutineUnitCardView(routineViewModel: viewModel,
+            RoutineUnitView(routineViewModel: viewModel,
                                 viewModel: RoutineUnitViewModel(routineUnit: routineUnit),
                                 editModeActivate: $viewModel.editModeActivate,
                                 index: index)

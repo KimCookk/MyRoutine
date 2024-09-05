@@ -64,7 +64,10 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    routineViewModel.toggleRoutineUnitViewModel(viewModel)
+                    //routineViewModel.toggleRoutineUnitViewModel(viewModel)
+                    //viewModel.toggleCompleteTask()
+                    routineViewModel.routineUnits[0].targetTask.isCompleted = true
+                    // routineViewModel, viewModel 의 routine 상이
                 }
             } label: {
                 Image(routineViewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
