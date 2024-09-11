@@ -14,30 +14,28 @@ import SwiftUI
 //
 //TODO:  Routine Card View Model 확인
 // struct로 ... 바라보다보니까.. 전체적으로 검토가 필요할듯
-#Preview {
-    RoutineUnitView(routineViewModel: RoutineViewModel(routineUnits: []),
-                        viewModel: RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
-                                                                                     isSelected: false,
-                                                                                     targetTask: TodoTask(),
-                                                                                     tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
-                        editModeActivate: .constant(false),
-                        index: 0)
-}
+//#Preview {
+//    RoutineUnitView(routineViewModel: RoutineViewModel(routineUnits: []),
+//                        viewModel: RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
+//                                                                                     isSelected: false,
+//                                                                                     targetTask: TodoTask(),
+//                                                                                     tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
+//                        editModeActivate: .constant(false),
+//                        index: 0)
+//}
 
 struct RoutineUnitView: View {
     
-    @ObservedObject var routineViewModel: RoutineViewModel
-    @ObservedObject var viewModel: RoutineUnitViewModel
-    @Binding var editModeActivate: Bool
+    @ObservedObject var viewModel: RoutineViewModel
     
-    let index: Int
+    private var routineUnit: RoutineUnit
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Color.white)
             .overlay {
                 ZStack {
-                    if(editModeActivate) {
+                    if(viewModel.editModeActivate) {
                         ZStack {
                             GeometryReader { geo in
                                 Circle()
@@ -73,22 +71,23 @@ struct RoutineUnitView: View {
                                 .frame(height: 24)
                         }
                         
+                        // routineViewModel 걷어내기
                         RoutineUnitCardOptionView(viewModel: viewModel,
                                                   routineViewModel: routineViewModel)
                     }
                     .padding(16)
                     
                     GeometryReader { geo in
-                        if(routineViewModel.routineSummary.isProgress == false) {
+                        if(viewModel.routineSummary.isProgress == false) {
                             Color.black001.opacity(0.1)
-                        } else if(viewModel.routineUnit.targetTask.isCompleted) {
+                        } else if(routineUnit.targetTask.isCompleted) {
                             Color.black001.opacity(0.4)
                         } else {
-                            if let task = viewModel.routineUnit.targetTask as? TimerTask {
+                            if let task = routineUnit.targetTask as? TimerTask {
                                 if(task.isProgress) {
                                     Color.purple002.opacity(0.4)
                                 }
-                            } else if let task = viewModel.routineUnit.targetTask as? StopWatchTask {
+                            } else if let task = routineUnit.targetTask as? StopWatchTask {
                                 if(task.isProgress) {
                                     Color.purple002.opacity(0.4)
                                 }
@@ -96,13 +95,13 @@ struct RoutineUnitView: View {
                         }
                     }
                     .cornerRadius(10)
-                    .allowsHitTesting(routineViewModel.routineSummary.isProgress ? false : true)
+                    .allowsHitTesting(viewModel.routineSummary.isProgress ? false : true)
                 }
             }
             .frame(height: 84)
             .onTapGesture {
                 withAnimation(.spring) {
-                    if(editModeActivate) {
+                    if(viewModel.editModeActivate) {
                         viewModel.toggleRoutineUnitSelected()
                     }
                 }

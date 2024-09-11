@@ -106,6 +106,12 @@ class RoutineViewModel: ObservableObject {
         updatedRoutineID = routineUnit.id
     }
     
+    func getRoutineUnitByID(_ id: String) -> RoutineUnit? {
+        return routineUnits.first { routineUnit in
+            routineUnit.id == id
+        }
+    }
+    
     func removeRoutineUnitSelected() {
         routineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == false }
     }
@@ -207,3 +213,8 @@ class RoutineViewModel: ObservableObject {
         }
     }
 }
+
+extension RoutineViewModel {
+    
+}
+
