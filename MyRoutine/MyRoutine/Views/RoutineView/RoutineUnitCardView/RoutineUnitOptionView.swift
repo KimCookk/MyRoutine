@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-//#Preview {
-//    RoutineUnitCardOptionView(viewModel: RoutineViewModel(),
-//                              index: 1)
-//}
+#Preview {
+    RoutineUnitOptionView(viewModel: RoutineViewModel(routineUnits: [dummyToDoRoutine]), routineUnit: dummyToDoRoutine)
+}
 
-struct RoutineUnitCardOptionView: View {
+struct RoutineUnitOptionView: View {
     @ObservedObject var viewModel: RoutineViewModel
     
     @State private var isShowingStopCheckAlert = false
     
-    private var routineUnit: RoutineUnit
+    // Index로 대체???
+    var routineUnit: RoutineUnit
     
     private var isActiveTip: Bool {
         return !routineUnit.tipComment.isEmpty && viewModel.routineSummary.isProgress
@@ -97,7 +97,8 @@ struct RoutineUnitCardOptionView: View {
             Button {
                 withAnimation(.spring) {
                     if(isActiveTip) {
-                        viewModel.isSheetPresented = true
+                        // TODO: 구현필요
+                        // viewModel.isSheetPresented = true
                     }                }
             } label: {
                 Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
@@ -112,26 +113,30 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.startTimerTask()
+                    // TODO: 구현필요
+                    //viewModel.startTimerTask()
                 }
             } label: {
                 Image(viewModel.routineSummary.isProgress ? "icon.active.play" : "icon.inactive.play")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(viewModel.routineUnit.targetTask.isCompleted)
+            // TODO: 구현필요
+            //.disabled(viewModel.routineUnit.targetTask.isCompleted)
             
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.pauseTimerTask()
+                    // TODO: 구현필요
+                    //viewModel.pauseTimerTask()
                 }
             } label: {
                 Image(viewModel.routineSummary.isProgress ? "icon.active.pause" : "icon.inactive.pause")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(viewModel.routineUnit.targetTask.isCompleted)
+            // TODO: 구현필요
+            //.disabled(viewModel.routineUnit.targetTask.isCompleted)
             
             Button {
                 isShowingStopCheckAlert = true
@@ -140,11 +145,13 @@ struct RoutineUnitCardOptionView: View {
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(viewModel.routineUnit.targetTask.isCompleted)
+            // TODO: 구현필요
+            //.disabled(viewModel.routineUnit.targetTask.isCompleted)
             .alert("메시지", isPresented: $isShowingStopCheckAlert) {
                 Button("OK") {
                     withAnimation(.spring) {
-                        viewModel.stopTimerTask()
+                        // TODO: 구현필요
+                        //viewModel.stopTimerTask()
                     }
                 }
                 
@@ -155,8 +162,9 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.pauseTimerTask()
-                    viewModel.toggleRoutineUnitViewModel(viewModel)
+                    // TODO: 구현필요
+                    //viewModel.pauseTimerTask()
+                    //viewModel.toggleRoutineUnitViewModel(viewModel)
                 }
             } label: {
                 Image(viewModel.routineSummary.isProgress && routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
@@ -179,7 +187,8 @@ struct RoutineUnitCardOptionView: View {
             Button {
                 withAnimation(.spring) {
                     if(isActiveTip) {
-                        viewModel.isSheetPresented = true
+                        // TODO: 구현필요
+                        // viewModel.isSheetPresented = true
                     }                }
             } label: {
                 Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
@@ -194,7 +203,8 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.startStopWatchTask()
+                    // TODO: 구현필요
+                    //viewModel.startStopWatchTask()
                 }
             } label: {
                 Image(viewModel.routineSummary.isProgress ? "icon.active.play" : "icon.inactive.play")
@@ -206,7 +216,8 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.pauseStopWatchTask()
+                    // TODO: 구현필요
+                    //viewModel.pauseStopWatchTask()
                 }
             } label: {
                 Image(viewModel.routineSummary.isProgress ? "icon.active.pause" : "icon.inactive.pause")
@@ -229,7 +240,8 @@ struct RoutineUnitCardOptionView: View {
             .alert("메시지", isPresented: $isShowingStopCheckAlert) {
                 Button("OK") {
                     withAnimation(.spring) {
-                        viewModel.stopStopWatchTask()
+                        // TODO: 구현필요
+                        // viewModel.stopStopWatchTask()
                     }
                 }
                 
@@ -266,7 +278,8 @@ struct RoutineUnitCardOptionView: View {
             Button {
                 withAnimation(.spring) {
                     if(isActiveTip) {
-                        viewModel.isSheetPresented = true
+                        // TODO: 구현필요
+                        //viewModel.isSheetPresented = true
                     }                }
             } label: {
                 Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
@@ -281,7 +294,8 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.increaseCountTask()
+                    // TODO: 구현필요
+                    // viewModel.increaseCountTask()
                 }
             } label: {
                 Image(viewModel.routineSummary.isProgress ? "icon.active.plus" : "icon.inactive.plus")
@@ -292,23 +306,27 @@ struct RoutineUnitCardOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.decreaseCountTask()
+                    // TODO: 구현필요
+                    // viewModel.decreaseCountTask()
                 }
             } label: {
                 Image(viewModel.routineSummary.isProgress ? "icon.active.minus" : "icon.inactive.minus")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(viewModel.routineUnit.targetTask.isCompleted)
+            // TODO: 구현필요
+            //.disabled(viewModel.routineUnit.targetTask.isCompleted)
             
             Button {
                 withAnimation(.spring) {
-                    viewModel.toggleRoutineUnitViewModel(viewModel)
+                    // TODO: 구현필요
+                    //viewModel.toggleRoutineUnitViewModel(viewModel)
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
-                    .resizable()
-                    .frame(width: 15, height: 15)
+                // TODO: 구현필요
+//                Image(viewModel.routineSummary.isProgress && viewModel.routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+//                    .resizable()
+//                    .frame(width: 15, height: 15)
             }
         }
     }

@@ -23,7 +23,7 @@ struct RoutineUnit: Identifiable, Equatable {
     
     init(id: String = UUID().uuidString,
          title: String,
-         isSelected: Bool,
+         isSelected: Bool = false,
          targetTask: RoutineUnitTask,
          tags: [RoutineUnitTag?] = [],
          tip: String = "") {

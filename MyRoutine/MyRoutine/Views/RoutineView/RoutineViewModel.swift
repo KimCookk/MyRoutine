@@ -212,9 +212,10 @@ class RoutineViewModel: ObservableObject {
             isAllCompleteRoutineUnit = true
         }
     }
+    
+    func toggleRoutineUnit(_ routineUnit: RoutineUnit) {
+        
+    }
 }
 
-extension RoutineViewModel {
-    
-}
 

@@ -28,13 +28,15 @@ struct RoutineUnitView: View {
     
     @ObservedObject var viewModel: RoutineViewModel
     
-    private var routineUnit: RoutineUnit
+    var routineUnit: RoutineUnit
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Color.white)
             .overlay {
                 ZStack {
+                    
+                    // 편집 활성화에 대한 View
                     if(viewModel.editModeActivate) {
                         ZStack {
                             GeometryReader { geo in
@@ -46,7 +48,7 @@ struct RoutineUnitView: View {
                                 
                             }
                             
-                            if(viewModel.routineUnit.isSelected) {
+                            if(routineUnit.isSelected) {
                                 GeometryReader { geo in
                                     Circle()
                                         .frame(width: 9, height: 9)
@@ -59,21 +61,24 @@ struct RoutineUnitView: View {
                         }
                     }
                     
+                    // Routine Unit View
                     HStack(spacing: 16) {
-                        RoutineUnitTypeIconView(type: viewModel.routineUnit.targetTask.type)
+                        // Routine Unit Type의 Icon 영역
+                        RoutineUnitTypeIconView(type: routineUnit.targetTask.type)
                         
+                        // Routine Unit title, tags 영역
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(viewModel.routineUnit.title)
+                            Text(routineUnit.title)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(NotoSansKRFont(fontStyle: .medium, size: 14).font())
                             
-                            RoutineUnitTagCardListView(tags: viewModel.routineUnit.tags)
+                            RoutineUnitTagCardListView(tags: routineUnit.tags)
                                 .frame(height: 24)
                         }
                         
-                        // routineViewModel 걷어내기
-                        RoutineUnitCardOptionView(viewModel: viewModel,
-                                                  routineViewModel: routineViewModel)
+                        // Routine Unit Option 영역
+                        RoutineUnitOptionView(viewModel: viewModel,
+                                                  routineUnit: routineUnit)
                     }
                     .padding(16)
                     
@@ -102,14 +107,16 @@ struct RoutineUnitView: View {
             .onTapGesture {
                 withAnimation(.spring) {
                     if(viewModel.editModeActivate) {
-                        viewModel.toggleRoutineUnitSelected()
+                        // TODO: 구현필요
+                        //viewModel.toggleRoutineUnitSelected()
                     }
                 }
             }
-            .sheet(isPresented: $viewModel.isSheetPresented) {
-                SheetView(title: viewModel.routineUnit.title,
-                          content: viewModel.routineUnit.tipComment)
-            }
+        // TODO: 구현필요
+//            .sheet(isPresented: $viewModel.isSheetPresented) {
+//                SheetView(title: viewModel.routineUnit.title,
+//                          content: viewModel.routineUnit.tipComment)
+//            }
     }
 }
 
