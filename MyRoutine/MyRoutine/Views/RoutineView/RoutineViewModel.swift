@@ -213,8 +213,26 @@ class RoutineViewModel: ObservableObject {
         }
     }
     
-    func toggleRoutineUnit(_ routineUnit: RoutineUnit) {
+    func toggleCompletedRoutineUnitID(_ unitID: String) {
+        var routineUnit = routineUnits.first { routineUnit in
+            return routineUnit.id == unitID
+        }
         
+        if var routineUnit = routineUnit {
+            routineUnit.targetTask.isCompleted.toggle()
+        }
+    }
+    
+    func routineUnitByID(_ unitID: String) -> RoutineUnit {
+        var routineUnit = routineUnits.first { routineUnit in
+            return routineUnit.id == unitID
+        }
+        
+        if let routineUnit = routineUnit {
+            return routineUnit
+        }
+        
+        return RoutineUnit(title: "", targetTask: TodoTask())
     }
 }
 
