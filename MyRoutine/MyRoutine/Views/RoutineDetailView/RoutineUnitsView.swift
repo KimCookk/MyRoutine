@@ -8,7 +8,7 @@
 import SwiftUI
 
 // TODO: Empty View 생각해야함
-struct RoutineInfoView: View {
+struct RoutineUnitsView: View {
     @ObservedObject var viewModel: RoutineViewModel
 
     var body: some View {
@@ -23,7 +23,7 @@ struct RoutineInfoView: View {
             }
             .padding(.horizontal, 10)
             
-            RoutineUnitCardListView(viewModel: viewModel)
+            RoutineUnitListView(viewModel: viewModel)
         }
     }
     
@@ -31,7 +31,7 @@ struct RoutineInfoView: View {
     private func editModeView() -> some View {
         HStack(spacing: 12) {
             if(!viewModel.routineUnitCardViewModelList.isEmpty) {
-                if(viewModel.editModeActivate) {
+                if(viewModel.isEditingEnabled) {
                     
                     Button {
                         withAnimation(.spring) {
@@ -112,7 +112,7 @@ struct RoutineInfoView: View {
 //    RoutineInfoView()
 //}
 
-private struct RoutineUnitCardListView: View {
+private struct RoutineUnitListView: View {
     @ObservedObject var viewModel: RoutineViewModel
 
     var body: some View {
@@ -137,12 +137,9 @@ private struct RoutineUnitCardListView: View {
     
     @ViewBuilder
     private func routineUnitCardListView() -> some View {
-        ForEach(viewModel.routineUnits.indices, id: \.self) { index in
-            
-            let routineUnit = viewModel.routineUnits[index]
-            
+        ForEach(viewModel.routineUnits) { routineUnit in
             RoutineUnitView(viewModel: viewModel,
-                            routineUnit: routineUnit)
+                            unitID: routineUnit.id)
         }
         
         Spacer()

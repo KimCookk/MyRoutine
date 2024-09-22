@@ -12,7 +12,7 @@
 		2009DDA72C69933B00EB90F7 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA62C69933B00EB90F7 /* TimePickerView.swift */; };
 		2009DDA92C6AD19E00EB90F7 /* CounterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DDA82C6AD19E00EB90F7 /* CounterTextField.swift */; };
 		20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C282C22CB20001DD38E /* RoutineSummaryView.swift */; };
-		20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */; };
+		20121C2B2C22CB5A001DD38E /* RoutineUnitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20121C2A2C22CB5A001DD38E /* RoutineUnitsView.swift */; };
 		20121C3A2C245CA0001DD38E /* NotoSansKR-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */; };
 		20121C3D2C245CA0001DD38E /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C342C245C9F001DD38E /* NotoSansKR-Regular.ttf */; };
 		20121C3E2C245CA0001DD38E /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20121C352C245C9F001DD38E /* NotoSansKR-Bold.ttf */; };
@@ -34,6 +34,7 @@
 		20A954E12C531FB90087DAE8 /* CustomNavigationBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */; };
 		20A954E32C5323370087DAE8 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A954E22C5323370087DAE8 /* CustomNavigationBarView.swift */; };
 		20AA370D2C72216D005631B8 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AA370C2C72216D005631B8 /* SheetView.swift */; };
+		20B257A52C9FF36E00F49E60 /* RoutineUnitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B257A42C9FF36E00F49E60 /* RoutineUnitTask.swift */; };
 		20B7D7E22C33CD1000CCB3A8 /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */; };
 		20B7D7E42C351BBE00CCB3A8 /* RoutineUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E32C351BBE00CCB3A8 /* RoutineUnitViewModel.swift */; };
 		20B7D7E72C36B37100CCB3A8 /* RoutineSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7D7E62C36B37100CCB3A8 /* RoutineSummary.swift */; };
@@ -71,7 +72,7 @@
 		2009DDA62C69933B00EB90F7 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		2009DDA82C6AD19E00EB90F7 /* CounterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTextField.swift; sourceTree = "<group>"; };
 		20121C282C22CB20001DD38E /* RoutineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummaryView.swift; sourceTree = "<group>"; };
-		20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoView.swift; sourceTree = "<group>"; };
+		20121C2A2C22CB5A001DD38E /* RoutineUnitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitsView.swift; sourceTree = "<group>"; };
 		20121C312C245C9F001DD38E /* NotoSansKR-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.ttf"; sourceTree = "<group>"; };
 		20121C342C245C9F001DD38E /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
 		20121C352C245C9F001DD38E /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		20A954E02C531FB90087DAE8 /* CustomNavigationBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarContainerView.swift; sourceTree = "<group>"; };
 		20A954E22C5323370087DAE8 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		20AA370C2C72216D005631B8 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		20B257A42C9FF36E00F49E60 /* RoutineUnitTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitTask.swift; sourceTree = "<group>"; };
 		20B7D7E12C33CD1000CCB3A8 /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
 		20B7D7E32C351BBE00CCB3A8 /* RoutineUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineUnitViewModel.swift; sourceTree = "<group>"; };
 		20B7D7E62C36B37100CCB3A8 /* RoutineSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSummary.swift; sourceTree = "<group>"; };
@@ -281,10 +283,11 @@
 		20DE79802BFB8944001BCBB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20D1536C2C4E883B000CFC19 /* AddRoutineView */,
 				20EAF6ED2C78BC00005E7D99 /* RoutineListView */,
 				20F1D7B92C25B06400B64D70 /* Common */,
 				20A954D92C531CA20087DAE8 /* CustomView */,
-				20DE79892BFCDDAC001BCBB7 /* RoutineView */,
+				20DE79892BFCDDAC001BCBB7 /* RoutineDetailView */,
 				20DE79862BFCDD79001BCBB7 /* MainView */,
 			);
 			path = Views;
@@ -309,17 +312,16 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
-		20DE79892BFCDDAC001BCBB7 /* RoutineView */ = {
+		20DE79892BFCDDAC001BCBB7 /* RoutineDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				20D1536C2C4E883B000CFC19 /* AddRoutineView */,
 				20F1D7C42C26A96500B64D70 /* RoutineUnitCardView */,
 				20DE798A2BFCDDBD001BCBB7 /* RoutineView.swift */,
 				20121C282C22CB20001DD38E /* RoutineSummaryView.swift */,
-				20121C2A2C22CB5A001DD38E /* RoutineInfoView.swift */,
+				20121C2A2C22CB5A001DD38E /* RoutineUnitsView.swift */,
 				20F1D7C72C29A43E00B64D70 /* RoutineViewModel.swift */,
 			);
-			path = RoutineView;
+			path = RoutineDetailView;
 			sourceTree = "<group>";
 		};
 		20EAF6ED2C78BC00005E7D99 /* RoutineListView */ = {
@@ -369,6 +371,7 @@
 				20F1D7BD2C26A2B900B64D70 /* RoutineUnitTag.swift */,
 				20F1D7BF2C26A3DF00B64D70 /* RoutineUnitType.swift */,
 				20F1D7C92C29A93D00B64D70 /* RoutineUnit.swift */,
+				20B257A42C9FF36E00F49E60 /* RoutineUnitTask.swift */,
 			);
 			path = RoutineUnit;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				20121C292C22CB20001DD38E /* RoutineSummaryView.swift in Sources */,
 				20DE798B2BFCDDBD001BCBB7 /* RoutineView.swift in Sources */,
 				20121CD32C245E56001DD38E /* FontManager.swift in Sources */,
+				20B257A52C9FF36E00F49E60 /* RoutineUnitTask.swift in Sources */,
 				20B7D7E22C33CD1000CCB3A8 /* TimeInterval+.swift in Sources */,
 				208D36E22C6207B700EAE42B /* TagTextField.swift in Sources */,
 				20234F9A2C57CD5400746A2B /* CustomTabBarItemsPreferencyKey.swift in Sources */,
@@ -506,7 +510,7 @@
 				20A954DF2C531EC20087DAE8 /* CustomNavigationView.swift in Sources */,
 				2009DDA92C6AD19E00EB90F7 /* CounterTextField.swift in Sources */,
 				20DE79732BFB83D6001BCBB7 /* MyRoutineApp.swift in Sources */,
-				20121C2B2C22CB5A001DD38E /* RoutineInfoView.swift in Sources */,
+				20121C2B2C22CB5A001DD38E /* RoutineUnitsView.swift in Sources */,
 				2025DED82C635B8600373DC8 /* TextFieldWrapper.swift in Sources */,
 				20234F942C57C58D00746A2B /* CustomTabBarContainerView.swift in Sources */,
 			);

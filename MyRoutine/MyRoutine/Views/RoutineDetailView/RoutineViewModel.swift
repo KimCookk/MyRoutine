@@ -8,7 +8,7 @@
 import Foundation
 
 class RoutineViewModel: ObservableObject {
-    @Published var editModeActivate: Bool = false
+    @Published var isEditingEnabled: Bool = false
     @Published var titleActivate: Bool = false
     
     @Published var routineSummary: RoutineSummary = RoutineSummary()
@@ -47,9 +47,9 @@ class RoutineViewModel: ObservableObject {
     }
     
     func toggleEditModeActivate() {
-        editModeActivate.toggle()
+        isEditingEnabled.toggle()
         
-        if(editModeActivate == false) {
+        if(isEditingEnabled == false) {
             allRoutineUnitUnSelected()
         } else {
             //allPauseTimer()
@@ -71,7 +71,7 @@ class RoutineViewModel: ObservableObject {
     }
     
     func upOrderRoutineUnitSelected() {
-        if(editModeActivate) {
+        if(isEditingEnabled) {
             for i in 0..<routineUnitCardViewModelList.count {
                 let current = i
                 let front = i - 1
@@ -86,7 +86,7 @@ class RoutineViewModel: ObservableObject {
     }
     
     func downOrderRoutineUnitSelected() {
-        if(editModeActivate) {
+        if(isEditingEnabled) {
             for i in (0..<routineUnitCardViewModelList.count).reversed() {
                 let current = i
                 let back = i + 1

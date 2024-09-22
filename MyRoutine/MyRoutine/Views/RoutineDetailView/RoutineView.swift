@@ -16,7 +16,7 @@ struct RoutineView: View {
                     
                     RoutineSummaryView(viewModel: viewModel)
                     
-                    RoutineInfoView(viewModel: viewModel)
+                    RoutineUnitsView(viewModel: viewModel)
                     
                 }
                 .padding(.horizontal, 20)

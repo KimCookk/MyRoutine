@@ -8,7 +8,7 @@
 import SwiftUI
 
 #Preview {
-    RoutineUnitOptionView(viewModel: RoutineViewModel(routineUnits: [dummyToDoRoutine]), routineUnitID: dummyToDoRoutine.id)
+    RoutineUnitOptionView(viewModel: RoutineViewModel(routineUnits: [dummyToDoRoutine]), unitID: dummyToDoRoutine.id)
 }
 
 struct RoutineUnitOptionView: View {
@@ -16,10 +16,10 @@ struct RoutineUnitOptionView: View {
     
     @State private var isShowingStopCheckAlert = false
     
-    var routineUnitID: String
-    
+    var unitID: String
+
     private var routineUnit: RoutineUnit {
-        viewModel.routineUnitByID(routineUnitID)
+        viewModel.routineUnitByID(unitID)
     }
     //    private var isActiveTip: Bool {
     //        return !routineUnit.tipComment.isEmpty && viewModel.routineSummary.isProgress
