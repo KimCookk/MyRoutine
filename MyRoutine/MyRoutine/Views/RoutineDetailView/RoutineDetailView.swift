@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-struct RoutineView: View {
-    @StateObject var viewModel: RoutineViewModel
+struct RoutineDetailView: View {
+    @StateObject var viewModel: RoutineDetailViewModel
     
     var body: some View {
             ZStack {
                 VStack {
+                    // Routine Progress Timer View
+                    RoutineControlView(viewModel: viewModel)
                     
-                    RoutineSummaryView(viewModel: viewModel)
+                    RoutineUnitListHeaderView(viewModel: viewModel)
                     
-                    RoutineUnitsView(viewModel: viewModel)
-                    
+                    RoutineUnitListView(viewModel: viewModel)
                 }
                 .padding(.horizontal, 20)
             }
@@ -41,6 +42,6 @@ struct RoutineView: View {
 }
 
 #Preview {
-    RoutineView(viewModel: RoutineViewModel(routineUnits: []))
+    RoutineDetailView(viewModel: RoutineDetailViewModel(routineUnits: []))
 }
 

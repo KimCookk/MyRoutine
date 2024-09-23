@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddRoutineView: View {
     @ObservedObject var addRoutineViewModel = AddRoutineViewModel()
-    @ObservedObject var routineViewModel: RoutineViewModel
+    @ObservedObject var routineViewModel: RoutineDetailViewModel
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -108,7 +108,7 @@ struct AddRoutineView: View {
 }
 
 #Preview {
-    AddRoutineView(routineViewModel: RoutineViewModel(routineUnits: []))
+    AddRoutineView(routineViewModel: RoutineDetailViewModel(routineUnits: []))
 }
 
 

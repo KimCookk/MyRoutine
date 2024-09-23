@@ -26,7 +26,7 @@ import SwiftUI
 
 struct RoutineUnitView: View {
     
-    @ObservedObject var viewModel: RoutineViewModel
+    @ObservedObject var viewModel: RoutineDetailViewModel
     
     var unitID: String
     

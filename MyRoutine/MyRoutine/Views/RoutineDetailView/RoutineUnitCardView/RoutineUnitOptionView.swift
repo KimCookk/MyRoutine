@@ -8,11 +8,11 @@
 import SwiftUI
 
 #Preview {
-    RoutineUnitOptionView(viewModel: RoutineViewModel(routineUnits: [dummyToDoRoutine]), unitID: dummyToDoRoutine.id)
+    RoutineUnitOptionView(viewModel: RoutineDetailViewModel(routineUnits: [dummyToDoRoutine]), unitID: dummyToDoRoutine.id)
 }
 
 struct RoutineUnitOptionView: View {
-    @ObservedObject var viewModel: RoutineViewModel
+    @ObservedObject var viewModel: RoutineDetailViewModel
     
     @State private var isShowingStopCheckAlert = false
     

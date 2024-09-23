@@ -1,34 +1,34 @@
 //
-//  RoutineInfoView.swift
+//  RoutineUnitListHeaderView.swift
 //  MyRoutine
 //
-//  Created by 김태성 on 6/19/24.
+//  Created by 김태성 on 9/23/24.
 //
 
 import SwiftUI
 
-// TODO: Empty View 생각해야함
-struct RoutineUnitsView: View {
-    @ObservedObject var viewModel: RoutineViewModel
+#Preview {
+    RoutineUnitListHeaderView(viewModel: RoutineDetailViewModel(routineUnits: []))
+}
 
+
+struct RoutineUnitListHeaderView: View {
+    @ObservedObject var viewModel: RoutineDetailViewModel
+    
     var body: some View {
-        VStack {
-            HStack {
-                Text("Routine")
-                    .font(NotoSansKRFont(fontStyle: .medium, size: 20).font())
-                
-                Spacer()
-                
-                editModeView()
-            }
-            .padding(.horizontal, 10)
+        HStack {
+            Text("Rotuine")
+                .font(NotoSansKRFont(fontStyle: .medium,
+                                     size: 20).font())
+            Spacer()
             
-            RoutineUnitListView(viewModel: viewModel)
+            menuView()
         }
+        .padding(.horizontal, 10)
     }
     
     @ViewBuilder
-    private func editModeView() -> some View {
+    private func menuView() -> some View {
         HStack(spacing: 12) {
             if(!viewModel.routineUnitCardViewModelList.isEmpty) {
                 if(viewModel.isEditingEnabled) {
@@ -105,54 +105,7 @@ struct RoutineUnitsView: View {
                 })
             }
         }
-    }
-}
-
-//#Preview {
-//    RoutineInfoView()
-//}
-
-private struct RoutineUnitListView: View {
-    @ObservedObject var viewModel: RoutineViewModel
-
-    var body: some View {
-        ScrollViewReader { value in
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 16) {
-                    if(viewModel.routineUnitCardViewModelList.isEmpty) {
-                        emptyCardListView()
-                    } else {
-                        routineUnitCardListView()
-                    }
-                }
-            }
-            .onChange(of: viewModel.updatedRoutineID) { routineID in
-                withAnimation(.spring) {
-                    value.scrollTo(routineID)
-                }
-            }
-        }
         
     }
-    
-    @ViewBuilder
-    private func routineUnitCardListView() -> some View {
-        ForEach(viewModel.routineUnits) { routineUnit in
-            RoutineUnitView(viewModel: viewModel,
-                            unitID: routineUnit.id)
-        }
-        
-        Spacer()
-            .frame(height: 68)
-    }
-    
-    @ViewBuilder
-    private func emptyCardListView() -> some View {
-        EmptyRoutineUnitCardView(viewModel: viewModel)
-
-    }
 }
-
-
-
 

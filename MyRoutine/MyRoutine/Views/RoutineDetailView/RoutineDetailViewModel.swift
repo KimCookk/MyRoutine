@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RoutineViewModel: ObservableObject {
+class RoutineDetailViewModel: ObservableObject {
     @Published var isEditingEnabled: Bool = false
     @Published var titleActivate: Bool = false
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-            RoutineView(viewModel: RoutineViewModel(routineUnits: []))
+            RoutineDetailView(viewModel: RoutineDetailViewModel(routineUnits: []))
     }
 }
 
