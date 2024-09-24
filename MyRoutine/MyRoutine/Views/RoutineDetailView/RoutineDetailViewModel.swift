@@ -15,21 +15,21 @@ class RoutineDetailViewModel: ObservableObject {
     @Published var routineUnitCardViewModelList: [RoutineUnitViewModel] =
     [
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
-                                                          isSelected: false,
-                                                          targetTask: TodoTask(),
-                                                          tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
+                                                      isSelected: false,
+                                                      targetTask: TodoTask(),
+                                                      tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Counter Routine",
-                                                          isSelected: false,
-                                                          targetTask: CounterTask(targetCount: 5),
-                                                          tags: [RoutineUnitTagManager.shared.getTag("Programming"), RoutineUnitTagManager.shared.getTag("Weekly")])),
+                                                      isSelected: false,
+                                                      targetTask: CounterTask(targetCount: 5),
+                                                      tags: [RoutineUnitTagManager.shared.getTag("Programming"), RoutineUnitTagManager.shared.getTag("Weekly")])),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Tip Routine",
-                                                          isSelected: false,
-                                                          targetTask: TodoTask(),
-                                                          tags: [RoutineUnitTagManager.shared.getTag("Shared")])),
+                                                      isSelected: false,
+                                                      targetTask: TodoTask(),
+                                                      tags: [RoutineUnitTagManager.shared.getTag("Shared")])),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Stop Watch Routine",
-                                                          isSelected: false,
-                                                          targetTask: StopWatchTask(),
-                                                          tags: [RoutineUnitTagManager.shared.getTag("Test"),RoutineUnitTagManager.shared.getTag("Community"),RoutineUnitTagManager.shared.getTag("Shared"), RoutineUnitTagManager.shared.getTag("Programming")])),
+                                                      isSelected: false,
+                                                      targetTask: StopWatchTask(),
+                                                      tags: [RoutineUnitTagManager.shared.getTag("Test"),RoutineUnitTagManager.shared.getTag("Community"),RoutineUnitTagManager.shared.getTag("Shared"), RoutineUnitTagManager.shared.getTag("Programming")])),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10))),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
     ]
@@ -40,10 +40,16 @@ class RoutineDetailViewModel: ObservableObject {
     
     @Published var updatedRoutineID: String = ""
     
+    @Published var isShowingStopCheckAlert: Bool = false
+    
     var summaryTimer: Timer?
     
     init(routineUnits: [RoutineUnit]) {
         self.routineUnits = routineUnits
+    }
+    
+    func isEmptyRoutineUnits() -> Bool {
+        return self.routineUnits.isEmpty
     }
     
     func toggleEditModeActivate() {
@@ -63,7 +69,7 @@ class RoutineDetailViewModel: ObservableObject {
     func inactiveTitleActivate() {
         titleActivate = false
     }
-        
+    
     func allRoutineUnitUnSelected() {
         for index in routineUnitCardViewModelList.indices {
             routineUnitCardViewModelList[index].routineUnit.isSelected = false
@@ -132,17 +138,21 @@ class RoutineDetailViewModel: ObservableObject {
     }
     
     func startSummaryTimer() {
-        routineSummary.isProgress = true
-        
-        let scheduledTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            self.routineSummary.run()
+        if(isEmptyRoutineUnits() == false) {
+            routineSummary.isProgress = true
+            
+            let scheduledTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                self.routineSummary.run()
+            }
+            
+            if let summaryTimer = summaryTimer {
+                summaryTimer.invalidate()
+            }
+            
+            summaryTimer = scheduledTimer
+        } else {
+            
         }
-        
-        if let summaryTimer = summaryTimer {
-            summaryTimer.invalidate()
-        }
-        
-        summaryTimer = scheduledTimer
     }
     
     func puaseSummaryTimer() {
@@ -191,7 +201,7 @@ class RoutineDetailViewModel: ObservableObject {
             viewModel.inactivateCompleteTask()
             
             routineUnitCardViewModelList[index] = viewModel
-
+            
         }
     }
     
@@ -233,6 +243,12 @@ class RoutineDetailViewModel: ObservableObject {
         }
         
         return RoutineUnit(title: "", targetTask: TodoTask())
+    }
+    
+    func toggleSelection(for unitID: String) {
+        if let index = routineUnits.firstIndex(where: { $0.id == unitID }) {
+            routineUnits[index].isSelected = true
+        }
     }
 }
 

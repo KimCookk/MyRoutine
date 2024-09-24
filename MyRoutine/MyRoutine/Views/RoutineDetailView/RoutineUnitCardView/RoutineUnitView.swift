@@ -30,22 +30,14 @@ struct RoutineUnitView: View {
     
     var unitID: String
     
-    var isEditingEnabled: Bool {
-        viewModel.isEditingEnabled
-    }
-    
-    var routineUnit: RoutineUnit? {
-        viewModel.getRoutineUnitByID(unitID)
-    }
-    
     var body: some View {
-        if let routineUnit = routineUnit {
+        if let routineUnit = viewModel.getRoutineUnitByID(unitID) {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
                 .overlay {
                     ZStack {
                         // 편집 활성화에 대한 View
-                        if(isEditingEnabled) {
+                        if(viewModel.isEditingEnabled) {
                             ZStack {
                                 GeometryReader { geo in
                                     Circle()
@@ -114,9 +106,8 @@ struct RoutineUnitView: View {
                 .frame(height: 84)
                 .onTapGesture {
                     withAnimation(.spring) {
-                        if(isEditingEnabled) {
-                            // TODO: 구현필요
-                            //viewModel.toggleRoutineUnitSelected()
+                        if(viewModel.isEditingEnabled) {
+                            viewModel.toggleSelection(for: unitID)
                         }
                     }
                 }
@@ -148,7 +139,6 @@ private struct RoutineUnitTagCardListView: View {
         ScrollView(.horizontal,
                    showsIndicators: false) {
             HStack(spacing: 8) {
-                
                 if(tags.isEmpty) {
                     RoutineUnitTagCardView(tag: "No Tag",
                                            styleColor: Color.black)

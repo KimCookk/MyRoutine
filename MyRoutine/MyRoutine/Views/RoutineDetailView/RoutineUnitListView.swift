@@ -18,7 +18,7 @@ struct RoutineUnitListView: View {
         ScrollViewReader { value in
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 16) {
-                    if(viewModel.routineUnitCardViewModelList.isEmpty) {
+                    if(viewModel.isEmptyRoutineUnits() == true) {
                         emptyView()
                     } else {
                         unitListView()

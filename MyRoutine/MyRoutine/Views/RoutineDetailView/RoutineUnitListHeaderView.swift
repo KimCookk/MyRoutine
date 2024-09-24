@@ -30,9 +30,8 @@ struct RoutineUnitListHeaderView: View {
     @ViewBuilder
     private func menuView() -> some View {
         HStack(spacing: 12) {
-            if(!viewModel.routineUnitCardViewModelList.isEmpty) {
+            if(viewModel.isEmptyRoutineUnits() == false) {
                 if(viewModel.isEditingEnabled) {
-                    
                     Button {
                         withAnimation(.spring) {
                             viewModel.upOrderRoutineUnitSelected()

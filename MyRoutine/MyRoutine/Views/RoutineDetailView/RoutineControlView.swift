@@ -50,29 +50,32 @@ struct RoutineControlView: View {
                                 }
                                 
                                 Button {
-                                    isShowingStopCheckAlert = true
+                                    viewModel.isShowingStopCheckAlert = true
                                 } label: {
                                     Image("icon.active.stop")
                                         .resizable()
                                         .frame(width: 15, height: 15)
                                 }
-                                .alert("메시지", isPresented: $isShowingStopCheckAlert) {
-                                    Button("OK") {
-                                        withAnimation(.spring) {
-                                            viewModel.stopSummaryTimer()
-                                            viewModel.allResetTask()
-                                        }
-                                    }
-                                    
-                                    Button("Cancel", role: .cancel) { }
-                                } message: {
-                                    Text("전체 루틴 진행이 초기화됩니다. 정말 정지하시겠습니까?")
-                                }
+                               
                             }
                         }
                         .foregroundColor(Color.black)
                         .padding(.vertical, 26)
                         .padding(.horizontal, 16)
+                        .alert("메시지", isPresented: $viewModel.isShowingStopCheckAlert) {
+                            Button("OK") {
+                                withAnimation(.spring) {
+                                    viewModel.stopSummaryTimer()
+                                    viewModel.allResetTask()
+                                    viewModel.isShowingStopCheckAlert = false
+                                }
+                            }
+                            Button("Cancel", role: .cancel) { 
+                                viewModel.isShowingStopCheckAlert = false
+                            }
+                        } message: {
+                            Text("전체 루틴 진행이 초기화됩니다. 정말 정지하시겠습니까?")
+                        }
                     }
                     .frame(height: 80)
         }
