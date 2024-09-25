@@ -21,7 +21,7 @@ class RoutineUnitViewModel: ObservableObject, NSCopying {
     }
     
     func toggleRoutineUnitSelected() {
-        routineUnit.isSelected.toggle()
+        //routineUnit.isSelected.toggle()
     }
     
     func toggleCompleteTask() {

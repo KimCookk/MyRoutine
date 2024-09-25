@@ -15,25 +15,22 @@ class RoutineDetailViewModel: ObservableObject {
     @Published var routineUnitCardViewModelList: [RoutineUnitViewModel] =
     [
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Todo Routine",
-                                                      isSelected: false,
                                                       targetTask: TodoTask(),
                                                       tags: [RoutineUnitTagManager.shared.getTag("Work"), RoutineUnitTagManager.shared.getTag("Project")])),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Counter Routine",
-                                                      isSelected: false,
                                                       targetTask: CounterTask(targetCount: 5),
                                                       tags: [RoutineUnitTagManager.shared.getTag("Programming"), RoutineUnitTagManager.shared.getTag("Weekly")])),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Tip Routine",
-                                                      isSelected: false,
                                                       targetTask: TodoTask(),
                                                       tags: [RoutineUnitTagManager.shared.getTag("Shared")])),
         RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Stop Watch Routine",
-                                                      isSelected: false,
                                                       targetTask: StopWatchTask(),
                                                       tags: [RoutineUnitTagManager.shared.getTag("Test"),RoutineUnitTagManager.shared.getTag("Community"),RoutineUnitTagManager.shared.getTag("Shared"), RoutineUnitTagManager.shared.getTag("Programming")])),
-        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10))),
-        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", isSelected: false, targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", targetTask: TimerTask(targetTime: 10, remainingTime: 10))),
+        RoutineUnitViewModel(routineUnit: RoutineUnit(title: "Timer Routine", targetTask: TimerTask(targetTime: 10, remainingTime: 10)))
     ]
     @Published var routineUnits: [RoutineUnit]
+    @Published var selectedRoutineUnitIds: [String] = []
     
     @Published var isAllCompleteRoutineUnit: Bool = false
     @Published var isRoutineAddViewActive: Bool = false
@@ -50,6 +47,10 @@ class RoutineDetailViewModel: ObservableObject {
     
     func isEmptyRoutineUnits() -> Bool {
         return self.routineUnits.isEmpty
+    }
+    
+    func isSelectedRoutineUnit(for unitID: String) -> Bool {
+        return self.selectedRoutineUnitIds.contains(unitID)
     }
     
     func toggleEditModeActivate() {
@@ -70,21 +71,32 @@ class RoutineDetailViewModel: ObservableObject {
         titleActivate = false
     }
     
-    func allRoutineUnitUnSelected() {
-        for index in routineUnitCardViewModelList.indices {
-            routineUnitCardViewModelList[index].routineUnit.isSelected = false
+    func toggleSelectedRotuineUnit(for unitID: String) {
+        if(selectedRoutineUnitIds.contains(unitID)) {
+            selectedRoutineUnitIds.removeAll { id in
+                return id == unitID
+            }
+        } else {
+            selectedRoutineUnitIds.append(unitID)
         }
+    }
+    
+    func allRoutineUnitUnSelected() {
+        selectedRoutineUnitIds.removeAll()
     }
     
     func upOrderRoutineUnitSelected() {
         if(isEditingEnabled) {
-            for i in 0..<routineUnitCardViewModelList.count {
+            for i in 0..<routineUnits.count {
                 let current = i
                 let front = i - 1
                 if(front >= 0) {
-                    if (routineUnitCardViewModelList[front].routineUnit.isSelected == false
-                        && routineUnitCardViewModelList[current].routineUnit.isSelected == true) {
-                        routineUnitCardViewModelList.swapAt(front, current)
+                    let currentRoutineUnitID = routineUnits[current].id
+                    let frontRoutineUnitID = routineUnits[front].id
+                    
+                    if (self.isSelectedRoutineUnit(for: frontRoutineUnitID) == false
+                        && self.isSelectedRoutineUnit(for: currentRoutineUnitID) == true) {
+                        routineUnits.swapAt(front, current)
                     }
                 }
             }
@@ -93,13 +105,16 @@ class RoutineDetailViewModel: ObservableObject {
     
     func downOrderRoutineUnitSelected() {
         if(isEditingEnabled) {
-            for i in (0..<routineUnitCardViewModelList.count).reversed() {
+            for i in (0..<routineUnits.count).reversed() {
                 let current = i
                 let back = i + 1
-                if(back < routineUnitCardViewModelList.count) {
-                    if (routineUnitCardViewModelList[back].routineUnit.isSelected == false
-                        && routineUnitCardViewModelList[current].routineUnit.isSelected == true) {
-                        routineUnitCardViewModelList.swapAt(back, current)
+                if(back < routineUnits.count) {
+                    let currentRoutineUnitID = routineUnits[current].id
+                    let backRoutineUnitID = routineUnits[back].id
+
+                    if (self.isSelectedRoutineUnit(for: backRoutineUnitID) == false
+                        && self.isSelectedRoutineUnit(for: currentRoutineUnitID) == true) {
+                        routineUnits.swapAt(back, current)
                     }
                 }
             }
@@ -119,16 +134,21 @@ class RoutineDetailViewModel: ObservableObject {
     }
     
     func removeRoutineUnitSelected() {
-        routineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == false }
+        routineUnits = routineUnits.filter {
+            self.isSelectedRoutineUnit(for: $0.id) == false
+        }
     }
     
     func copySelectedRoutineUnit() {
-        let copyRoutineUnitCardViewModelList = routineUnitCardViewModelList.filter { $0.routineUnit.isSelected == true }
-            .map { $0.copy() as! RoutineUnitViewModel }
+        let copyRoutineUnits = routineUnits.filter {
+            self.isSelectedRoutineUnit(for: $0.id) == true
+        }.map {
+            $0.copy()
+        }
         
-        if(copyRoutineUnitCardViewModelList.count > 0) {
-            routineUnitCardViewModelList.append(contentsOf: copyRoutineUnitCardViewModelList)
-            updatedRoutineID = copyRoutineUnitCardViewModelList[copyRoutineUnitCardViewModelList.count - 1].routineUnit.id
+        if(copyRoutineUnits.count > 0) {
+            routineUnits.append(contentsOf: copyRoutineUnits)
+            updatedRoutineID = copyRoutineUnits[copyRoutineUnits.count - 1].id
         }
     }
     
@@ -245,11 +265,11 @@ class RoutineDetailViewModel: ObservableObject {
         return RoutineUnit(title: "", targetTask: TodoTask())
     }
     
-    func toggleSelection(for unitID: String) {
-        if let index = routineUnits.firstIndex(where: { $0.id == unitID }) {
-            routineUnits[index].isSelected = true
-        }
-    }
+//    func toggleSelection(for unitID: String) {
+//        if let index = routineUnits.firstIndex(where: { $0.id == unitID }) {
+//            routineUnits[index].isSelected = true
+//        }
+//    }
 }
 
 

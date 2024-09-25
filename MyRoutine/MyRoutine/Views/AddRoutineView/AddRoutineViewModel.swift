@@ -95,7 +95,6 @@ class AddRoutineViewModel: ObservableObject  {
         registerTags()
         
         return RoutineUnit(title: title,
-                           isSelected: false,
                            targetTask: routineUnitTask,
                            tags: RoutineUnitTagManager.shared.getTags(tags),
                            tip: tipComment)

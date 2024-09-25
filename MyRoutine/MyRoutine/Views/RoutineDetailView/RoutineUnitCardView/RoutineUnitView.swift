@@ -48,7 +48,7 @@ struct RoutineUnitView: View {
                                     
                                 }
                                 
-                                if(routineUnit.isSelected) {
+                                if(viewModel.isSelectedRoutineUnit(for: unitID)) {
                                     GeometryReader { geo in
                                         Circle()
                                             .frame(width: 9, height: 9)
@@ -107,7 +107,7 @@ struct RoutineUnitView: View {
                 .onTapGesture {
                     withAnimation(.spring) {
                         if(viewModel.isEditingEnabled) {
-                            viewModel.toggleSelection(for: unitID)
+                            viewModel.toggleSelectedRotuineUnit(for: unitID)
                         }
                     }
                 }
