@@ -17,13 +17,14 @@ struct RoutineUnitOptionView: View {
     @State private var isShowingStopCheckAlert = false
     
     var unitID: String
-
-    private var routineUnit: RoutineUnit {
-        viewModel.routineUnitByID(unitID)
+    
+    private var isActiveTip: Bool {
+        if let routineUnit = viewModel.getRoutineUnitByID(unitID) {
+            return !routineUnit.tipComment.isEmpty && viewModel.routineSummary.isProgress
+        } else {
+            return false
+        }
     }
-    //    private var isActiveTip: Bool {
-    //        return !routineUnit.tipComment.isEmpty && viewModel.routineSummary.isProgress
-    //    }
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
@@ -50,15 +51,15 @@ struct RoutineUnitOptionView: View {
             
             Button {
                 withAnimation(.spring) {
-                    //                    if(isActiveTip) {
-                    //                        // 구현 필요
-                    //                        //viewModel.isSheetPresented = true
-                    //                    }
+                    if(isActiveTip) {
+                        // 구현 필요
+                        //viewModel.isSheetPresented = true
+                    }
                 }
             } label: {
-                //                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
-                //                    .resizable()
-                //                    .frame(width: 15, height: 15)
+                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
             
         }
@@ -76,7 +77,8 @@ struct RoutineUnitOptionView: View {
                     
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress && routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                //Image(viewModel.routineSummary.isProgress && routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                Image(isActiveCheck == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -90,25 +92,25 @@ struct RoutineUnitOptionView: View {
         HStack(spacing: 10) {
             Spacer()
             
-            Text(routineUnit.targetTask.taskContent)
+            Text(content)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .foregroundColor(viewModel.routineSummary.isProgress ? Color.black001 : Color.purple001)
                 .lineLimit(1)
             
             
-//            Button {
-//                withAnimation(.spring) {
-//                    //                    if(isActiveTip) {
-//                    //                        // TODO: 구현필요
-//                    //                        // viewModel.isSheetPresented = true
-//                    //                    }                }
-//                } label: {
-//                    //                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
-//                    //                    .resizable()
-//                    //                    .frame(width: 15, height: 15)
-//                }
-//                
-//            }
+            //            Button {
+            //                withAnimation(.spring) {
+            //                    //                    if(isActiveTip) {
+            //                    //                        // TODO: 구현필요
+            //                    //                        // viewModel.isSheetPresented = true
+            //                    //                    }                }
+            //                } label: {
+            //                    //                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
+            //                    //                    .resizable()
+            //                    //                    .frame(width: 15, height: 15)
+            //                }
+            //
+            //            }
             
             HStack(spacing: 10) {
                 Spacer()

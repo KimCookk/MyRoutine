@@ -80,55 +80,5 @@ struct RoutineControlView: View {
                     .frame(height: 80)
         }
     }
-    
-    /// 사용되지 않음.
-    @ViewBuilder
-    private func routineSummaryHeaderView() -> some View {
-        HStack(spacing: 30) {
-           
-            routineTitleView()
-                .frame(height: 30)
-            
-            Button {
-                withAnimation(.spring) {
-                    viewModel.titleActivate = false
-                }
-            } label: {
-                Image("icon.pencil")
-                    .resizable()
-                    .frame(width: 15, height: 15)
-            }
-        }
-    }
-    
-    /// 사용되지 않음.
-    @ViewBuilder
-    private func routineTitleView() -> some View {
-        GeometryReader() { geo in
-            ZStack {
-                TextField("Title을 입력해주세요.",
-                          text: $viewModel.routineSummary.title,
-                          onCommit: {
-                    if(viewModel.routineSummary.title.isEmpty == false) {
-                        viewModel.titleActivate = true
-                    }
-                })
-                .font(NotoSansKRFont(fontStyle: .bold,
-                                     size: 20).font())
-                .foregroundColor(.gray)
-                
-                if(viewModel.titleActivate == true) {
-                    Text(viewModel.routineSummary.title)
-                        .font(NotoSansKRFont(fontStyle: .bold,
-                                             size: 20).font())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .lineLimit(1)
-                        .background(.background001)
-                }
-                    
-            }
-        }
-    }
    
-
 }

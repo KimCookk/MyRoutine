@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RoutineSummary: Identifiable {
+class RoutineSummary: Identifiable {
     
     let id: String
     var title: String
@@ -28,20 +28,20 @@ struct RoutineSummary: Identifiable {
         self.elapsedTime = elapsedTime
     }
     
-    mutating func run() {
+    func run() {
         elapsedTime += 1
         if(isProgress != true) {
             isProgress = true
         }
     }
     
-    mutating func pause() {
+    func pause() {
         if(isProgress != false) {
             isProgress = false
         }
     }
     
-    mutating func stop() {
+    func stop() {
         elapsedTime = 0
         if(isProgress != false) {
             isProgress = false
