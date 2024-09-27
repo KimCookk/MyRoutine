@@ -18,42 +18,48 @@ struct RoutineUnitOptionView: View {
     
     var unitID: String
     
-    private var isActiveTip: Bool {
-        if let routineUnit = viewModel.getRoutineUnitByID(unitID) {
-            return !routineUnit.tipComment.isEmpty && viewModel.routineSummary.isProgress
-        } else {
-            return false
-        }
-    }
-    
     var body: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            switch routineUnit.targetTask.type {
-            case .todo:
-                todoTypeOptionView()
-            case .timer:
-                timerTypeOptionView()
-            case .stopWatch:
-                stopWatchTypeOptionView()
-            case .counter:
-                counterTypeOptionView()
+            if let routineUnit = viewModel.getRoutineUnitByID(unitID) {
+                switch routineUnit.targetTask.type {
+                case .todo:
+                    todoTypeOptionView(isActiveTip: viewModel.isActiveTipByRoutineUnit(routineUnit),
+                                       isCompleteTask: viewModel.isCompleteTaskByRoutineUnit(routineUnit),
+                                       isProgressRoutine: viewModel.isProgressRoutine())
+                                       
+                case .timer:
+                    timerTypeOptionView(content: routineUnit.targetTask.taskContent,
+                                        isActiveTip: viewModel.isActiveTipByRoutineUnit(routineUnit),
+                                        isCompleteTask: viewModel.isCompleteTaskByRoutineUnit(routineUnit),
+                                        isProgressRoutine: viewModel.isProgressRoutine())
+                case .stopWatch:
+                    stopWatchTypeOptionView(content: routineUnit.targetTask.taskContent,
+                                            isActiveTip: viewModel.isActiveTipByRoutineUnit(routineUnit),
+                                            isCompleteTask: viewModel.isCompleteTaskByRoutineUnit(routineUnit),
+                                            isProgressRoutine: viewModel.isProgressRoutine())
+                    
+                case .counter:
+                    counterTypeOptionView(content: routineUnit.targetTask.taskContent,
+                                          isActiveTip: viewModel.isActiveTipByRoutineUnit(routineUnit),
+                                          isCompleteTask: viewModel.isCompleteTaskByRoutineUnit(routineUnit),
+                                          isProgressRoutine: viewModel.isProgressRoutine())
+                }
             }
         }
         .frame(width: 100)
     }
     
     @ViewBuilder
-    private func todoTypeOptionView() -> some View {
-        
+    private func todoTypeOptionView(isActiveTip: Bool,
+                                    isCompleteTask: Bool,
+                                    isProgressRoutine: Bool) -> some View {
         HStack(spacing: 10) {
             Spacer()
-            
-            
             Button {
                 withAnimation(.spring) {
                     if(isActiveTip) {
                         // 구현 필요
-                        //viewModel.isSheetPresented = true
+                        //$viewModel.isSheetPresented = true
                     }
                 }
             } label: {
@@ -78,7 +84,7 @@ struct RoutineUnitOptionView: View {
                 }
             } label: {
                 //Image(viewModel.routineSummary.isProgress && routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
-                Image(isActiveCheck == true ? "icon.active.check" : "icon.inactive.check")
+                Image(isCompleteTask && isProgressRoutine == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -87,30 +93,33 @@ struct RoutineUnitOptionView: View {
     }
     
     @ViewBuilder
-    private func timerTypeOptionView() -> some View {
+    private func timerTypeOptionView(content: String,
+                                     isActiveTip: Bool,
+                                     isCompleteTask: Bool,
+                                     isProgressRoutine: Bool) -> some View {
         
         HStack(spacing: 10) {
             Spacer()
             
             Text(content)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
-                .foregroundColor(viewModel.routineSummary.isProgress ? Color.black001 : Color.purple001)
+                .foregroundColor(isProgressRoutine ? Color.black001 : Color.purple001)
                 .lineLimit(1)
             
             
-            //            Button {
-            //                withAnimation(.spring) {
-            //                    //                    if(isActiveTip) {
-            //                    //                        // TODO: 구현필요
-            //                    //                        // viewModel.isSheetPresented = true
-            //                    //                    }                }
-            //                } label: {
-            //                    //                Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
-            //                    //                    .resizable()
-            //                    //                    .frame(width: 15, height: 15)
-            //                }
-            //
-            //            }
+            Button {
+                withAnimation(.spring) {
+                    if(isActiveTip) {
+                        // TODO: 구현필요
+                        // viewModel.isSheetPresented = true
+                    }                }
+                } label: {
+                    Image(isActiveTip ? "icon.active.tip" : "icon.inactive.tip")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                }
+                
+            }
             
             HStack(spacing: 10) {
                 Spacer()
@@ -121,7 +130,7 @@ struct RoutineUnitOptionView: View {
                         //viewModel.startTimerTask()
                     }
                 } label: {
-                    Image(viewModel.routineSummary.isProgress ? "icon.active.play" : "icon.inactive.play")
+                    Image(isProgressRoutine ? "icon.active.play" : "icon.inactive.play")
                         .resizable()
                         .frame(width: 15, height: 15)
                 }
@@ -135,7 +144,7 @@ struct RoutineUnitOptionView: View {
                         //viewModel.pauseTimerTask()
                     }
                 } label: {
-                    Image(viewModel.routineSummary.isProgress ? "icon.active.pause" : "icon.inactive.pause")
+                    Image(isProgressRoutine ? "icon.active.pause" : "icon.inactive.pause")
                         .resizable()
                         .frame(width: 15, height: 15)
                 }
@@ -145,7 +154,7 @@ struct RoutineUnitOptionView: View {
                 Button {
                     isShowingStopCheckAlert = true
                 } label: {
-                    Image(viewModel.routineSummary.isProgress ? "icon.active.stop" : "icon.inactive.stop")
+                    Image(isProgressRoutine ? "icon.active.stop" : "icon.inactive.stop")
                         .resizable()
                         .frame(width: 15, height: 15)
                 }
@@ -158,7 +167,6 @@ struct RoutineUnitOptionView: View {
                             //viewModel.stopTimerTask()
                         }
                     }
-                    
                     Button("Cancel", role: .cancel) { }
                 } message: {
                     Text("해당 루틴 진행이 초기화됩니다. 정말 정지하시겠습니까?")
@@ -171,22 +179,25 @@ struct RoutineUnitOptionView: View {
                         //viewModel.toggleRoutineUnitViewModel(viewModel)
                     }
                 } label: {
-                    Image(viewModel.routineSummary.isProgress && routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                    Image(isCompleteTask && isProgressRoutine == true ? "icon.active.check" : "icon.inactive.check")
                         .resizable()
                         .frame(width: 15, height: 15)
                 }
             }
         }
-    }
+    
     
     @ViewBuilder
-    private func stopWatchTypeOptionView() -> some View {
+    private func stopWatchTypeOptionView(content: String,
+                                         isActiveTip: Bool,
+                                         isCompleteTask: Bool,
+                                         isProgressRoutine: Bool) -> some View {
         HStack(spacing: 10) {
             Spacer()
             
-            Text(routineUnit.targetTask.taskContent)
+            Text(content)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
-                .foregroundColor(viewModel.routineSummary.isProgress ? Color.black001 : Color.purple001)
+                .foregroundColor(isProgressRoutine ? Color.black001 : Color.purple001)
                 .lineLimit(1)
             
             Button {
@@ -213,11 +224,11 @@ struct RoutineUnitOptionView: View {
                     //viewModel.startStopWatchTask()
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress ? "icon.active.play" : "icon.inactive.play")
+                Image(isProgressRoutine ? "icon.active.play" : "icon.inactive.play")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(routineUnit.targetTask.isCompleted)
+            .disabled(isCompleteTask)
             
             
             Button {
@@ -226,23 +237,23 @@ struct RoutineUnitOptionView: View {
                     //viewModel.pauseStopWatchTask()
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress ? "icon.active.pause" : "icon.inactive.pause")
+                Image(isProgressRoutine ? "icon.active.pause" : "icon.inactive.pause")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(routineUnit.targetTask.isCompleted)
+            .disabled(isCompleteTask)
             
             
             Button {
                 withAnimation(.spring) {
-                    isShowingStopCheckAlert = true
+                    //isShowingStopCheckAlert = true
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress ? "icon.active.stop" : "icon.inactive.stop")
+                Image(isProgressRoutine ? "icon.active.stop" : "icon.inactive.stop")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(routineUnit.targetTask.isCompleted)
+            .disabled(isCompleteTask)
             .alert("메시지", isPresented: $isShowingStopCheckAlert) {
                 Button("OK") {
                     withAnimation(.spring) {
@@ -264,7 +275,7 @@ struct RoutineUnitOptionView: View {
                     //routineViewModel.toggleRoutineUnitViewModel(viewModel)
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress && routineUnit.targetTask.isCompleted == true ? "icon.active.check" : "icon.inactive.check")
+                Image(isProgressRoutine && isCompleteTask == true ? "icon.active.check" : "icon.inactive.check")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -274,11 +285,14 @@ struct RoutineUnitOptionView: View {
     
     
     @ViewBuilder
-    private func counterTypeOptionView() -> some View {
+    private func counterTypeOptionView(content: String,
+                                       isActiveTip: Bool,
+                                       isCompleteTask: Bool,
+                                       isProgressRoutine: Bool) -> some View {
         HStack(spacing: 10) {
             Spacer()
             
-            Text(routineUnit.targetTask.taskContent)
+            Text(content)
                 .font(NotoSansKRFont(fontStyle: .bold, size: 12).font())
                 .foregroundColor(viewModel.routineSummary.isProgress ? Color.black001 : Color.purple001)
                 .lineLimit(1)
@@ -307,11 +321,11 @@ struct RoutineUnitOptionView: View {
                     // viewModel.increaseCountTask()
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress ? "icon.active.plus" : "icon.inactive.plus")
+                Image(isProgressRoutine ? "icon.active.plus" : "icon.inactive.plus")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
-            .disabled(routineUnit.targetTask.isCompleted)
+            .disabled(isCompleteTask)
             
             Button {
                 withAnimation(.spring) {
@@ -319,7 +333,7 @@ struct RoutineUnitOptionView: View {
                     // viewModel.decreaseCountTask()
                 }
             } label: {
-                Image(viewModel.routineSummary.isProgress ? "icon.active.minus" : "icon.inactive.minus")
+                Image(isProgressRoutine ? "icon.active.minus" : "icon.inactive.minus")
                     .resizable()
                     .frame(width: 15, height: 15)
             }
@@ -340,3 +354,4 @@ struct RoutineUnitOptionView: View {
         }
     }
 }
+

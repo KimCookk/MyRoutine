@@ -133,6 +133,18 @@ class RoutineDetailViewModel: ObservableObject {
         }
     }
     
+    func isActiveTipByRoutineUnit(_ routineUnit: RoutineUnit) -> Bool {
+        return !routineUnit.tipComment.isEmpty
+    }
+    
+    func isCompleteTaskByRoutineUnit(_ routineUnit: RoutineUnit) -> Bool {
+        return routineUnit.targetTask.isCompleted
+    }
+    
+    func isProgressRoutine() -> Bool {
+        return routineSummary.isProgress
+    }
+    
     func removeRoutineUnitSelected() {
         routineUnits = routineUnits.filter {
             self.isSelectedRoutineUnit(for: $0.id) == false
